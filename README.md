@@ -10,5 +10,5 @@ To provide an easy-to-use Full-stack application that acts as a book directory b
 - Students
 
 # Packages/Dependencies used
-express, ejs, express-ejs-layouts
+express, ejs, express-ejs-layouts, mongoose
 
