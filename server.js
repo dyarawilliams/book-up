@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const connectDB = require("./config/database");
 
 const mainRouter = require('./routes/main')
+const authorRouter = require('./routes/authors')
 
 
 // Use .env file in config folder
@@ -25,6 +26,8 @@ app.use(express.static('public'))
 
 
 app.use('/', mainRouter)
+app.use('/authors', authorRouter)
+
 
 app.listen(process.env.PORT || 8000,  () => {
     console.log(`Server is running, you better catch it!`)
