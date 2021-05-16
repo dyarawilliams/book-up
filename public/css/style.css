@@ -1,0 +1,10 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;700;900&display=swap');
+
+body {
+    font-family: 'Bodoni Moda', serif !important;
+    font-weight: 900 !important;
+    background-color: rgb(94,23,235) !important;
+    letter-spacing: 3px;
+}
+
