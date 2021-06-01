@@ -14,21 +14,23 @@ router.get('/new', (req, res) => {
 
 // Create Author 
 router.post('/', (req, res) => {
-    const newAuthor = new Author({
-        name: req.body.name
-    })
-    author.save((err, newAuthor) => {
-        if(err) {
-            res.render('authors/new', {
-                author: author,
-                errorMessage: 'Error creating Author'
-            })
-        } else {
-            // res.redirect(`authors/${newAuthor.id}`)
-            res.redirect('authors')
-        }
-    })
+    // const newAuthor = new Author({
+    //     name: req.body.name
+    // })
+    // author.save((err, newAuthor) => {
+    //     if(err) {
+    //         res.render('authors/new', {
+    //             author: author,
+    //             errorMessage: 'Error creating Author'
+    //         })
+    //     } else {
+    //         // res.redirect(`authors/${newAuthor.id}`)
+    //         res.redirect('authors')
+    //     }
+    // })
     // res.send(req.body.name)
+    res.send('Create')
+
 })
 
 
