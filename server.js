@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 const connectDB = require("./config/database");
 const mainRouter = require('./routes/main')
 const authorRouter = require('./routes/authors')
+const bookRouter = require('./routes/books')
 
 
 // Use .env file in config folder
@@ -26,6 +27,7 @@ app.use(express.static('public'));
 
 app.use('/', mainRouter)
 app.use('/authors', authorRouter);
+app.use('/books', bookRouter);
 
 
 app.listen(process.env.PORT || 8000,  () => {
