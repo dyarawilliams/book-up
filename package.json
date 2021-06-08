@@ -1,7 +1,7 @@
 {
   "name": "book-up",
   "version": "1.0.0",
-  "description": "A simple Rest API",
+  "description": "A simple Rest API creating a book directory.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
