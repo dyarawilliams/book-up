@@ -5,4 +5,13 @@
         <input type="search" name="name" id="">
         <input type="submit" value="Search">
     </form>
+
+    <div>
+        <h2>Recently Added</h2>
+        <div>
+            <% books.forEach(book => { %>
+                <img src="<%= book.coverImagePath %>" alt="" width='200' height='250'>
+            <% }) %>
+        </div>
+    </div>
 </div>
