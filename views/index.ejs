@@ -1,12 +1,14 @@
-<div class="container-fluid d-flex flex-column justify-content-center align-items-center">
+<div class="container d-flex flex-column justify-content-center align-items-center">
     <h2 class="">Welcome to</h3>
     <img src="./images/bookup-welcome.png" alt="">
     <form action="" class="mt-3">
-        <input type="search" name="name" id="">
+        <input type="search" name="name" placeholder="Search by ISBN, author or book">
         <input type="submit" value="Search">
     </form>
 
-    <div class="mt-5">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#5e17eb" fill-opacity="1" d="M0,96L48,85.3C96,75,192,53,288,80C384,107,480,181,576,176C672,171,768,85,864,64C960,43,1056,85,1152,96C1248,107,1344,85,1392,74.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+
+    <div class="mt-3">
         <h2>Recently Added</h2>
         <div>
             <% books.forEach(book => { %>
