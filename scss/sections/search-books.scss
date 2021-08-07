@@ -1,9 +1,9 @@
 @use '../custom' as *;
 @use '../components/mixins' as *;
 
-.intro {
+.search-books {
     @include gradient;
-    
+
     margin: 0;
     padding: 10rem 0 0 0;
     width: 100%;

@@ -11112,36 +11112,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.btn-rounded {
-  position: relative;
-  margin: 0;
-  padding: 15px 30px;
-  font-weight: 700;
-  border: 0.1rem solid rgba(255, 255, 255, 0.6);
-  background-color: #fff;
-}
-@media (max-width: 575.98px) {
-  .btn-rounded {
-    display: none;
-  }
-}
-.btn-rounded:hover {
-  background: linear-gradient(to right, rgba(65, 54, 32, 0.95), rgba(255, 215, 145, 0.95));
-  color: #fff;
-}
-
-.menu {
-  background: linear-gradient(to right, rgba(65, 54, 32, 0.95), rgba(255, 215, 145, 0.95));
-}
-.menu li {
-  padding: 1rem 0.7rem;
-}
-.menu a {
-  color: #fff !important;
-  font-weight: 600;
-}
-
-.intro {
+.search-books {
   background: linear-gradient(to right, rgba(65, 54, 32, 0.95), rgba(255, 215, 145, 0.95));
   margin: 0;
   padding: 10rem 0 0 0;
@@ -11149,13 +11120,4 @@ textarea.form-control-lg {
   height: 100%;
 }
 
-.footer {
-  background: linear-gradient(to right, rgba(65, 54, 32, 0.95), rgba(255, 215, 145, 0.95));
-  width: 100%;
-  height: 100%;
-  margin: 0 !important;
-  padding: 0;
-  font-weight: 600;
-}
-
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=search-books.css.map */
