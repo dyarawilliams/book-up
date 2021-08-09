@@ -1,0 +1,17 @@
+@use '../custom' as *;
+@use '../components/mixins' as *;
+
+.books {
+    padding: 4rem 0;
+}
+
+.books-box {
+    position: relative;
+    width: 100%;
+    max-height: 18.5rem;
+
+    img {
+        width: 100%;
+        height: 283.38px;
+    }
+}

@@ -1,19 +1,33 @@
-<section id="home" class="intro">
-    <div class="container">
-        <div class="row text-center">
-            <h2 class="">Welcome to Book Up</h3>
+<div class="container">
+    <div class="row text-center">
+        <div class="">
+            <h1 class="fw-bold">Welcome to Book Up</h1>
             <form action="">
                 <input type="search" name="name" placeholder="Search by ISBN, author or book">
                 <input type="submit" value="Search">
             </form>
-            <div>
-                <div class="mt-5">
-                    <h2>Recently Added</h2>
-                    <% books.forEach(book => { %>
-                        <img src="<%= book.coverImagePath %>" alt="" width='200' height='250' class="col p-2">
+        </div>
+        <section id="books" class="books">
+            <div class="container">
+                <div class="row text-center mt-5">
+                    <h3>Recently Added</h3>
+                </div>
+                <div class="row mt-5">
+                    <% books.forEach(book=> { %>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="books-box">
+                                <img src="<%= book.coverImagePath %>" alt="Book Cover" class="img-fluid">
+                                <div class="book-info">
+                                    <div class="caption">
+                                        <h4>Book Name</h4>
+                                        <p>Book description</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     <% }) %>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
-</section>
+</div>
