@@ -13,7 +13,7 @@
             <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates dolore veritatis omnis quod sunt! Neque!</p>
         </div>
         <!-- FILTER BUTTONS -->
-        <div class="row text-center mt-5 mb-4 h-3">
+        <div class="row text-center mt-3 mb-4 h-3">
             <div class="col-md-12">
                 <button class="btn btn-outline-primary">All</button>
                 <button class="btn btn-outline-primary">Today</button>
@@ -25,19 +25,17 @@
             <!-- START OF BOOK ITEMS  -->
             <% books.forEach(book=> { %>
                 <div class="col-lg-4 col-md-6">
-                    <div class="books-box shadow">
+                    <div class="book-box shadow">
                         <img src="<%= book.coverImagePath %>" alt="Book Cover" class="img-fluid">
                         <div class="book-info">
                             <div class="caption">
                                 <h4><%= book.title %></h4>
-                                <!-- <% author.forEach() -->
                                 <p>Author Name</p>
-                                <p><%= book.author %></p>
                             </div>
                         </div>
                     </div>
                 </div>
-            <% }) %>
+                <% }) %>
             <!-- END OF BOOK ITEMS  -->
         </div>
     </div>
