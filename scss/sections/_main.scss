@@ -15,6 +15,7 @@
     
     h1 {
         background-image: linear-gradient(to right , $secondary, $primary);
+        background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }

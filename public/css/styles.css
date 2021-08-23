@@ -11174,6 +11174,7 @@ textarea.form-control-lg {
 }
 .welcome h1 {
   background-image: linear-gradient(to right, #FFD791, #413620);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
