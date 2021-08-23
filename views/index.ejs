@@ -1,4 +1,4 @@
-<section class="text-center">
+<section class="welcome text-center">
     <h1 class="display-2 fw-bold">Welcome to Book Up</h1>
     <form action="">
         <input type="search" name="name" placeholder="Search by ISBN, author or book">
@@ -26,10 +26,10 @@
             <% books.forEach(book=> { %>
                 <div class="col-lg-4 col-md-6">
                     <div class="book-box shadow">
-                        <img src="<%= book.coverImagePath %>" alt="Book Cover" class="img-fluid">
+                        <img src="<%= book.coverImagePath %>" alt="Book Cover" width="100%" height="300" class="">
                         <div class="book-info">
                             <div class="caption">
-                                <h4><%= book.title %></h4>
+                                <h4 style="font-size: 1rem;"><%= book.title %></h4>
                                 <p>Author Name</p>
                             </div>
                         </div>
