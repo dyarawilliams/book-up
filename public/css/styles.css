@@ -11169,6 +11169,15 @@ textarea.form-control-lg {
   height: 100%;
 }
 
+.welcome {
+  padding: 4rem;
+}
+.welcome h1 {
+  background-image: linear-gradient(to right, #FFD791, #413620);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .footer {
   background: linear-gradient(to right, rgba(65, 54, 32, 0.95), rgba(255, 215, 145, 0.95));
   width: 100%;
