@@ -37,12 +37,13 @@ router.get('/', async (req, res) => {
     } catch {
         res.redirect('/')
     }
-    
+    // res.send('All Book')
 })
 
 // New Book Route
 router.get('/new', async (req, res) => {
     renderNewPage(res, new Book())
+    // res.send('New Book')
 })
 
 // Create Book Route
@@ -68,6 +69,7 @@ router.post('/',upload.single('cover'), async (req, res) => {
         }
         renderNewPage(res, book, true)
     }
+    // res.send('Create Book')
 })
 
 function removeBookCover(fileName){
