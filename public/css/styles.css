@@ -11259,6 +11259,9 @@ textarea.form-control-lg {
     width: 1.4rem;
   }
 }
+.contact-box__info--title:hover {
+  color: #FFD791;
+}
 .contact-box__info--subtitle {
   color: #6c757d;
   text-decoration: none;

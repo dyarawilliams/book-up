@@ -31,6 +31,10 @@
             @include media-breakpoint-up(sm) {
                 width: 1.4rem;
             }
+
+            &:hover {
+                color: $secondary;
+            }
         }
 
         &--subtitle {
@@ -47,7 +51,6 @@
 
 // STYLE SOCIAL MEDIA CONTENT 
 .footer-sm {
-
 
     a {
         color: $white;
