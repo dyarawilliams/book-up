@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
     );
 
     console.log('filepond registered')
+
+    FilePond.setOptions({
+        stylePanelAspectRatio: 150 / 100,
+        imageResizeTargetWidth: 100,
+        imageResizeTargetHeight: 150
+
+    })
     
     // Create FilePond object
     const inputElement = document.querySelector('input[type="file"]');
