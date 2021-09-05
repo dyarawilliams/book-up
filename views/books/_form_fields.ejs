@@ -1,45 +1,43 @@
-<form action="">
-    <div>
-        <label>Title</label>
-        <input type="text" name="title" value="<%= book.title %>">
-    </div>
+<div>
+    <label>Title</label>
+    <input type="text" name="title" value="<%= book.title %>">
+</div>
 
-    <div>
-        <label>Author</label>
-        <select name="author">
-            <% authors.forEach(author=> { %>
-                <% if (author.id===book.author) { %>
-                    <option selected label="<%= author.name %>" value="<%= author.id %>">
-                <% } else { %>
-                    <option label="<%= author.name %>" value="<%= author.id %>"></option>
+<div>
+    <label>Author</label>
+    <select name="author">
+        <% authors.forEach(author=> { %>
+            <% if (author.id===book.author) { %>
+                <option selected label="<%= author.name %>" value="<%= author.id %>">
+                    <% } else { %>
+                <option label="<%= author.name %>" value="<%= author.id %>"></option>
                 <% } %>
-            <% }) %>
-        </select>
-    </div>
+                    <% }) %>
+    </select>
+</div>
 
-    <div>
-        <label>ISBN</label>
-        <input type="text" name="isbn" value="<%= book.isbn %>">
-    </div>
+<div>
+    <label>ISBN</label>
+    <input type="text" name="isbn" value="<%= book.isbn %>">
+</div>
 
-    <div>
-        <label>Publish Date</label>
-        <input type="date" name="publishDate" value="<%= book.publishDate == null ? '' :
+<div>
+    <label>Publish Date</label>
+    <input type="date" name="publishDate" value="<%= book.publishDate == null ? '' :
             book.publishDate.toISOString().split('T')[0] %>">
-    </div>
+</div>
 
-    <div>
-        <label>Page Count</label>
-        <input type="number" name="pageCount" min="1" value="<%= book.pageCount %>">
-    </div>
+<div>
+    <label>Page Count</label>
+    <input type="number" name="pageCount" min="1" value="<%= book.pageCount %>">
+</div>
 
-    <div>
-        <label>Cover</label>
-        <input type="file" name="cover" class="filepond">
-    </div>
+<div>
+    <label>Cover</label>
+    <input type="file" name="cover" class="filepond">
+</div>
 
-    <div>
-        <label>Description</label>
-        <textarea name="description"><%= book.description %></textarea>
-    </div>
-</form>
+<div>
+    <label>Description</label>
+    <textarea name="description"><%= book.description %></textarea>
+</div>
