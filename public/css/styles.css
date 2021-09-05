@@ -11184,6 +11184,7 @@ textarea.form-control-lg {
 }
 
 .book-box {
+  position: relative;
   width: 100%;
   overflow: hidden;
   margin-bottom: 1.2rem;
