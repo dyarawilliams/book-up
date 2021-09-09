@@ -4,15 +4,16 @@
 .author {
     width: 80%;
     margin: 0 auto;
+    padding: 1rem;
     border: 2px solid black;
     display: flex;
     
     &__name {
+        width: 100%;
         font-size: 1rem;
     }
 
     &__options {
-        border: 2px solid white;
         width: 100%;
         display: flex;
         flex-direction: row;

@@ -11178,6 +11178,10 @@ textarea.form-control-lg {
   -webkit-text-fill-color: transparent;
 }
 
+form {
+  margin-bottom: 1rem;
+}
+
 .books {
   padding-top: 2rem;
 }
@@ -11229,14 +11233,15 @@ textarea.form-control-lg {
 .author {
   width: 80%;
   margin: 0 auto;
+  padding: 1rem;
   border: 2px solid black;
   display: flex;
 }
 .author__name {
+  width: 100%;
   font-size: 1rem;
 }
 .author__options {
-  border: 2px solid white;
   width: 100%;
   display: flex;
   flex-direction: row;
