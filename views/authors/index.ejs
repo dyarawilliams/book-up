@@ -6,14 +6,15 @@
 </form>
 <br>
 <% authors.forEach(author => { %>
-    <div>
-        <%= author.name %>
+    <div class="author">
+        <div class="author__name">
+            <%= author.name %>
+        </div>
+        <div class="author__options">
+            <a href="/authors/<%= author.id %>">View</a>
+            <a href="/authors/<%= author.id %>/edit">Edit</a>
+            <%- include('../partials/deleteForm', { url: `/authors/${author.id}` }) %>
+        </div>
     </div>
-    <a href="/authors/<%= author.id %>">View</a>
-    <a href="/authors/<%= author.id %>/edit">Edit</a>
-
-    <form method="POST" action="/authors/<%= author.id %>?_method=DELETE">
-        <button type="submit">Delete</button>
-    </form>
 
 <% }) %>

@@ -1,0 +1,26 @@
+@use '../custom' as *;
+@use '../components/mixins' as *;
+
+.author {
+    width: 80%;
+    margin: 0 auto;
+    border: 2px solid black;
+    display: flex;
+    
+    &__name {
+        font-size: 1rem;
+    }
+
+    &__options {
+        border: 2px solid white;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+
+        a {
+            margin: 0 1rem;
+        }
+    }
+}

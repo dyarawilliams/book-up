@@ -2,7 +2,6 @@
 @use '../components/mixins' as *;
 
 .middle-section {
-    @include gradient;
 
     margin: 0;
     padding-top: 7rem;
