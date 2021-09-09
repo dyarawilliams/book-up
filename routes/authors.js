@@ -49,15 +49,15 @@ router.get('/:id', (req, res) => {
 })
 
 // Edit page
-router.get(':/id/edit', (req, res) => {
+router.get('/:id/edit', (req, res) => {
     res.send('Edit Author ' + req.params.id)
 })
 
-router.put(':/id', (req, res) => {
+router.put('/:id', (req, res) => {
     res.send('Update Author ' + req.params.id)
 })
 
-router.delete(':/id', (req, res) => {
+router.delete('/:id', (req, res) => {
     res.send('Delete Author ' + req.params.id)
 })
 

@@ -9,4 +9,11 @@
     <div>
         <%= author.name %>
     </div>
+    <a href="/authors/<%= author.id %>">View</a>
+    <a href="/authors/<%= author.id %>/edit">Edit</a>
+
+    <form method="POST" action="/authors/<%= author.id %>?_method=DELETE">
+        <button type="submit">Delete</button>
+    </form>
+
 <% }) %>
