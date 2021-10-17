@@ -8,13 +8,13 @@
 
     position: relative;
     margin: 0;
-    padding: 15px 30px;
+    padding: 10px 20px;
     font-weight: 700;
     border: 0.1rem solid rgba($white, 0.6);
     background-color: $white;
 
     &:hover {
-        @include gradient;
+        background: $primary;
         color: $white;
     }
 }

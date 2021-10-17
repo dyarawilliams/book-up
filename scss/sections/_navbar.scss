@@ -1,7 +1,7 @@
 @use '../custom' as *;
 @use '../components/mixins' as *;
 
-.menu {
+.navbar {
     @include gradient; 
 
     li { 

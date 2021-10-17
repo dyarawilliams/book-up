@@ -1,19 +1,23 @@
 @use '../custom' as *;
 @use '../components/mixins' as *;
 
-.books {
+#books {
+    margin: 0;
     padding-top: 2rem;
+    background: $white;
 }
 
 .book-box {
     position: relative;
-    width: 100%;
+    min-width: 280px;
     overflow: hidden;
     margin-bottom: 1.2rem;
     border-top: 0.5rem solid $black;
 
-    img {
+    img.book-img {
         width: 100%;
+        height: 100%;
+        background-position: center center;
     }
 
     .book-info {

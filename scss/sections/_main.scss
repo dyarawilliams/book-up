@@ -1,7 +1,8 @@
 @use '../custom' as *;
 @use '../components/mixins' as *;
 
-.middle-section {
+main {
+    @include gradient;
 
     margin: 0;
     padding-top: 7rem;

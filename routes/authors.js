@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
     }
 })
 
-// Showing User 
+// Show Author
 router.get('/:id', (req, res) => {
     res.send('Show Author ' + req.params.id)
 })
