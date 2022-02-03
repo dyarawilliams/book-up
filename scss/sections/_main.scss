@@ -1,9 +1,8 @@
 @use '../custom' as *;
 @use '../components/mixins' as *;
+@use '../components/animations' as *;
 
 main {
-    @include gradient;
-
     margin: 0;
     padding-top: 7rem;
     width: 100%;
@@ -13,12 +12,21 @@ main {
 .welcome {
     padding: 4rem;
     
-    h1 {
-        background-image: linear-gradient(to right , $secondary, $gray-900);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+    header {
+        padding: 1rem auto;
+
+        h1 {
+            background-image: linear-gradient(to right , $secondary, $gray-900);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        img {
+            animation: 1.5s ease-in both slide-in;
+        }
     }
+
 }
 
 form {

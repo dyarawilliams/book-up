@@ -11150,6 +11150,16 @@ textarea.form-control-lg {
   color: #fff;
 }
 
+@keyframes slide-in {
+  from {
+    margin-left: 100%;
+    opacity: 0;
+  }
+  to {
+    margin-left: 0%;
+    opacity: 1;
+  }
+}
 .navbar {
   background: linear-gradient(to right, rgba(65, 54, 32, 0.95), rgba(255, 215, 145, 0.95));
 }
@@ -11162,7 +11172,6 @@ textarea.form-control-lg {
 }
 
 main {
-  background: linear-gradient(to right, rgba(65, 54, 32, 0.95), rgba(255, 215, 145, 0.95));
   margin: 0;
   padding-top: 7rem;
   width: 100%;
@@ -11172,11 +11181,17 @@ main {
 .welcome {
   padding: 4rem;
 }
-.welcome h1 {
+.welcome header {
+  padding: 1rem auto;
+}
+.welcome header h1 {
   background-image: linear-gradient(to right, #FFD791, #212529);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.welcome header img {
+  animation: 1.5s ease-in both slide-in;
 }
 
 form {
@@ -11185,7 +11200,6 @@ form {
 
 #books {
   margin: 0;
-  padding-top: 2rem;
   background: #fff;
 }
 
