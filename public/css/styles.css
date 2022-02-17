@@ -11208,10 +11208,14 @@ form {
   min-width: 280px;
   overflow: hidden;
   margin-bottom: 1.2rem;
-  border-top: 0.5rem solid #000;
+  padding: 10px 0;
+  background: #413620;
+  border-radius: 7px;
 }
 .book-box .book-img {
   width: 100%;
+  height: 300px;
+  object-fit: contain;
 }
 .book-box .book-info {
   background-color: rgba(255, 215, 145, 0.75);
