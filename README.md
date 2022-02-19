@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/dyarawilliams/book-up">
-    <img src="public/images/book-icon.png" alt="Logo" width="80" height="80">
+    <img src="public/images/book-icon.png" alt="Logo" width="90" height="90">
   </a>
 
 <h3 align="center">Book Up</h3>
