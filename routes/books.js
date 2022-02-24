@@ -58,11 +58,22 @@ router.post('/', async (req, res) => {
     // res.send('Create Book')
 })
 
+// Show Book Route
 router.get('/:id', async (req, res) => {
     try {
         const book = await Book.findById(req.params.id).populate('author')
         .exec()
         res.render('books//show', { book: book })
+    } catch (error) {
+        res.redirect('/')
+    }
+})
+
+// Edit Book Route 
+router.get('/:id/edit', async (req, res) => {
+    try {
+        const book = await Book.findById(req.params.id)
+        renderEditPage(res, book)
     } catch (error) {
         res.redirect('/')
     }
@@ -77,6 +88,20 @@ async function renderNewPage(res, book, hasError = false){
         }
         if(hasError) params.errorMessage = 'Error Creating Book'
         res.render('books/new', params)
+    } catch {
+        res.redirect('/books')
+    }
+}
+
+async function renderEditPage(res, book, hasError = false){
+    try {
+        const authors = await Author.find({})
+        const params = {
+            authors: authors,
+            book: book
+        }
+        if(hasError) params.errorMessage = 'Error Creating Book'
+        res.render('books/edit', params)
     } catch {
         res.redirect('/books')
     }
