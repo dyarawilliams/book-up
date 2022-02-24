@@ -20,14 +20,14 @@
             <div class="row">
                 <!-- START OF BOOK ITEMS  -->
                 <% books.forEach(book=> { %>
-                    <div class="col-lg-4 col-md-6">
-                    <a href="/books/<%= book.id %>">
-                        <img src="<%= book.coverImagePath %>" alt="Book Cover" width="200" />
-                    </a>
-                </div>
+                    <div class="col-6 col-sm-4">
+                        <a href="/books/<%= book.id %>">
+                            <img src="<%= book.coverImagePath %>" alt="Book Cover" width="200" class="img-fluid " />
+                        </a>
+                    </div>
                 <% }) %>
                 <!-- END OF BOOK ITEMS  -->
-            <!-- </div> -->
+            </div>
         </div>
     </div>
 </section>
