@@ -1,6 +1,12 @@
 @use '../custom' as *;
 @use '../components/mixins' as *;
 
+:root {
+    --color-btn-border: hsl(36, 100%, 35%);
+    --color-btn-primary-text: white;
+    --color-btn-primary-background: hsl(32, 53%, 27%);
+}
+
 .btn-rounded {
     @include media-breakpoint-down(sm) {
         display: none;
@@ -17,4 +23,20 @@
         background: $primary;
         color: $white;
     }
+}
+
+.btn {
+    border: 1px solid var(--color-btn-border);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-primary {
+    color: var(--color-btn-primary-text);
+    background-color: var(--color-btn-primary-background);
 }

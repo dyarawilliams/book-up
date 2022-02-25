@@ -11113,8 +11113,14 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-* {
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
   font-family: "Lora", serif;
+}
+
+html {
+  font-family: inherit;
 }
 
 .heading-line::before {
@@ -11137,6 +11143,12 @@ textarea.form-control-lg {
   background-color: #413620;
 }
 
+:root {
+  --color-btn-border: hsl(36, 100%, 35%);
+  --color-btn-primary-text: white;
+  --color-btn-primary-background: hsl(32, 53%, 27%);
+}
+
 .btn-rounded {
   position: relative;
   margin: 0;
@@ -11153,6 +11165,22 @@ textarea.form-control-lg {
 .btn-rounded:hover {
   background: #413620;
   color: #fff;
+}
+
+.btn {
+  border: 1px solid var(--color-btn-border);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-primary {
+  color: var(--color-btn-primary-text);
+  background-color: var(--color-btn-primary-background);
 }
 
 @keyframes slide-in {
@@ -11260,22 +11288,17 @@ form {
   width: 80%;
   margin: 0 auto;
   padding: 1rem;
-  border: 2px solid black;
-  display: flex;
+  border-bottom: 2px solid #cdcdcd;
 }
 .author__name {
   width: 100%;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 .author__options {
   width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-}
-.author__options a {
-  margin: 0 1rem;
+  align-items: flex-start;
+  justify-content: space-evenly;
 }
 
 .footer {

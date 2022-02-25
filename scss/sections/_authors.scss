@@ -5,23 +5,17 @@
     width: 80%;
     margin: 0 auto;
     padding: 1rem;
-    border: 2px solid black;
-    display: flex;
-    
+    border-bottom: 2px solid #cdcdcd;
+
     &__name {
         width: 100%;
-        font-size: 1rem;
+        font-size: 1.3rem;
     }
 
     &__options {
         width: 100%;
         display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: center;
-
-        a {
-            margin: 0 1rem;
-        }
+        align-items: flex-start;
+        justify-content: space-evenly;
     }
 }

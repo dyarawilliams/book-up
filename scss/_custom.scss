@@ -23,6 +23,12 @@ $secondary: $champagne;
 
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&display=swap');
 
-* {
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
     font-family: 'Lora', serif;
+}
+
+html {
+    font-family: inherit;
 }

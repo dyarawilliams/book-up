@@ -2,7 +2,7 @@
 @use '../components/mixins' as *;
 
 .navbar {
-    @include gradient; 
+    @include gradient;
 
     li { 
         padding: 1rem 0.7rem;
