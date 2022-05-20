@@ -11154,8 +11154,7 @@ html {
   margin: 0;
   padding: 10px 20px;
   font-weight: 700;
-  border: 0.1rem solid rgba(255, 255, 255, 0.6);
-  background-color: #fff;
+  border: 2px solid rgba(233, 236, 239, 0.6);
 }
 @media (max-width: 575.98px) {
   .btn-rounded {
@@ -11163,8 +11162,8 @@ html {
   }
 }
 .btn-rounded:hover {
-  background: #413620;
-  color: #fff;
+  background-color: #e9ecef;
+  color: #dee2e6;
 }
 
 .btn {
@@ -11195,13 +11194,14 @@ html {
 }
 .navbar {
   background: linear-gradient(to right, rgba(65, 54, 32, 0.95), rgba(255, 215, 145, 0.95));
+  font-size: 1rem;
 }
 .navbar li {
-  padding: 1rem 0.7rem;
+  padding: 1rem;
 }
-.navbar a {
-  color: #fff !important;
-  font-weight: 600;
+.navbar li a {
+  color: #413620 !important;
+  font-weight: 700;
 }
 
 main {
@@ -11212,7 +11212,7 @@ main {
 }
 
 .welcome {
-  padding: 2.5rem;
+  padding: 0.7rem 2.5rem;
 }
 .welcome header {
   padding: 1rem auto;

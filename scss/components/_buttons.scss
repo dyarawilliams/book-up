@@ -16,12 +16,11 @@
     margin: 0;
     padding: 10px 20px;
     font-weight: 700;
-    border: 0.1rem solid rgba($white, 0.6);
-    background-color: $white;
+    border: 2px solid rgba($gray-200, 0.6);
 
     &:hover {
-        background: $primary;
-        color: $white;
+        background-color: $gray-200;
+        color: $gray-300;
     }
 }
 
