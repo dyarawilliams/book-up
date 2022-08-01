@@ -2,17 +2,20 @@
 @use '../components/mixins' as *;
 
 .navbar {
-    @include gradient;
-
+    height: 93px;
+    background-color: $primary;
     font-size: 1rem;
+    font-weight: 700;
+
+    a {
+        color: $gray-300 !important;
+    }
+
+    .navbar-toggler {
+        background-color: $gray-300;
+    }
 
     li { 
         padding: 1rem;
-        
-        a {
-            color: $brown-dark !important;
-            font-weight: 700;
-        }
     }
-
 }

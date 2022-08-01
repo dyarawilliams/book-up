@@ -3,32 +3,104 @@
 @use '../components/animations' as *;
 
 main {
-    margin: 0;
-    padding-top: 7rem;
     width: 100%;
     height: 100%;
+    background: $white;
+    margin: 0;
+    padding: 8rem 2rem 0;
 }
 
 .welcome {
-    padding: 0.7rem 2.5rem;
+    height: 64vh;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    @include media-breakpoint-down(md){
+        flex-direction: column;
+    }
     
     header {
-        padding: 1rem auto;
 
         h1 {
-            background-image: linear-gradient(to right , $secondary, $gray-900);
+            background-image: linear-gradient(to right , $secondary, $primary);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         
         img {
-            animation: 1.5s ease-in both slide-in;
+            @include media-breakpoint-down(md){
+                display: none;
+            }
+
+            margin: 0 auto;
+            animation: 1.5s ease-in both fadeIn;
         }
     }
 
+    .card {
+        padding: 2.5rem 5rem;
+        border: none;
+
+        // @include media-breakpoint-up(md){}
+
+        .card-body {
+            max-width: 450px;
+            background-color: $primary;
+            color: $gray-300;
+            box-shadow: 30px -15px 15px 15px rgba(0,0,0, 0.45);
+            // -webkit-box-shadow: 30px -15px 15px 15px rgba(10, 25, 41, 0.45);
+
+            .card-text {
+                letter-spacing: 2px;
+            }
+    
+            .btn {
+                padding: 0 16px;
+                height: 36px;
+                display: inline-block;
+                color: #fff;
+                font-size: 16px;
+                letter-spacing: .5px;
+                vertical-align: middle;
+                -webkit-transition: background-color .2s ease-out;
+                transition: background-color .2s ease-out;
+                text-transform: uppercase;
+                vertical-align: middle;
+                border: none;
+                border-radius: 2px;
+                line-height: 36px;
+                -webkit-tap-highlight-color: transparent;
+
+                i {
+                    margin-right: 1rem;
+                }
+
+                .svg-inline--fa {
+                    padding-right: 0.5em;
+                }
+            }
+            
+            .red {
+                background-color: $red !important;
+            }
+        }
+    }
 }
 
-form {
-    margin-bottom: 1rem;
+.form-section {
+    height: 180px;
+    margin: 0 -13px;
+    text-align: center;
+    background: $primary;
+    clip-path: polygon(100% 80%, 100% 0%, 0% 0%, 0% 100%);
+    
+    .form-container {
+        width: 100%;
+        height: 100%;
+        padding-top: 35px;
+        display: inline-block;
+    }
 }

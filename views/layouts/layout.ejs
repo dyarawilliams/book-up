@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSS Style Sheet -->
-    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- Font Awesome 6.1.1 -->
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
     <!-- File Pond v4 -->
     <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
@@ -23,25 +25,22 @@
 <body>
     <!-- START OF THE HEADER -->
     <%- include('../partials/header') %>
-        <!-- END OF THE HEADER -->
+    <!-- END OF THE HEADER -->
 
-        <!-- START OF THE MAIN SECTION  -->
-        <main>
-            <div class="container">
-                <div class="row">
-                    <%- include('../partials/errorMessage') %>
-                    <%- body %>
-                </div>
-            </div>
-        </main>
-        <!-- END OF THE MAIN SECTION  -->
+    <!-- START OF THE MAIN SECTION  -->
+    <main class="container-fluid">
+        <%- include('../partials/errorMessage') %>
+        <%- body %>
+    </main>
+    <!-- END OF THE MAIN SECTION  -->
 
-        <!-- START OF FOOTER  -->
-        <%- include('../partials/footer') %>
-            <!-- END OF THE FOOTER  -->
+    <!-- START OF FOOTER  -->
+    <%- include('../partials/footer') %>
+    <!-- END OF THE FOOTER  -->
 
-            <script src="/js/fileUpload.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+    <script src="/js/fileUpload.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+    <script src="/fontawesome/js/all.js"></script>
 </body>
 
 </html>

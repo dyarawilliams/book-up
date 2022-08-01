@@ -1,21 +1,32 @@
 <section class="welcome text-center">
     <header>
-        <h1 class="display-2 fw-bold">Welcome to Book Up</h1>
-        <img src="../../images/book-lover.png" alt="Book Lover Illustration" class="slide-in" style="height: 445px;">
+        <h1 class="display-3 fw-bold">Welcome to Book Up</h1>
+        <img src="../../images/book-lover.png" alt="Book Lover Illustration" class="fadeIn" style="height: 325px;">
     </header>
-    
-    <form action="" class="mt-1">
+    <section class="card">
+        <div class="card-body">
+            <p class="card-text">Discover and read more books you enjoy. Be apart of the best book directory out there.</p>
+            <p class="card-text">Get Busy with the Bookup.</p>
+            <a href="#" class="btn red darken-1"><i class="fab fa-user text-start"></i>Login</a>
+            <!-- <a href="#" class="btn red darken-1"><i class="fab fa-google text-start"></i>Login with Google</a> -->
+        </div>
+    </section>
+</section>
+
+<section class="form-section">
+    <form action="" class="form-container">
         <input type="search" name="name" class="form-control w-50 mx-auto p-3 text-center rounded-pill" placeholder="Search by author or book" />
         <input type="submit" value="Search" class="mt-3" />
     </form>
 </section>
+
 <section id="books" class="books">
     <div class="container">
-        <div class="row text-center">
+        <header class="row text-center">
             <h3 class="text-capitalize">Recently Added</h3>
             <div class="heading-line"></div>
             <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates dolore veritatis omnis quod sunt! Neque!</p>
-        </div>
+        </header>
         <!-- FILTER BUTTONS -->
         <!-- <div class="row text-center mt-2 mb-4 h-3">
             <div class="col-md-12">
@@ -28,9 +39,9 @@
         <div class="row">
             <!-- START OF BOOK ITEMS  -->
             <% books.forEach(book=> { %>
-                <div class="col-6 col-sm-4">
+                <div class="col-6 col-sm-4 text-center">
                     <a href="/books/<%= book.id %>">
-                        <img src="<%= book.coverImagePath %>" alt="Book Cover" class="img-fluid" width="200">
+                        <img src="<%= book.coverImagePath %>" alt="Book Cover" class="img-fluid" width="200" height="270">
                     </a>
                 </div>
                 <% }) %>
@@ -38,3 +49,4 @@
         </div>
     </div>
 </section>
+
