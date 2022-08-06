@@ -19,6 +19,7 @@
     ·
     <a href="https://github.com/dyarawilliams/book-up/issues">Request Feature</a>
   </p>
+  <img src="https://wakatime.com/badge/user/374368ff-083b-4229-b46b-62cd1dbb07ec/project/36de6eb5-894f-4a48-ab00-40f88c93d920.svg" alt="Bookup Overall Time Badge" />
 </div>
 
 ## Objective
