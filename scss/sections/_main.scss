@@ -3,7 +3,7 @@
 @use '../components/animations' as *;
 
 main {
-    width: 100%;
+    width: 100vw;
     height: 100%;
     background: $white;
     margin: 0;
@@ -81,8 +81,21 @@ main {
                 .svg-inline--fa {
                     padding-right: 0.5em;
                 }
+
             }
             
+            .sign-up {
+                background-color: #fff !important;
+                color: $primary;
+                font-weight: 800;
+                
+            }
+            
+            .sign-up:hover {
+                background-color: $secondary !important;
+            }
+
+
             .red {
                 background-color: $red !important;
             }

@@ -10200,7 +10200,7 @@ html {
 }
 
 main {
-  width: 100%;
+  width: 100vw;
   height: 100%;
   background: #fff;
   margin: 0;
@@ -10269,6 +10269,14 @@ main {
 }
 .welcome .card .card-body .btn .svg-inline--fa {
   padding-right: 0.5em;
+}
+.welcome .card .card-body .sign-up {
+  background-color: #fff !important;
+  color: #0A1929;
+  font-weight: 800;
+}
+.welcome .card .card-body .sign-up:hover {
+  background-color: #66B2FF !important;
 }
 .welcome .card .card-body .red {
   background-color: #d0181e !important;
@@ -10434,7 +10442,7 @@ main {
 }
 
 .footer-bottom {
-  background-color: #000;
+  background-color: #0A1929;
 }
 .footer-bottom__copyright {
   color: #6c757d;
