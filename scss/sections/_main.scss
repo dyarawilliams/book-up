@@ -2,17 +2,17 @@
 @use '../components/mixins' as *;
 @use '../components/animations' as *;
 
+body{
+    background-color: $gray-600;
+}
+
 main {
-    width: 100vw;
-    height: 100%;
-    background: $white;
-    margin: 0;
-    padding: 8rem 2rem 0;
+    margin: 0 auto !important;
+    padding-top: 7rem;
+    background-color: $gray-100;
 }
 
 .welcome {
-    height: 64vh;
-    max-height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -41,13 +41,13 @@ main {
     }
 
     .card {
-        padding: 2.5rem 5rem;
         border: none;
 
         // @include media-breakpoint-up(md){}
 
         .card-body {
-            max-width: 450px;
+            max-width: 390px;
+            padding: 20px 40px;
             background-color: $primary;
             color: $gray-300;
             box-shadow: 30px -15px 15px 15px rgba(0,0,0, 0.45);
@@ -58,17 +58,17 @@ main {
             }
     
             .btn {
+                margin-top: 5px;
                 padding: 0 16px;
                 height: 36px;
-                display: inline-block;
+                display: block;
                 color: #fff;
                 font-size: 16px;
                 letter-spacing: .5px;
-                vertical-align: middle;
                 -webkit-transition: background-color .2s ease-out;
                 transition: background-color .2s ease-out;
                 text-transform: uppercase;
-                vertical-align: middle;
+                // vertical-align: middle;
                 border: none;
                 border-radius: 2px;
                 line-height: 36px;
@@ -94,10 +94,13 @@ main {
             .sign-up:hover {
                 background-color: $secondary !important;
             }
-
-
-            .red {
+            
+            .google {
                 background-color: $red !important;
+            }
+
+            .google:hover {
+                background-color: #b71c1c !important;
             }
         }
     }
