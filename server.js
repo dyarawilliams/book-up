@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const morgan = require('morgan')
 const expressLayouts = require('express-ejs-layouts')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
@@ -15,6 +16,9 @@ require("dotenv").config({ path: "./config/.env" });
 
 // Connect to Database
 connectDB();
+
+// Route Logging
+app.use(morgan('dev'))
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
