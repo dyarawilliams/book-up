@@ -6,9 +6,12 @@ body{
     background-color: $gray-600;
 }
 
+.wrapper {
+    padding-top: 7rem;
+}
+
 main {
     margin: 0 auto !important;
-    padding-top: 7rem;
     background-color: $gray-100;
 }
 
@@ -84,24 +87,16 @@ main {
 
             }
             
-            .sign-up {
+            .get-started {
                 background-color: #fff !important;
                 color: $primary;
                 font-weight: 800;
-                
             }
             
-            .sign-up:hover {
+            .get-started:hover {
                 background-color: $secondary !important;
             }
             
-            .google {
-                background-color: $red !important;
-            }
-
-            .google:hover {
-                background-color: #b71c1c !important;
-            }
         }
     }
 }

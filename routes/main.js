@@ -15,4 +15,12 @@ router.get('/', async(req, res) => {
     res.render('index', { books: books })
 })
 
+router.get('/login', (req, res) => {
+    try {
+        res.render('login')
+    } catch (err) {
+        console.error(err)
+    }
+})
+
 module.exports = router

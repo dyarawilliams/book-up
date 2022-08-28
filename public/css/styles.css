@@ -10203,9 +10203,12 @@ body {
   background-color: #6c757d;
 }
 
+.wrapper {
+  padding-top: 7rem;
+}
+
 main {
   margin: 0 auto !important;
-  padding-top: 7rem;
   background-color: #f8f9fa;
 }
 
@@ -10269,19 +10272,13 @@ main {
 .welcome .card .card-body .btn .svg-inline--fa {
   padding-right: 0.5em;
 }
-.welcome .card .card-body .sign-up {
+.welcome .card .card-body .get-started {
   background-color: #fff !important;
   color: #0A1929;
   font-weight: 800;
 }
-.welcome .card .card-body .sign-up:hover {
+.welcome .card .card-body .get-started:hover {
   background-color: #66B2FF !important;
-}
-.welcome .card .card-body .google {
-  background-color: #d0181e !important;
-}
-.welcome .card .card-body .google:hover {
-  background-color: #b71c1c !important;
 }
 
 .form-section {
@@ -10457,6 +10454,166 @@ main {
 .footer-bottom__copyright a:hover {
   color: #66B2FF;
   text-decoration: underline;
+}
+
+.login-card {
+  position: relative;
+  width: 766px;
+  max-width: 100%;
+  min-height: 480px;
+  background-color: white;
+  margin: 100px auto;
+  border-radius: 10px;
+  overflow: hidden;
+  /* Move signin to right */
+  /* Move overlay to left */
+  /* Bring signup over signin */
+  /* Move overlay back to right */
+  /* Bring back the text to center */
+  /* Same effect for right */
+}
+.login-card a {
+  text-decoration: none;
+  margin: 20px auto;
+  color: inherit;
+  font-size: 12px;
+}
+.login-card p {
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 1.4;
+  margin: 20px;
+}
+.login-card .social-media a {
+  border: 1px solid #ddd;
+  width: 100%;
+  height: 40px;
+  border-radius: 3px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+}
+.login-card .social-media a:hover {
+  background-color: lightGray;
+}
+.login-card button {
+  padding: 12px 45px;
+  border-radius: 20px;
+  font-family: inherit;
+  background-color: #66B2FF;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.login-card button:hover {
+  transform: scale(0.97);
+}
+.login-card button.ghost {
+  background: transparent;
+  border-color: #fff;
+  color: #fff;
+}
+.login-card .form-container {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: all 0.6s ease-in-out;
+}
+.login-card .form-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 50px;
+  margin-top: 20px;
+}
+.login-card .social-media {
+  height: 40px;
+  width: 100%;
+  margin: 20px 0;
+}
+.login-card span {
+  font-size: 12px;
+}
+.login-card .form-container input {
+  margin: 8px auto;
+  width: 100%;
+  padding: 12px 15px;
+  background-color: #fff;
+  border: none;
+}
+.login-card .log-in-container,
+.login-card .sign-up-container {
+  width: 50%;
+  left: 0;
+  height: 100%;
+}
+.login-card .sign-up-container {
+  opacity: 0;
+}
+.login-card .overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+.login-card .overlay {
+  background-image: linear-gradient(to right, #193f68, #163658, #122c49, #0e2339, #0A1929);
+  width: 200%;
+  height: 100%;
+  position: relative;
+  z-index: 100;
+  left: -100%;
+  transform: translateY(0);
+  transition: transform 0.6s ease-in-out;
+}
+.login-card .overlay-panel {
+  position: absolute;
+  top: 0;
+  color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 0.6s ease-in-out;
+}
+.login-card .right {
+  right: 0;
+  transform: translateY(0);
+}
+.login-card .left {
+  transform: translateY(-20%);
+}
+.login-card .login-card.right-panel-active .log-in-container {
+  transform: translateY(100%);
+}
+.login-card .login-card.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+.login-card .login-card.right-panel-active .sign-up-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+}
+.login-card .login-card.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+.login-card .login-card.right-panel-active .left {
+  transform: translateY(0);
+}
+.login-card .login-card.right-panel-active .right {
+  transform: translateY(20%);
 }
 
 /*# sourceMappingURL=styles.css.map */
