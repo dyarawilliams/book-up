@@ -1,46 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- START OF THE HEADER -->
+<%- include('../partials/header') %>
+<!-- END OF THE HEADER -->
+<div class="wrapper">
+<!-- START OF THE MAIN SECTION  -->
+    <%- include('../partials/errorMessage') %>
+    <%- body %>
+<!-- END OF THE MAIN SECTION  -->
+</div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- CSS Style Sheet -->
-    <link rel="stylesheet" href="/css/styles.css">
-    <!-- Font Awesome 6.1.1 -->
-    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
-    <!-- File Pond v4 -->
-    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
-    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
-        rel="stylesheet" />
-    <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-    <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
-    <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
-    <script defer src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
-
-    <title>Book Up</title>
-</head>
-
-<body>
-    <!-- START OF THE HEADER -->
-    <%- include('../partials/header') %>
-    <!-- END OF THE HEADER -->
-    <div class="wrapper">
-        <!-- START OF THE MAIN SECTION  -->
-        <%- include('../partials/errorMessage') %>
-        <%- body %>
-        <!-- END OF THE MAIN SECTION  -->
-    </div>
-    
-    <!-- START OF FOOTER  -->
-    <%- include('../partials/footer') %>
-    <!-- END OF THE FOOTER  -->
-
-    <script src="/js/login.js"></script>
-    <script src="/js/fileUpload.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
-    <script src="/fontawesome/js/all.js"></script>
-</body>
-
-</html>
+<!-- START OF FOOTER  -->
+<%- include('../partials/footer') %>
+<!-- END OF THE FOOTER  -->

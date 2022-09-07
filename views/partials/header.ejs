@@ -1,34 +1,59 @@
-<nav class="navbar navbar-expand-lg navbar-light shadow fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="/">
-            <span>Book Up</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Style Sheet -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- Font Awesome 6.1.1 -->
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+    <!-- File Pond v4 -->
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+        rel="stylesheet" />
+    <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+    <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+    <script defer src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+
+    <title>Book Up</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light shadow fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <span>Book Up</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
             aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarToggleExternalContent">
-            <ul class="navbar-nav align-items-center mb-2 mb-lg-0 b">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarToggleExternalContent">
+                <ul class="navbar-nav align-items-center mb-2 mb-lg-0 b">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/books">Books</a>
+                    </li>
+                    <li class="nav-item" style="display: none;">
+                        <a class="nav-link" href="/books/new">Add Book</a>
+                    </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/books">Books</a>
-                </li>
-                <li class="nav-item" style="display: none;">
-                    <a class="nav-link" href="/books/new">Add Book</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/authors">Authors</a>
-                </li>
-                <li class="nav-item" style="display: none;">
-                    <a class="nav-link" href="/authors/new" >Add Author</a>
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="rounded-pill btn-rounded text-dark" href="/login">Login</a>
-                </li> -->
-            </ul>
-        </div>
-    </div>    
-</nav>
+                        <a class="nav-link" href="/authors">Authors</a>
+                    </li>
+                    <li class="nav-item" style="display: none;">
+                        <a class="nav-link" href="/authors/new" >Add Author</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="rounded-pill btn-rounded text-dark" href="/login">Login</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>    
+    </nav>
