@@ -10134,45 +10134,6 @@ html {
   background-color: #0A1929;
 }
 
-:root {
-  --color-btn-border: hsl(36, 100%, 35%);
-  --color-btn-primary-text: white;
-  --color-btn-primary-background: hsl(32, 53%, 27%);
-}
-
-.btn-rounded {
-  position: relative;
-  margin: 0;
-  padding: 10px 20px;
-  font-weight: 700;
-  border: 2px solid rgba(233, 236, 239, 0.6);
-}
-@media (max-width: 575.98px) {
-  .btn-rounded {
-    display: none;
-  }
-}
-.btn-rounded:hover {
-  background-color: #e9ecef;
-  color: #dee2e6;
-}
-
-.btn {
-  border: 1px solid var(--color-btn-border);
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  font-size: 1.2rem;
-  font-family: inherit;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
-}
-
-.btn-primary {
-  color: var(--color-btn-primary-text);
-  background-color: var(--color-btn-primary-background);
-}
-
 @keyframes slide-in {
   from {
     margin-left: 100%;
@@ -10204,7 +10165,7 @@ body {
 }
 
 .wrapper {
-  padding-top: 7rem;
+  padding-top: 6.5rem;
 }
 
 main {
@@ -10456,187 +10417,44 @@ main {
   text-decoration: underline;
 }
 
-.login-card {
-  position: relative;
-  width: 766px;
-  max-width: 100%;
-  min-height: 480px;
-  background-color: white;
-  margin: 100px auto;
-  border-radius: 10px;
-  overflow: hidden;
+#login .btn-login {
+  padding: 1.375rem 0.75rem !important;
 }
-.login-card a {
-  width: 100%;
-  height: 40px;
-  text-decoration: none;
-  margin: 20px auto;
-  color: inherit;
-  font-size: 12px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+#login .gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #163658;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #0a1929, #0e2339, #122049, #163658);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #0a1929, #0e2339, #122049, #163658);
 }
-.login-card p {
-  font-size: 14px;
-  font-weight: 100;
-  line-height: 1.4;
-  margin: 20px;
+@media (min-width: 768px) {
+  #login .gradient-form {
+    height: 100vh !important;
+  }
 }
-.login-card button {
-  padding: 12px 45px;
-  border-radius: 20px;
-  font-family: inherit;
-  background-color: #66B2FF;
-  outline: none;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.login-card button:hover {
-  transform: scale(0.97);
-}
-.login-card button.ghost {
-  background: transparent;
-  border-color: #fff;
-  color: #fff;
-}
-.login-card span {
-  font-size: 12px;
-}
-.login-card .google:hover {
-  background-color: #DB4437 !important;
-}
-.login-card i {
-  margin-right: 15px;
+@media (min-width: 769px) {
+  #login .gradient-custom-2 {
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+  }
 }
 
-.social-media {
-  height: 40px;
-  width: 100%;
-  margin: 20px 0;
+#signup .gradient-custom-3 {
+  /* fallback for old browsers */
+  background: #163658;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #0a1929, #0e2339, #122049, #163658);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #0a1929, #0e2339, #122049, #163658);
 }
-.social-media a:hover {
-  background-color: lightGray;
-}
-
-.form-container {
-  height: 100%;
-  position: absolute;
-  top: 0;
-  transition: all 0.6s ease-in-out;
-}
-.form-container .forgot-link {
-  border: none !important;
-}
-
-.form-container form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 50px;
-  margin-top: 20px;
-}
-
-.form-container input {
-  margin: 8px auto;
-  width: 100%;
-  padding: 12px 15px;
-  background-color: #fff;
-  border: none;
-}
-
-.log-in-container,
-.sign-up-container {
-  width: 50%;
-  left: 0;
-  height: 100%;
-}
-
-.sign-up-container {
-  opacity: 0;
-}
-
-.overlay-container {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 50%;
-  height: 100%;
-  overflow: hidden;
-  transition: transform 0.6s ease-in-out;
-  z-index: 100;
-}
-
-.overlay {
-  background-image: linear-gradient(to right, #193f68, #163658, #122c49, #0e2339, #0A1929);
-  width: 200%;
-  height: 100%;
-  position: relative;
-  z-index: 100;
-  left: -100%;
-  transform: translateY(0);
-  transition: transform 0.6s ease-in-out;
-}
-
-.overlay-panel {
-  position: absolute;
-  top: 0;
-  color: #f5f5f5;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 40px;
-  height: 100%;
-  width: 50%;
-  text-align: center;
-  transform: translateY(0);
-  transition: transform 0.6s ease-in-out;
-}
-
-.right {
-  right: 0;
-  transform: translateY(0);
-}
-
-.left {
-  transform: translateY(-20%);
-}
-
-/* Move signin to right */
-.login-card.right-panel-active .log-in-container {
-  transform: translateY(100%);
-}
-
-/* Move overlay to left */
-.login-card.right-panel-active .overlay-container {
-  transform: translateX(-100%);
-}
-
-/* Bring signup over signin */
-.login-card.right-panel-active .sign-up-container {
-  transform: translateX(100%);
-  opacity: 1;
-  z-index: 5;
-}
-
-/* Move overlay back to right */
-.login-card.right-panel-active .overlay {
-  transform: translateX(50%);
-}
-
-/* Bring back the text to center */
-.login-card.right-panel-active .left {
-  transform: translateY(0);
-}
-
-/* Same effect for right */
-.login-card.right-panel-active .right {
-  transform: translateY(20%);
+#signup .gradient-custom-4 {
+  /* fallback for old browsers */
+  background: #84fab0;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #0a1929, #0e2339, #122049, #163658);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #0a1929, #0e2339, #122049, #163658);
 }
 
 /*# sourceMappingURL=styles.css.map */
