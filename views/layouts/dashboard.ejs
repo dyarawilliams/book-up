@@ -14,6 +14,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+  <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+    rel="stylesheet" />
+  <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+  <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+  <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+  <script defer src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
 
   <title>Bookup | Dashboard</title>
 
@@ -23,7 +30,8 @@
   <div id="dashboard" class="container-fluid">
     <div class="row flex-nowrap">
       <nav class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidebar-bg">
-        <div class="sticky-top d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        <div
+          class="sticky-top d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
           <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <span class="fs-5 d-none d-sm-inline">Bookup - Dashboard</span>
           </a>
@@ -36,11 +44,14 @@
             </li>
             <li>
               <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                <i class="fa-solid fa-chart-line"></i><span class="ms-1 d-none d-sm-inline">Dashboard</span>
+                <i class="fa-solid fa-chart-line"></i>
+                <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+                <i class="fa-solid fa-chevron-down"></i>
               </a>
               <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                 <li class="w-100">
-                  <a href="/books/new" class="nav-link px-3"><span class="d-none d-sm-inline">Add</span> New Book</a>
+                  <a href="/dashboard/books/new" class="nav-link px-3"><span class="d-none d-sm-inline">Add</span> New
+                    Book</a>
                 </li>
                 <li>
                   <a href="/authors/new" class="nav-link px-3"><span class="d-none d-sm-inline">Add</span> New Author
@@ -48,45 +59,42 @@
                 </li>
               </ul>
             </li>
-            <li>
+            <!-- <li>
               <a href="#" class="nav-link px-0 align-middle">
                 <i class="fa-solid fa-books"></i><span class="ms-1 d-none d-sm-inline">My Books</span></a>
             </li>
             <li>
               <a href="#" class="nav-link px-0 align-middle">
                 <i class="fa-solid fa-users"></i> <span class="ms-1 d-none d-sm-inline">My Authors</span></a>
-            </li>
-            <!-- <li>
+            </li> -->
+            <li>
               <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
+                <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Books</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </a>
               <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                 <li class="w-100">
-                  <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
+                  <a href="/dashboard/books" class="nav-link px-3"> <span class="d-none d-sm-inline">All
+                      Books</span></a>
                 </li>
                 <li>
-                  <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
+                  <a href="#" class="nav-link px-3"> <span class="d-none d-sm-inline">My Books </span>Added</a>
                 </li>
               </ul>
             </li>
             <li>
               <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
+                <i class="fa-solid fa-users"></i> <span class="ms-1 d-none d-sm-inline">Authors</span> </a>
               <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                 <li class="w-100">
-                  <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
+                  <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">All Authors</span></a>
                 </li>
                 <li>
-                  <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
-                </li>
-                <li>
-                  <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
-                </li>
-                <li>
-                  <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
+                  <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">My Authors </span>Added</a>
                 </li>
               </ul>
             </li>
-            <li>
+            <!-- <li>
               <a href="#" class="nav-link px-0 align-middle">
                 <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
             </li> -->
@@ -95,16 +103,16 @@
           <div class="dropdown pb-4">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
               id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="https://github.com/dyarawilliams.png" alt="My profile pic" width="40" height="40"
+              <img src="https://github.com/dyarawilliams.png" alt="Profile pic" width="40" height="40"
                 class="rounded-circle">
-              <span class="d-none d-sm-inline mx-3">
+              <span class="d-none d-sm-inline mx-2">
                 <%- user.userName %>
               </span>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
               <li><a class="dropdown-item" href="#">New project...</a></li>
               <li><a class="dropdown-item" href="#">Settings</a></li>
-              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="/profile">Profile</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -115,10 +123,19 @@
       </nav>
       <main class="col py-3">
         <div class="container-fluid">
-          <h1>Welcome, <%- user.userName %></h1>
+          <div class="row mb-3">
+            <div id="dashboard-card" class="card">
+              <div class="card-body">
+                  <div class="card-title">
+                    <h2>Welcome, <%- user.userName %></h2>
+                  </div>
+                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi, nemo rerum exercitationem omnis cupiditate dolore?</p>
+              </div>
+            </div>
+          </div>
           <%- body %>
         </div>
-        <footer class="fixed-bottom text-center">&copy; 2020-2022 Bookup | Created By D'yara Williams</footer>
+        <footer class="text-center">&copy; 2021-2022 Bookup | Created By D'yara Williams</footer>
       </main>
     </div>
   </div>
@@ -127,6 +144,7 @@
     integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"></script>
+  <script src="/js/fileUpload.js"></script>
   <script src="/js/main.js"></script>
 </body>
 </body>

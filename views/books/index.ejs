@@ -1,33 +1,58 @@
-<section class="books">
-    <div class="container">
-        <div class="row">
+<div id="books" class="container pb-3">
+    <div class="card mb-4">
+        <div class="card-header border-light">
             <h2>Search Book</h2>
+        </div>
+        <div class="card-body">
             <form action="/books" method="GET">
-                <div>
-                    <label>Title</label>
-                    <input type="text" name="title" value="<%= searchOptions.title %>">
+                <div class="form-outline">
+                    <label class="form-label">Title</label>
+                    <input class="form-control" type="text" name="title" value="<%= searchOptions.title %>">
                 </div>
-                <div>
-                    <label>Published After</label>
-                    <input type="date" name="publishedAfter" value="<%= searchOptions.publishedAfter %>">
-                </div>
-                <div>
-                    <label>Published Before</label>
-                    <input type="date" name="publishedBefore" value="<%= searchOptions.publishedBefore %>">
-                </div>
-                <button type="submit">Search</button>
-            </form>
-            <div class="row">
-                <!-- START OF BOOK ITEMS  -->
-                <% books.forEach(book=> { %>
-                    <div class="col-6 col-sm-4">
-                        <a href="/books/<%= book.id %>">
-                            <img src="<%= book.coverImagePath %>" alt="Book Cover" width="200" class="img-fluid " />
-                        </a>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-outline">
+                            <label class="form-label">Published After</label>
+                            <input class="form-control" type="date" name="publishedAfter"
+                                value="<%= searchOptions.publishedAfter %>">
+                        </div>
                     </div>
-                <% }) %>
-                <!-- END OF BOOK ITEMS  -->
-            </div>
+                    <div class="col">
+                        <div class="form-outline mb-2">
+                            <label class="form-label">Published Before</label>
+                            <input class="form-control" type="date" name="publishedBefore"
+                                value="<%= searchOptions.publishedBefore %>">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
         </div>
     </div>
-</section>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- START OF BOOK ITEMS  -->
+        <% books.forEach(book=> { %>
+            <div class="col">
+                <div class="card">
+                    <div class="row">
+                        <div class="col">
+                            <a href="/books/<%= book.id %>" class="d-flex justify-content-center">
+                                <img src="<%= book.coverImagePath %>" alt="Book Cover" width="150" class="img-fluid" />
+                            </a>
+                        </div>
+                        <div class="col border-start border-light border-opacity-50 p-2">
+                            <small class="text-center fw-bold">
+                                <%= book.title %>
+                            </small>
+                            <small class="d-block mt-2"><span class="fw-bold">ISBN13:</span>
+                                <%= book.isbn %>
+                            </small>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+                <!-- END OF BOOK ITEMS  -->
+    </div>

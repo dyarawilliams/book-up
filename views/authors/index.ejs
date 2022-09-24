@@ -23,8 +23,10 @@
                 </div>
                 <div class="card-footer d-flex justify-content-around">
                     <a href="/authors/<%= author.id %>" class="btn btn-sm btn-dark">View</a>
-                    <a href="/authors/<%= author.id %>/edit" class="btn btn-sm btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <%- include('../partials/deleteForm', { url: `/authors/${author.id}` }) %>
+                    <% if(isAuth) { %>
+                        <a href="/authors/<%= author.id %>/edit" class="btn btn-sm btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <%- include('../partials/deleteForm', { url: `/authors/${author.id}` }) %>
+                    <% } %>
                 </div>
             </div>
         </div>

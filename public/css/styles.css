@@ -10918,57 +10918,14 @@ main {
   display: inline-block;
 }
 
-#books {
-  max-height: 100%;
-  padding: 3rem 0;
+#books .card {
+  padding: 1em;
+  background-color: #0A1929;
+  color: #dee2e6;
+  box-shadow: 10px 5px 5px #ced4da;
 }
-
-.book-box {
-  position: relative;
-  min-width: 280px;
-  overflow: hidden;
-  margin-bottom: 1.2rem;
-  padding: 10px 0;
-  background: #0A1929;
-  border-radius: 7px;
-}
-.book-box .book-img {
-  width: 100%;
-  height: 300px;
-  object-fit: contain;
-}
-.book-box .book-info {
-  background-color: rgba(102, 178, 255, 0.75);
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  visibility: hidden;
-}
-.book-box .book-info .caption {
-  text-align: center;
-  color: #000;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.book-box .book-info .caption h4 {
-  text-transform: uppercase;
-  display: block;
-}
-.book-box:hover img {
-  transform: scale(1.2);
-  transition-duration: 1500ms;
-  transition-property: all;
-}
-.book-box:hover .book-info {
-  opacity: 1;
-  visibility: visible;
-  transition-duration: 1500ms;
-  transition-property: all;
+#books .card img {
+  border-radius: 0.375rem;
 }
 
 .footer {
@@ -11351,6 +11308,10 @@ main {
 }
 #dashboard .sidebar-bg {
   background-color: #0A1929;
+}
+#dashboard #dashboard-card {
+  background-color: #66B2FF !important;
+  background-image: url("../../public/images/teamwork.png");
 }
 
 /*# sourceMappingURL=styles.css.map */

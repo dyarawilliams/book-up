@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const passport = require('passport')
 const validator = require('validator')
-const { ensureAuth, ensureGuest } = require('../middleware/auth')
+const { ensureAuth } = require('../middleware/auth')
 
 const Book = require('../models/book')
 const User = require('../models/user')
@@ -136,32 +136,22 @@ router.get('/logout', (req, res, next) => {
         } else {
             res.send('Logout Successful')
             req.user = null
-            res.redirect('/')
+            // res.redirect('/')
         }
     })
+    res.redirect('/')
 })
 
-// @desc Dashboard
-// @route GET /dashboard
-router.get('/dashboard', ensureAuth, (req, res) => {
-    try {
-        res.render('dashboard', { 
-            title: 'Dashboard', 
-            layout: 'layouts/dashboard', 
-            isAuth: req.isAuthenticated(),
-            user: req.user
-        })
-    } catch (err) {
-        console.error(err)
-        // res.render('error/500')
-    }
-})
 
 // @desc View Profile
 // @route /profile
-// router.get('/profile', ensureAuth, (req, res) => {
-//     console.log(req.user)
-// })
+router.get('/profile', ensureAuth, (req, res) => {
+    res.render('profile', { 
+        layout: 'layouts/dashboard',
+        user: req.user,
+        isAuth: req.isAuthenticated()
+    })
+})
 
 // router.get('*', (req, res) => {
 //     try {

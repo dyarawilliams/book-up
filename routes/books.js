@@ -22,10 +22,10 @@ router.get('/', async (req, res) => {
     try {
         const books = await query.exec()
         res.render('books/index', {
-        title: 'All Books',
-        books: books,
-        searchOptions: req.query,
-        isAuth: req.isAuthenticated()
+            title: 'All Books',
+            books: books,
+            searchOptions: req.query,
+            isAuth: req.isAuthenticated()
         })
     } catch {
         res.redirect('/')
@@ -150,7 +150,7 @@ async function renderFormPage(res, book, form, hasError = false){
             authors: authors,
             book: book,
             title: 'Form Page',
-            isAuth: req.isAuthenticated()
+            isAuth: req.isAuthenticated(),
         }
         if(hasError) {
             if(form === 'edit'){

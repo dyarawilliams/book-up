@@ -9,4 +9,9 @@
     .sidebar-bg {
         background-color: $primary;
     }
+
+    #dashboard-card {
+        background-color: $secondary !important;
+        background-image: url('../../public/images/teamwork.png');
+    }
 }

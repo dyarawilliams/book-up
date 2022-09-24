@@ -16,7 +16,7 @@ const mainRouter = require('./routes/main')
 const authorRouter = require('./routes/authors')
 const bookRouter = require('./routes/books')
 // const authRouter = require('./routes/auth')
-// const dashboardRouter = require('./routes/dashboard')
+const dashboardRouter = require('./routes/dashboard')
 
 // Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -39,7 +39,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.set('layout', './layouts/layout');
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
 app.use(bodyParser.json())
 app.use(methodOverride('_method'))
 
@@ -66,7 +66,7 @@ app.use('/', mainRouter)
 app.use('/authors', authorRouter);
 app.use('/books', bookRouter);
 // app.use('/auth', authRouter)
-// app.use('/dashboard', dashboardRouter);
+app.use('/dashboard', dashboardRouter);
 
 app.use((req, res) => {
     res.status(404).render('error/404', {
