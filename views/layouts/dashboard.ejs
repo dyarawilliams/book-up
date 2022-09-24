@@ -22,8 +22,8 @@
 <body>
   <div id="dashboard" class="container-fluid">
     <div class="row flex-nowrap">
-      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidebar-bg">
-        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+      <nav class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidebar-bg">
+        <div class="sticky-top d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
           <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <span class="fs-5 d-none d-sm-inline">Bookup - Dashboard</span>
           </a>
@@ -112,10 +112,14 @@
             </ul>
           </div>
         </div>
-      </div>
-      <div class="col py-3">
-        <%- body %>
-      </div>
+      </nav>
+      <main class="col py-3">
+        <div class="container-fluid">
+          <h1>Welcome, <%- user.userName %></h1>
+          <%- body %>
+        </div>
+        <footer class="fixed-bottom text-center">&copy; 2020-2022 Bookup | Created By D'yara Williams</footer>
+      </main>
     </div>
   </div>
 
@@ -123,6 +127,7 @@
     integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 </body>
 

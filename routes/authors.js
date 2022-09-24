@@ -59,6 +59,7 @@ router.get('/:id', async (req, res) => {
         const author = await Author.findById(req.params.id)
         const books = await Book.find({ author: author.id }).limit(6).exec()
         res.render('authors/show', {
+            title: `${author.name}`,
             author: author,
             booksByAuthor: books,
             isAuth: req.isAuthenticated()
