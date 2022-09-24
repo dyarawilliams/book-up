@@ -1,20 +1,33 @@
-<h2>Search Authors</h2>
-<form action="/authors" method="GET">
-    <label>Name</label>
-    <input type="text" name="name" value="<%= searchOptions.name %>">
-    <button type="submit">Search</button>
-</form>
-<br>
-<% authors.forEach(author => { %>
-    <div class="author">
-        <div class="author__name">
-            <%= author.name %>
-        </div>
-        <div class="author__options">
-            <a href="/authors/<%= author.id %>" class="btn">View</a>
-            <a href="/authors/<%= author.id %>/edit" class="btn btn-primary">Edit</a>
-            <%- include('../partials/deleteForm', { url: `/authors/${author.id}` }) %>
-        </div>
-    </div>
+<div class="container">
+    <h2>Search Authors</h2>
+    <form action="/authors" method="GET">
+        <label>Name</label>
+        <input type="text" name="name" value="<%= searchOptions.name %>">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <br>
 
-<% }) %>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% authors.forEach(author=> { %>
+        <div class="col text-center">
+            <div class="card h-100">
+                <!-- <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp" class="card-img-top"
+                alt="Skyscrapers" /> -->
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%= author.name %>
+                    </h5>
+                    <!-- <p class="card-text">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit libero aperiam eveniet iure quidem qui delectus vitae doloremque suscipit placeat!
+                    </p> -->
+                </div>
+                <div class="card-footer d-flex justify-content-around">
+                    <a href="/authors/<%= author.id %>" class="btn btn-sm btn-dark">View</a>
+                    <a href="/authors/<%= author.id %>/edit" class="btn btn-sm btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <%- include('../partials/deleteForm', { url: `/authors/${author.id}` }) %>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</div>
