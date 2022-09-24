@@ -15,7 +15,8 @@ const connectDB = require('./config/database');
 const mainRouter = require('./routes/main')
 const authorRouter = require('./routes/authors')
 const bookRouter = require('./routes/books')
-const authRouter = require('./routes/auth')
+// const authRouter = require('./routes/auth')
+// const dashboardRouter = require('./routes/dashboard')
 
 // Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -29,25 +30,29 @@ connectDB();
 // Route Logging
 app.use(morgan('dev'))
 
-// View Engine (EJS Template)
-app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views');
-app.set('layout', 'layouts/layout');
-app.use(expressLayouts);
-
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(methodOverride('_method'))
-
 // Static Folder
 app.use(express.static('public'));
 
+// View Engine (EJS Template)
+app.use(expressLayouts);
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.set('layout', './layouts/layout');
+
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+app.use(methodOverride('_method'))
+
 // Sessions
-app.use(
-    session({
+app.use(session({
         secret: 'keyboard cat',
         resave: false,
         saveUninitialized: false,
         store: MongoStore.create({ mongoUrl: process.env.DB_STRING }),
+        cookie: { 
+            secure: true,
+        //     maxAge: 60000
+        }
     })
 )
 
@@ -60,7 +65,15 @@ app.use(flash())
 app.use('/', mainRouter)
 app.use('/authors', authorRouter);
 app.use('/books', bookRouter);
-app.use('/auth', authRouter)
+// app.use('/auth', authRouter)
+// app.use('/dashboard', dashboardRouter);
+
+app.use((req, res) => {
+    res.status(404).render('error/404', {
+        title: '404',
+        isAuth: req.isAuthenticated()
+    })
+})
 
 app.listen(process.env.PORT || 8000, () => {
     console.log(`Server is running, you better catch it!`);

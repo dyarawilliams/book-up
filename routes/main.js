@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     let books
     try {
         books = await Book.find().sort({ createdAt: 'desc' }).limit(10).exec()
-        res.render('index', { books: books })
+        res.render('index', { title: 'Home', books: books, isAuth: req.isAuthenticated() })
     } catch {
         books = []
     }
@@ -25,9 +25,9 @@ router.get('/', async (req, res) => {
 router.get('/login', (req, res) => {
     try {
         if (req.user) {
-            return res.redirect('/dashboard')
+            return res.redirect('/dashboard', { isAuth: req.isAuthenticated() })
         }
-        res.render('login', { title: 'Login' })
+        res.render('login', { title: 'Login', isAuth: req.isAuthenticated() })
     } catch (err) {
         console.error(err)
     }
@@ -56,7 +56,7 @@ router.post('/login', (req, res, next) => {
             req.logIn(user, (err) => {
                 if (err) { return next(err) }
                 req.flash('success', { msg: 'Success! You are logged in.' })
-                res.redirect(req.session.returnTo || '/dashboard')
+                res.redirect(req.session.returnTo || '/dashboard',)
             })
         })(req, res, next)
     } catch (err) {
@@ -69,9 +69,9 @@ router.post('/login', (req, res, next) => {
 router.get('/signup', (req, res) => {
     try {
         if (req.user) {
-            return res.redirect('/dashboard')
+            return res.redirect('/dashboard', { title: 'Signup', isAuth: req.isAuthenticated() })
         }
-        res.render('signup')
+        res.render('signup', { title: 'Create an Account', isAuth: req.isAuthenticated() })
     } catch (err) {
         console.error(err)
     }
@@ -115,24 +115,12 @@ router.post('/signup', (req, res, next) => {
                     if (err) {
                         return next(err)
                     }
-                    res.redirect('/todos')
+                    res.redirect('/dashboard')
                 })
             })
         })
     } catch (err) {
         console.error(err)
-    }
-})
-// @desc Dashboard
-// @route GET /dashboard
-router.get('/dashboard', async (req, res) => {
-    try {
-        // const stories = await Story.find({ user: req.user.id }).lean()
-        res.render('dashboard', { layout: 'dashboard' })
-
-    } catch (err) {
-        console.error(err)
-        // res.render('error/500')
     }
 })
 
@@ -141,12 +129,47 @@ router.get('/dashboard', async (req, res) => {
 router.get('/logout', (req, res, next) => {
     req.logout(() => {
         console.log('User has logged out.')
-      })
-      req.session.destroy((err) => {
-        if (err) console.log('Error : Failed to destroy the session during logout.', err)
-        req.user = null
-        res.redirect('/')
-      })
+    })
+    req.session.destroy((err) => {
+        if (err) {
+            console.log('Error : Failed to destroy the session during logout.', err)
+        } else {
+            res.send('Logout Successful')
+            req.user = null
+            res.redirect('/')
+        }
+    })
 })
+
+// @desc Dashboard
+// @route GET /dashboard
+router.get('/dashboard', ensureAuth, (req, res) => {
+    try {
+        res.render('dashboard', { 
+            title: 'Dashboard', 
+            layout: 'layouts/dashboard', 
+            isAuth: req.isAuthenticated(),
+            user: req.user
+        })
+    } catch (err) {
+        console.error(err)
+        // res.render('error/500')
+    }
+})
+
+// @desc View Profile
+// @route /profile
+// router.get('/profile', ensureAuth, (req, res) => {
+//     console.log(req.user)
+// })
+
+// router.get('*', (req, res) => {
+//     try {
+//         res.status(404)
+//         res.render('error/404', { title: '404', isAuth: req.isAuthenticated() })
+//     } catch (err) {
+//         console.error(err)
+//     }
+// })
 
 module.exports = router

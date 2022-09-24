@@ -4,7 +4,7 @@ module.exports = {
         if(req.isAuthenticated()) {
             return next()
         } else {
-            res.redirect('/login')
+            res.redirect('/')
         }
     },
     // if user is authenticated and going to login page then redirect to home page else back to the login page

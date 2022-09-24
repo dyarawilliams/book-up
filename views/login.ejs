@@ -1,15 +1,6 @@
 <section id="login" class="h-100 gradient-form">
     <div class="container py-5 h-100">
-        <% if (locals.messages.errors) { %>
-            <% messages.errors.forEach( el => { %>
-                <div class="alert alert-danger"><%= el.msg %></div>
-            <% }) %>    
-        <% } %>
-        <% if (locals.messages.info) { %>
-            <% messages.info.forEach( el => { %>
-                <div class="alert alert-danger"><%= el.msg %></div>
-            <% }) %>    
-        <% } %>
+        
         <div class="row d-flex justify-content-center h-100">
             <div class="col-xl-10">
                 <div class="card rounded-3 text-black">
@@ -22,7 +13,16 @@
                                         style="width: 185px;" alt="logo">
                                     <h4 class="mt-1 mb-5 pb-1">We are Bookup</h4>
                                 </div>
-
+                                <% if (locals.messages.errors) { %>
+                                    <% messages.errors.forEach( el => { %>
+                                        <div class="alert alert-danger"><%= el.msg %></div>
+                                    <% }) %>    
+                                <% } %>
+                                <% if (locals.messages.info) { %>
+                                    <% messages.info.forEach( el => { %>
+                                        <div class="alert alert-danger"><%= el.msg %></div>
+                                    <% }) %>    
+                                <% } %>
                                 <form action="/login" method="POST">
                                     <p class="text-center">Please login to your account</p>
 

@@ -1,21 +1,4 @@
 @use '../custom' as *;
 @use '../components/mixins' as *;
 
-.author {
-    width: 80%;
-    margin: 0 auto;
-    padding: 1rem;
-    border-bottom: 2px solid #cdcdcd;
 
-    &__name {
-        width: 100%;
-        font-size: 1.3rem;
-    }
-
-    &__options {
-        width: 100%;
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-evenly;
-    }
-}

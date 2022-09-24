@@ -22,8 +22,10 @@ router.get('/', async (req, res) => {
     try {
         const books = await query.exec()
         res.render('books/index', {
+        title: 'All Books',
         books: books,
-        searchOptions: req.query
+        searchOptions: req.query,
+        isAuth: req.isAuthenticated()
         })
     } catch {
         res.redirect('/')
@@ -67,7 +69,7 @@ router.get('/:id', async (req, res) => {
     try {
         const book = await Book.findById(req.params.id).populate('author')
         .exec()
-        res.render('books//show', { book: book })
+        res.render('books/show', { title: 'Show Book', isAuth: req.isAuthenticated(), book: book })
     } catch (error) {
         res.redirect('/')
     }
@@ -124,7 +126,8 @@ router.delete('/:id', async (req, res) => {
         if(book != null){
             res.render('books/show', {
                 book: book,
-                errorMessage: 'Could not remove book'
+                errorMessage: 'Could not remove book',
+                title: 'Error Page'
             })
         } else {
             res.render('/')
@@ -145,7 +148,9 @@ async function renderFormPage(res, book, form, hasError = false){
         const authors = await Author.find({})
         const params = {
             authors: authors,
-            book: book
+            book: book,
+            title: 'Form Page',
+            isAuth: req.isAuthenticated()
         }
         if(hasError) {
             if(form === 'edit'){
