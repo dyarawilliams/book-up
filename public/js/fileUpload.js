@@ -10,9 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('filepond registered')
 
     FilePond.setOptions({
-        stylePanelAspectRatio: 150 / 100,
+        stylePanelAspectRatio: 85 / 100,
         imageResizeTargetWidth: 100,
-        imageResizeTargetHeight: 150
+        imageResizeTargetHeight: 150,
+        // imagePreviewHeight: 100,
     })
     
     // Create FilePond object

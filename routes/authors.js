@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const Author = require('../models/author')
+const { ensureAuth, ensureGuest } = require('../middleware/auth')
+
 const Book = require('../models/book')
 
 // @desc All Authors
@@ -13,8 +15,11 @@ router.get('/', async (req, res) => {
     try {
         const authors = await Author.find(searchOptions)
         res.render('authors/index', { 
+            title: 'All Authors',
+            isAuth: req.isAuthenticated(),
             authors: authors,
-            searchOptions: req.query 
+            searchOptions: req.query,
+            isAuth: req.isAuthenticated()
         })
     } catch (err) {
         res.redirect('/')
@@ -24,13 +29,19 @@ router.get('/', async (req, res) => {
 
 // @desc New Authors
 // @route GET /authors/new
-router.get('/new', (req, res) => {
-    res.render('authors/new', { author: new Author() })
+router.get('/new', ensureAuth, (req, res) => {
+    res.render('authors/new', { 
+        title: 'Add New Author',
+        layout: 'layouts/dashboard',
+        isAuth: req.isAuthenticated(),
+        author: new Author(),
+        isAuth: req.isAuthenticated() 
+    })
 })
 
 // @desc Create Authors
 // @route POST /authors/
-router.post('/', async (req, res) => {
+router.post('/', ensureAuth, async (req, res) => {
     const author = new Author({
         name: req.body.name
     })
@@ -53,8 +64,11 @@ router.get('/:id', async (req, res) => {
         const author = await Author.findById(req.params.id)
         const books = await Book.find({ author: author.id }).limit(6).exec()
         res.render('authors/show', {
+            title: `${author.name}`,
+            isAuth: req.isAuthenticated(),
             author: author,
-            booksByAuthor: books
+            booksByAuthor: books,
+            isAuth: req.isAuthenticated()
         })
     } catch (err) {
         console.log(err)
@@ -64,11 +78,15 @@ router.get('/:id', async (req, res) => {
 
 // @desc Edit Author
 // @route GET /authors/:id/edit
-router.get('/:id/edit', async (req, res) => {
+router.get('/:id/edit', ensureAuth, async (req, res) => {
     try {
         // finds author by Id if it exists 
         const author = await Author.findById(req.params.id)
-        res.render('authors/edit', { author: author })
+        res.render('authors/edit', { 
+            title: 'Edit Author',
+            author: author,
+            isAuth: req.isAuthenticated()
+        })
     } catch (err) {
         console.log(err)
         // Redirects user back to authors index page 
@@ -78,7 +96,7 @@ router.get('/:id/edit', async (req, res) => {
 
 // @desc Update Author
 // @route PUT /authors/:id
-router.put('/:id', async (req, res) => {
+router.put('/:id', ensureAuth, async (req, res) => {
     let author
     try {
         author = await Author.findById(req.params.id)
@@ -99,7 +117,7 @@ router.put('/:id', async (req, res) => {
 
 // @desc Delete Author
 // @route DELETE /authors/:id/
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', ensureAuth, async (req, res) => {
     let author
     try {
         author = await Author.findById(req.params.id)

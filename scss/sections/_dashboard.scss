@@ -1,0 +1,17 @@
+@use '../custom' as *;
+@use '../components/mixins' as *;
+
+#dashboard {
+    .nav-link {
+        color: $secondary !important;
+    }
+
+    .sidebar-bg {
+        background-color: $primary;
+    }
+
+    #dashboard-card {
+        background-color: $secondary !important;
+        background-image: url('../../public/images/teamwork.png');
+    }
+}

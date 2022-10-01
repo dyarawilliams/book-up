@@ -1,12 +1,31 @@
 const express = require('express')
 const router = express.Router()
-const Book = require('../models/book')
-const Author = require('../models/author')
+const { ensureAuth } = require('../middleware/auth')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 
+const Book = require('../models/book')
+const Author = require('../models/author')
+const User = require('../models/user')
+
+// @desc Dashboard
+// @route GET /dashboard
+router.get('/', ensureAuth, (req, res) => {
+    try {
+        res.render('dashboard', { 
+            title: 'Dashboard', 
+            layout: 'layouts/dashboard', 
+            isAuth: req.isAuthenticated(),
+            user: req.user
+        })
+    } catch (err) {
+        console.error(err)
+        // res.render('error/500')
+    }
+})
+
 // @desc All Books
-// @route GET /books/
-router.get('/', async (req, res) => {
+// @route GET /dashboard/books/
+router.get('/books', async (req, res) => {
     let query = Book.find()
     if (req.query.title != null && req.query.title != '') {
         query = query.regex('title', new RegExp(req.query.title, 'i'))
@@ -22,27 +41,30 @@ router.get('/', async (req, res) => {
     try {
         const books = await query.exec()
         res.render('books/index', {
+            layout: 'layouts/dashboard',
             title: 'All Books',
+            user: req.user,
             books: books,
             searchOptions: req.query,
             isAuth: req.isAuthenticated()
         })
-    } catch {
+    } catch (err){
+        console.error(err)
         res.redirect('/')
     }
     // res.send('All Book')
 })
 
 // @desc New Book 
-// @route GET /books/new
-router.get('/new', async (req, res) => {
-    renderNewPage(res, new Book())
+// @route GET /dashboard/books/new
+router.get('/books/new', ensureAuth, async (req, res) => {
+    renderNewPage(req, res, new Book())
     // res.send('New Book')
 })
 
 // @desc Create Book
-// @route POST /books/
-router.post('/', async (req, res) => {
+// @route POST /dashboard/books/
+router.post('/books', async (req, res) => {
     const book = new Book({
         isbn: req.body.isbn,
         title: req.body.title,
@@ -56,39 +78,42 @@ router.post('/', async (req, res) => {
     try {
         const newBook = await book.save()
         // res.redirect(`books/${newBook.id}`)
-        res.redirect('books')
-    } catch {
+        res.redirect('/dashboard/books')
+    } catch (err) {
+        console.error(err)
         renderNewPage(res, book, true)
     }
     // res.send('Create Book')
 })
 
 // @desc Show Book 
-// @route GET /books/:id
-router.get('/:id', async (req, res) => {
+// @route GET /dashboard/books/:id
+router.get('/books/:id', async (req, res) => {
     try {
         const book = await Book.findById(req.params.id).populate('author')
         .exec()
-        res.render('books/show', { title: 'Show Book', isAuth: req.isAuthenticated(), book: book })
-    } catch (error) {
+        res.render('books/show', { title: 'Show Book', isAuth: req.isAuthenticated(), user: req.user, book: book })
+    } catch (err) {
+        console.error(err)
         res.redirect('/')
     }
 })
 
 // @desc Edit Book 
-// @route GET /books/:id/edit
-router.get('/:id/edit', async (req, res) => {
+// @route GET /dashboard/books/:id/edit
+router.get('/books/:id/edit', async (req, res) => {
     try {
         const book = await Book.findById(req.params.id)
         renderEditPage(res, book)
-    } catch (error) {
+    } catch (err) {
+        console.error(err)
         res.redirect('/')
     }
 })
 
 // @desc Update Book 
-// @route PUT /books/:id 
-router.put('/:id', async (req, res) => {
+// @route PUT /dashboard/books/:id 
+router.put('/books/:id', async (req, res) => {
     let book 
     try {
         book = await Book.findById(req.params.id)
@@ -103,9 +128,9 @@ router.put('/:id', async (req, res) => {
             saveCover(book, req.body.cover)
         }
         await book.save()
-        res.redirect(`/books/${book.id}`)
+        res.redirect(`/dashboard/books/${book.id}`)
     } catch (err) {
-        console.log(err)
+        console.error(err)
         if(book != null){
             renderEditPage(res, book, true)
         } else {
@@ -115,14 +140,15 @@ router.put('/:id', async (req, res) => {
 })
 
 // @desc Delete Book 
-// @route GET /books/:id
-router.delete('/:id', async (req, res) => {
+// @route GET /dashboard/books/:id
+router.delete('/books/:id', async (req, res) => {
     let book 
     try {
         book = await Book.findById(req.params.id)
         await book.remove()
-        res.redirect('/books')
-    } catch (error) {
+        res.redirect('/dashboard/books')
+    } catch (err) {
+        console.error(err)
         if(book != null){
             res.render('books/show', {
                 book: book,
@@ -132,25 +158,28 @@ router.delete('/:id', async (req, res) => {
         } else {
             res.render('/')
         }
+
     }
 })
 
-async function renderNewPage(res, book, hasError = false){
-    renderFormPage(res, book, 'new', hasError)
+async function renderNewPage(req, res, book, hasError = false){
+    renderFormPage(req, res, book, 'new', hasError)
 }
 
 async function renderEditPage(res, book, hasError = false){
     renderFormPage(res, book, 'edit', hasError)
 }
 
-async function renderFormPage(res, book, form, hasError = false){
+async function renderFormPage(req, res, book, form, hasError = false){
     try {
         const authors = await Author.find({})
         const params = {
+            layout: 'layouts/dashboard',
             authors: authors,
             book: book,
             title: 'Form Page',
-            isAuth: req.isAuthenticated(),
+            user: req.user,
+            isAuth: req.isAuthenticated()
         }
         if(hasError) {
             if(form === 'edit'){
@@ -160,8 +189,9 @@ async function renderFormPage(res, book, form, hasError = false){
             }
         }
         res.render(`books/${form}`, params)
-    } catch {
-        res.redirect('/books')
+    } catch(err) {
+        console.error(err)
+        res.redirect('/dashboard')
     }
 }
 
@@ -173,5 +203,4 @@ function saveCover(book, coverEncoded){
         book.coverImageType = cover.type
     }
 }
-
 module.exports = router
