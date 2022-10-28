@@ -10827,102 +10827,33 @@ body {
 }
 
 .wrapper {
-  padding-top: 6.5rem;
+  margin-top: 93px;
 }
 
-main {
-  margin: 0 auto !important;
-  background-color: #f8f9fa;
-}
-
-.welcome {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-@media (max-width: 767.98px) {
-  .welcome {
-    flex-direction: column;
-  }
-}
-.welcome header h1 {
-  background-image: linear-gradient(to right, #66B2FF, #0A1929);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.welcome header img {
-  margin: 0 auto;
-  animation: 1.5s ease-in both fadeIn;
-}
-@media (max-width: 767.98px) {
-  .welcome header img {
-    display: none;
-  }
-}
-.welcome .card {
-  border: none;
-}
-.welcome .card .card-body {
-  max-width: 390px;
-  padding: 20px 40px;
-  background-color: #0A1929;
-  color: #dee2e6;
-  box-shadow: 30px -15px 15px 15px rgba(0, 0, 0, 0.45);
-}
-.welcome .card .card-body .card-text {
-  letter-spacing: 2px;
-}
-.welcome .card .card-body .btn {
-  margin-top: 5px;
-  padding: 0 16px;
-  height: 36px;
-  display: block;
-  color: #fff;
-  font-size: 16px;
-  letter-spacing: 0.5px;
-  -webkit-transition: background-color 0.2s ease-out;
-  transition: background-color 0.2s ease-out;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 2px;
-  line-height: 36px;
-  -webkit-tap-highlight-color: transparent;
-}
-.welcome .card .card-body .btn i {
-  margin-right: 1rem;
-}
-.welcome .card .card-body .btn .svg-inline--fa {
-  padding-right: 0.5em;
-}
-.welcome .card .card-body .get-started {
-  background-color: #fff !important;
-  color: #0A1929;
-  font-weight: 800;
-}
-.welcome .card .card-body .get-started:hover {
-  background-color: #66B2FF !important;
+.bg-image {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(163deg, rgba(0, 0, 0, 0.25), rgb(0, 0, 0)), url("https://images.pexels.com/photos/1319855/pexels-photo-1319855.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .form-section {
-  height: 180px;
-  margin: 0 -13px;
+  margin: 0 auto;
+  height: 210px;
+  margin-top: -50px;
   text-align: center;
   background: #0A1929;
-  clip-path: polygon(100% 80%, 100% 0%, 0% 0%, 0% 100%);
-}
-.form-section .form-container {
-  width: 100%;
-  height: 100%;
-  padding-top: 35px;
-  display: inline-block;
 }
 
 #books .card {
   padding: 1em;
-  background-color: #0A1929;
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   color: #dee2e6;
-  box-shadow: 10px 5px 5px #ced4da;
 }
 #books .card img {
   border-radius: 0.375rem;
