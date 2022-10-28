@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
         <!-- START OF BOOK ITEMS  -->
         <% books.forEach(book=> { %>
             <div class="col">
@@ -41,14 +41,13 @@
                                 <img src="<%= book.coverImagePath %>" alt="Book Cover" width="150" class="img-fluid" />
                             </a>
                         </div>
-                        <div class="col border-start border-light border-opacity-50 p-2">
-                            <small class="text-center fw-bold">
+                        <div class="col p-2">
+                            <p class="text-center fw-bold">
                                 <%= book.title %>
-                            </small>
-                            <small class="d-block mt-2"><span class="fw-bold">ISBN13:</span>
+                            </p>
+                            <p class="d-block mt-2"><span class="fw-bold">ISBN13:</span>
                                 <%= book.isbn %>
-                            </small>
-
+                            </p>
                         </div>
                     </div>
                 </div>

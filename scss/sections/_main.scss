@@ -1,117 +1,30 @@
-@use '../custom' as *;
-@use '../components/mixins' as *;
-@use '../components/animations' as *;
+@use "../custom" as *;
+@use "../components/mixins" as *;
+@use "../components/animations" as *;
 
-body{
+body {
     background-color: $gray-600;
 }
 
 .wrapper {
-    padding-top: 6.5rem;
+    margin-top: 93px;
 }
 
-main {
-    margin: 0 auto !important;
-    background-color: $gray-100;
-}
-
-.welcome {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-
-    @include media-breakpoint-down(md){
-        flex-direction: column;
-    }
-    
-    header {
-
-        h1 {
-            background-image: linear-gradient(to right , $secondary, $primary);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        img {
-            @include media-breakpoint-down(md){
-                display: none;
-            }
-
-            margin: 0 auto;
-            animation: 1.5s ease-in both fadeIn;
-        }
-    }
-
-    .card {
-        border: none;
-
-        // @include media-breakpoint-up(md){}
-
-        .card-body {
-            max-width: 390px;
-            padding: 20px 40px;
-            background-color: $primary;
-            color: $gray-300;
-            box-shadow: 30px -15px 15px 15px rgba(0,0,0, 0.45);
-            // -webkit-box-shadow: 30px -15px 15px 15px rgba(10, 25, 41, 0.45);
-
-            .card-text {
-                letter-spacing: 2px;
-            }
-    
-            .btn {
-                margin-top: 5px;
-                padding: 0 16px;
-                height: 36px;
-                display: block;
-                color: #fff;
-                font-size: 16px;
-                letter-spacing: .5px;
-                -webkit-transition: background-color .2s ease-out;
-                transition: background-color .2s ease-out;
-                text-transform: uppercase;
-                // vertical-align: middle;
-                border: none;
-                border-radius: 2px;
-                line-height: 36px;
-                -webkit-tap-highlight-color: transparent;
-
-                i {
-                    margin-right: 1rem;
-                }
-
-                .svg-inline--fa {
-                    padding-right: 0.5em;
-                }
-
-            }
-            
-            .get-started {
-                background-color: #fff !important;
-                color: $primary;
-                font-weight: 800;
-            }
-            
-            .get-started:hover {
-                background-color: $secondary !important;
-            }
-            
-        }
-    }
+.bg-image {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(163deg, rgba(0,0,0,0.25), rgba(0,0,0,1)), url('https://images.pexels.com/photos/1319855/pexels-photo-1319855.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .form-section {
-    height: 180px;
-    margin: 0 -13px;
+    margin: 0 auto;
+    height: 210px;
+    margin-top: -50px;
     text-align: center;
     background: $primary;
-    clip-path: polygon(100% 80%, 100% 0%, 0% 0%, 0% 100%);
-    
-    .form-container {
-        width: 100%;
-        height: 100%;
-        padding-top: 35px;
-        display: inline-block;
-    }
+    // clip-path: polygon(100% 80%, 100% 0%, 0% 0%, 0% 100%);
 }
