@@ -1,0 +1,15 @@
+<div class="container">
+    <h2><%= book.title %></h2>
+    <img src="<%= book.coverImagePath %>" class="img-fluid w-25">
+    <div>Author: <%= book.author.name %></div>
+    <div>Publish Date: <%= book.publishDate.toDateString() %></div>
+    <div>Page Count: <%= book.pageCount %></div>
+    <div>Description: <%= book.description %></div>
+    <div>ISBN(13): <%= book.isbn %></div>
+    
+    <div class="d-flex">
+        <a href="/books/<%= book.id %>/edit" class="btn btn-sm btn-success mx-3"><i class="fa-solid fa-pen-to-square"></i></a>
+        <%- include('../partials/deleteForm', { url: `/books/${book.id}` }) %>
+        <a href="/authors/<%= book.author.id %>" class="btn btn-primary">View Author</a>
+    </div>
+</div>
