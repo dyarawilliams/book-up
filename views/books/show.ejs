@@ -1,15 +1,19 @@
-<div class="container">
+<div id="bookView" class="container pt-3">
     <h2><%= book.title %></h2>
-    <img src="<%= book.coverImagePath %>" class="img-fluid w-25">
-    <div>Author: <%= book.author.name %></div>
-    <div>Publish Date: <%= book.publishDate.toDateString() %></div>
-    <div>Page Count: <%= book.pageCount %></div>
-    <div>Description: <%= book.description %></div>
-    <div>ISBN(13): <%= book.isbn %></div>
-    
-    <div class="d-flex">
-        <a href="/books/<%= book.id %>/edit" class="btn btn-sm btn-success mx-3"><i class="fa-solid fa-pen-to-square"></i></a>
-        <%- include('../partials/deleteForm', { url: `/books/${book.id}` }) %>
-        <a href="/authors/<%= book.author.id %>" class="btn btn-primary">View Author</a>
+    <div class="book-content pt-3 d-flex">
+        <img src="<%= book.coverImagePath %>" class="img-fluid w-25">
+        <div class="px-4">
+            <p>Author: <%= book.author.name %></p>
+            <p>Publish Date: <%= book.publishDate.toDateString() %></p>
+            <p>Page Count: <%= book.pageCount %></p>
+            <p>Description: <%= book.description %></p>
+            <p>ISBN(13): <%= book.isbn %></p>
+            
+            <div class="d-flex">
+                <a href="/books/<%= book.id %>/edit" class="btn btn-sm btn-success mx-3"><i class="fa-solid fa-pen-to-square"></i></a>
+                <%- include('../partials/deleteForm', { url: `/books/${book.id}` }) %>
+                <a href="/authors/<%= book.author.id %>" class="btn btn-primary">View Author</a>
+            </div>
+        </div>
     </div>
 </div>

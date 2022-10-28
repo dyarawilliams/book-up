@@ -7,7 +7,7 @@ const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 // @desc All Books
 // @route GET /books/
 router.get('/', async (req, res) => {
-    let query = Book.find()
+    let query = Book.find().populate('author')
     if (req.query.title != null && req.query.title != '') {
         query = query.regex('title', new RegExp(req.query.title, 'i'))
     }

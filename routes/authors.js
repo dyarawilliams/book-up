@@ -19,7 +19,6 @@ router.get('/', async (req, res) => {
             isAuth: req.isAuthenticated(),
             authors: authors,
             searchOptions: req.query,
-            isAuth: req.isAuthenticated()
         })
     } catch (err) {
         res.redirect('/')
@@ -33,9 +32,9 @@ router.get('/new', ensureAuth, (req, res) => {
     res.render('authors/new', { 
         title: 'Add New Author',
         layout: 'layouts/dashboard',
+        user: req.user,
         isAuth: req.isAuthenticated(),
         author: new Author(),
-        isAuth: req.isAuthenticated() 
     })
 })
 
@@ -68,7 +67,6 @@ router.get('/:id', async (req, res) => {
             isAuth: req.isAuthenticated(),
             author: author,
             booksByAuthor: books,
-            isAuth: req.isAuthenticated()
         })
     } catch (err) {
         console.log(err)

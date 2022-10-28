@@ -1,4 +1,16 @@
-<div id="books" class="container pb-3">
+<% function truncate(str, len) { 
+    if (str.length> len && str.length > 0) {
+        let new_str = str + ' '
+        new_str = str.substr(0, len)
+        new_str = str.substr(0, new_str.lastIndexOf(' '))
+        new_str = new_str.length > 0 ? new_str : str.substr(0, len)
+        return new_str + '...'
+    }
+        return str
+    }
+%>
+
+<div id="books" class="container pt-3 pb-3">
     <div class="card mb-4">
         <div class="card-header border-light">
             <h2>Search Book</h2>
@@ -32,7 +44,7 @@
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
         <!-- START OF BOOK ITEMS  -->
-        <% books.forEach(book=> { %>
+        <% books.forEach(book => { %>
             <div class="col">
                 <div class="card">
                     <div class="row">
@@ -42,9 +54,9 @@
                             </a>
                         </div>
                         <div class="col p-2">
-                            <p class="text-center fw-bold">
-                                <%= book.title %>
-                            </p>
+                            <p class="fw-bold"><%= truncate(book.title, 50) %></p>
+                            <p>By: <%= book.author.name %></p>
+                            <p><%= truncate(book.description, 100) %></p>
                             <p class="d-block mt-2"><span class="fw-bold">ISBN13:</span>
                                 <%= book.isbn %>
                             </p>
@@ -52,6 +64,6 @@
                     </div>
                 </div>
             </div>
-            <% }) %>
-                <!-- END OF BOOK ITEMS  -->
+        <% }) %>
+        <!-- END OF BOOK ITEMS  -->
     </div>

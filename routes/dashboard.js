@@ -162,6 +162,17 @@ router.delete('/books/:id', async (req, res) => {
     }
 })
 
+// @desc New Book 
+// @route GET /dashboard/authors/new
+router.get('/authors/new', ensureAuth, (req, res) => {
+    res.render('authors/new', { 
+        title: 'Add New Author',
+        layout: 'layouts/dashboard',
+        isAuth: req.isAuthenticated(),
+        author: new Author()
+    })
+})
+
 async function renderNewPage(req, res, book, hasError = false){
     renderFormPage(req, res, book, 'new', hasError)
 }
