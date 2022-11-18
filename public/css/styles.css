@@ -10769,11 +10769,10 @@ textarea.form-control-lg {
 *, *::before, *::after {
   margin: 0;
   padding: 0;
-  font-family: "Lora", serif;
 }
 
 html {
-  font-family: inherit;
+  font-family: "Lora", serif;
 }
 
 .heading-line::before {
@@ -10823,7 +10822,7 @@ html {
 }
 
 body {
-  background-color: #6c757d;
+  background-color: #0A1929 !important;
 }
 
 .wrapper {
@@ -10848,16 +10847,25 @@ body {
   background: #0A1929;
 }
 
+#books .book-card {
+  min-height: 450px;
+}
 #books .card {
   padding: 1rem;
   background-color: rgba(0, 0, 0, 0.7);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   color: #dee2e6;
-  min-height: 450px;
 }
 #books .card img {
   border-radius: 0.375rem;
+}
+
+#authors {
+  color: #dee2e6 !important;
+}
+#authors .author-card {
+  background-color: rgba(0, 0, 0, 0.7) !important;
 }
 
 .footer {
@@ -11235,15 +11243,24 @@ body {
   background: rgba(0, 0, 0, 0.2);
 }
 
+#dashboard nav {
+  max-width: 234px;
+}
+#dashboard main {
+  background-color: #adb5bd;
+}
 #dashboard .nav-link {
   color: #66B2FF !important;
 }
+#dashboard a:hover {
+  color: #e9ecef !important;
+}
 #dashboard .sidebar-bg {
   background-color: #0A1929;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3) !important;
 }
-#dashboard #dashboard-card {
+#dashboard #dashboard-welcome {
   background-color: #66B2FF !important;
-  background-image: url("../../public/images/teamwork.png");
 }
 
 /*# sourceMappingURL=styles.css.map */

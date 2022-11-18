@@ -3,14 +3,17 @@
 
 #books {
 
+    .book-card {
+        min-height: 450px;
+    }
+
     .card {
         padding: 1rem;
         background-color: rgba(0,0,0, 0.7);
         -webkit-backdrop-filter: blur(10px);
-	    backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
         color: $gray-300;
         // box-shadow: 10px 5px 5px rgba($gray-400, 0.7);
-        min-height: 450px;
 
         img {
             border-radius: 0.375rem;

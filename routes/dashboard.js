@@ -9,13 +9,15 @@ const User = require('../models/user')
 
 // @desc Dashboard
 // @route GET /dashboard
-router.get('/', ensureAuth, (req, res) => {
+router.get('/', ensureAuth, async (req, res) => {
     try {
+        const books = await Book.find().exec()
         res.render('dashboard', { 
             title: 'Dashboard', 
             layout: 'layouts/dashboard', 
             isAuth: req.isAuthenticated(),
-            user: req.user
+            user: req.user,
+            books: books
         })
     } catch (err) {
         console.error(err)
@@ -159,6 +161,25 @@ router.delete('/books/:id', async (req, res) => {
             res.render('/')
         }
 
+    }
+})
+
+// @desc Books Added
+// @route Get /dashboard/books/mybooks
+router.get('/mybooks', async (req, res) => {
+    let query = Book.find()
+
+    try {
+        const books = await query.exec()
+        res.render('books/show-added', {
+            layout: 'layouts/dashboard',
+            title: 'My Books Added',
+            user: req.user,
+            isAuth: req.isAuthenticated(),
+            books: books
+        })
+    } catch (err) {
+        console.error(err)
     }
 })
 

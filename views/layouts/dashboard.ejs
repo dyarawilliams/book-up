@@ -8,12 +8,12 @@
   <!-- CSS Style Sheet -->
   <link rel="stylesheet" href="/css/styles.css">
   <!-- Bootstrap 5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <!-- Font Awesome 6.2.0 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" 
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Filepond Plugins -->
   <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
   <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
     rel="stylesheet" />
@@ -32,10 +32,10 @@
       <nav class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidebar-bg">
         <div
           class="sticky-top d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-          <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <a href="/" class="d-flex align-items-center py-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <span class="fs-5 d-none d-sm-inline">Bookup - Dashboard</span>
           </a>
-          <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start text-white"
+          <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
             id="menu">
             <li class="nav-item">
               <a href="/" class="nav-link align-middle px-0">
@@ -46,7 +46,7 @@
               <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                 <i class="fa-solid fa-chart-line"></i>
                 <span class="ms-1 d-none d-sm-inline">Dashboard</span>
-                <i class="fa-solid fa-chevron-down"></i>
+                <!-- <i class="fa-solid fa-chevron-down"></i> -->
               </a>
               <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                 <li class="w-100">
@@ -69,8 +69,9 @@
             </li> -->
             <li>
               <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Books</span>
-                <i class="fa-solid fa-chevron-down"></i>
+                <i class="fa-solid fa-book"></i>
+                <span class="ms-1 d-none d-sm-inline">Books</span>
+                <!-- <i class="fa-solid fa-chevron-down"></i> -->
               </a>
               <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                 <li class="w-100">
@@ -78,7 +79,7 @@
                       Books</span></a>
                 </li>
                 <li>
-                  <a href="#" class="nav-link px-3"> <span class="d-none d-sm-inline">My Books </span>Added</a>
+                  <a href="/dashboard/mybooks" class="nav-link px-3"> <span class="d-none d-sm-inline">My Books </span>Added</a>
                 </li>
               </ul>
             </li>
@@ -123,30 +124,33 @@
       </nav>
       <main class="col py-3">
         <div class="container-fluid">
-          <div class="row mb-3">
-            <div id="dashboard-card" class="card">
-              <div class="card-body">
-                  <div class="card-title">
-                    <h2>Welcome, <%- user.userName %></h2>
+
+          <%- body %>
+          
+        </div>
+        <footer class="text-center">
+          <!-- START THE COPYRIGHT INFO  -->
+          <div class="footer-bottom pt-5 pb-5">
+            <div class="container">
+              <div class="row text-center text-white">
+                <div class="col-12">
+                  <div class="footer-bottom__copyright">
+                    &copy; 2021-2022 <a href="#">Book Up</a> | Created by <a href="https://dyarawilliams.github.io"
+                      target="_blank">D'yara Williams</a>
                   </div>
-                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi, nemo rerum exercitationem omnis cupiditate dolore?</p>
+                </div>
               </div>
             </div>
           </div>
-          <%- body %>
-        </div>
-        <footer class="text-center">&copy; 2021-2022 Bookup | Created By D'yara Williams</footer>
+        </footer>
       </main>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="/js/fileUpload.js"></script>
   <script src="/js/main.js"></script>
-</body>
 </body>
 
 </html>

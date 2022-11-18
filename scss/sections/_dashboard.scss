@@ -2,16 +2,28 @@
 @use '../components/mixins' as *;
 
 #dashboard {
+
+    nav {
+        max-width: 234px;
+    }
+    
+    main {
+        background-color: $gray-500;
+    }
     .nav-link {
         color: $secondary !important;
     }
 
-    .sidebar-bg {
-        background-color: $primary;
+    a:hover {
+        color: $gray-200 !important;
     }
 
-    #dashboard-card {
+    .sidebar-bg {
+        background-color: $primary;
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.3) !important;
+    }
+
+    #dashboard-welcome {
         background-color: $secondary !important;
-        background-image: url('../../public/images/teamwork.png');
     }
 }

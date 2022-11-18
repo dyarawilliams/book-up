@@ -11,7 +11,7 @@
 %>
 
 <div id="books" class="container pt-3 pb-3">
-    <div class="card mb-4">
+    <div class="books-search-box card mb-4">
         <div class="card-header border-light">
             <h2>Search Book</h2>
         </div>
@@ -19,7 +19,7 @@
             <form action="/books" method="GET">
                 <div class="form-outline">
                     <label class="form-label">Title</label>
-                    <input class="form-control" type="text" name="title" value="<%= searchOptions.title %>">
+                    <input class="form-control" type="text" name="title" value="<%= searchOptions.title %>" placeholder="Enter title of book">
                 </div>
                 <div class="row">
                     <div class="col">
@@ -46,7 +46,7 @@
         <!-- START OF BOOK ITEMS  -->
         <% books.forEach(book => { %>
             <div class="col">
-                <div class="card">
+                <div class="book-card card">
                     <div class="row">
                         <div class="col">
                             <a href="/books/<%= book.id %>" class="d-flex justify-content-center">
@@ -56,11 +56,11 @@
                         <div class="col p-2">
                             <p class="fw-bold"><%= truncate(book.title, 50) %></p>
                             <p>By: <%= book.author.name %></p>
-                            <p><%= truncate(book.description, 100) %></p>
-                            <p class="d-block mt-2"><span class="fw-bold">ISBN13:</span>
-                                <%= book.isbn %>
-                            </p>
                         </div>
+                        <p class="mt-3"><%= truncate(book.description, 180) %></p>
+                        <p class="d-block mt-1"><span class="fw-bold">ISBN13:</span>
+                            <%= book.isbn %>
+                        </p>
                     </div>
                 </div>
             </div>
