@@ -1,8 +1,15 @@
 @use '../custom' as *;
 @use '../components/mixins' as *;
 
-#books {
+#booksHome {
+    .container {
+        background-color: $gray-600;
+        border-radius: 15px;
+    }
+}
 
+
+#books {
     .book-card {
         min-height: 450px;
     }

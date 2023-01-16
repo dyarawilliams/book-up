@@ -35,7 +35,7 @@
 </section> -->
 
 <section id="booksHome" class="books">
-    <div class="container pt-4">
+    <div class="container pt-4 pb-4">
         <header class="row text-center pb-3">
             <h3 class="text-capitalize">Recently Added</h3>
             <div class="heading-line"></div>
@@ -50,12 +50,12 @@
             </div>
         </div> -->
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        <div class="book-container row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
             <!-- START OF BOOK ITEMS  -->
             <% books.forEach(book=> { %>
-                <div class="col text-center">
-                    <a href="/books/<%= book.id %>">
-                        <img src="<%= book.coverImagePath %>" alt="Book Cover" class="img-fluid" width="200">
+                <div class="book-box col text-center mh-100">
+                    <a class="h-100" href="/books/<%= book.id %>">
+                        <img src="<%= book.coverImagePath %>" alt="Book Cover" class="img-fluid h-100" width="200">
                     </a>
                 </div>
             <% }) %>
