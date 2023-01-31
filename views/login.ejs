@@ -11,7 +11,7 @@
                                 <div class="text-center">
                                     <img src="/images/book-icon.png"
                                         style="width: 185px;" alt="logo">
-                                    <h4 class="mt-1 mb-5 pb-1">We are Bookup</h4>
+                                    <h4 class="mt-1 mb-4 pb-1">We are Bookup</h4>
                                 </div>
                                 <% if (locals.messages.errors) { %>
                                     <% messages.errors.forEach( el => { %>
@@ -38,9 +38,14 @@
                                             placeholder="Password" />
                                     </div>
 
-                                    <div class="text-center pt-1 mb-5 pb-1">
-                                            <input type="submit" value="Login" class="btn btn-login btn-primary btn-block fa-lg gradient-custom-2 mb-3">
+                                    <div class="text-center pt-1 mb-5 pb-1 d-flex flex-column justify-content-center align-items-center">
+                                        <input type="submit" value="Login" class="btn btn-login btn-primary btn-block fa-lg gradient-custom-2 mb-3 w-100">
                                         <!-- <a class="text-muted" href="#!">Forgot password?</a> -->
+                                        <span class="py-3">or</span>
+                                        <a href="/auth/google" class="google-login-btn btn">
+                                            <img src="/images/google.png" alt="google icon">
+                                            <span>Sign In with Google</span>
+                                        </a>
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">
