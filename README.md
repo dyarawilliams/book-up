@@ -8,7 +8,7 @@
 <h3 align="center">Book Up</h3>
 
   <p align="center">
-    A simple RESTful API called Book Up that creates an online book directory using Node.js, Express.js, and MongoDB. Book-up allows you to create, and search for a book. If you sign up you can submit a book or author, but if not you will be able to search books listed.
+    A RESTful API known as Book Up that implements an online book directory using Node.js, Express.js, and MongoDB. Book-up allows you to create, and search for a book or author. If you sign up you can submit a book or author, but if not you will be able to search books listed.
     <br />
     <a href="https://github.com/dyarawilliams/book-up"><strong>Explore the docs »</strong></a>
     <br />
