@@ -10810,7 +10810,7 @@ html {
   }
 }
 .navbar {
-  height: 93px;
+  height: 90px;
   background-color: #0A1929;
   font-size: 1rem;
   font-weight: 700;
@@ -10821,8 +10821,17 @@ html {
 .navbar .navbar-toggler {
   background-color: #dee2e6;
 }
-.navbar li {
+.navbar .navbar-collapse {
+  background-color: #0A1929;
+}
+.navbar .navbar-collapse .navbar-nav {
+  border-bottom: #dee2e6;
+}
+.navbar .navbar-collapse .navbar-nav li {
   padding: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 body {
