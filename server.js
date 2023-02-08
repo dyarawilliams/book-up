@@ -44,15 +44,13 @@ app.use(bodyParser.json())
 app.use(methodOverride('_method'))
 
 // Sessions
+
 app.use(session({
         secret: 'keyboard cat',
         resave: false,
         saveUninitialized: true,
         store: MongoStore.create({ mongoUrl: process.env.DB_STRING }),
-        // cookie: { 
-        //     secure: true,
-        //     maxAge: 60000
-        // }
+        // cookie: { secure: true }
     })
 )
 

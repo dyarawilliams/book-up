@@ -2,28 +2,30 @@
 @use '../components/mixins' as *;
 
 #dashboard {
-
+    
     nav {
-        max-width: 234px;
+        max-width: 235px;
+        background-color: $primary;
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.3) !important;
+        
+        .nav-pills {
+            
+            .nav-link {
+                color: $secondary !important;
+            }
+        
+            a:hover {
+                color: $gray-200 !important;
+            }
+        }
     }
     
     main {
         background-color: $gray-500;
-    }
-    .nav-link {
-        color: $secondary !important;
-    }
-
-    a:hover {
-        color: $gray-200 !important;
+        
+        #dashboard-welcome {
+            background-color: $secondary !important;
+        }
     }
 
-    .sidebar-bg {
-        background-color: $primary;
-        box-shadow: 0 .5rem 1rem rgba(0,0,0,.3) !important;
-    }
-
-    #dashboard-welcome {
-        background-color: $secondary !important;
-    }
 }

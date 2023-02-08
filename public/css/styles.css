@@ -10988,29 +10988,6 @@ body {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to right, #0a1929, #0e2339, #122049, #163658);
 }
-#login .google-login-btn {
-  width: 230px;
-  height: 40px;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
-  font-size: 16px;
-  font-weight: 500;
-  margin: 0 0 20px 0;
-  color: #2c444e;
-  cursor: pointer;
-  position: relative;
-}
-#login .google-login-btn img {
-  width: 30px;
-  height: 30px;
-  object-fit: cover;
-}
-#login .google-login-btn span {
-  margin-left: 10px;
-}
 @media (min-width: 768px) {
   #login .gradient-form {
     height: 100vh !important;
@@ -11038,6 +11015,30 @@ body {
   background: -webkit-linear-gradient(to right, #0a1929, #0e2339, #122049, #163658);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to right, #0a1929, #0e2339, #122049, #163658);
+}
+
+.google-login-btn {
+  width: 230px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 20px 0;
+  color: #2c444e;
+  cursor: pointer;
+  position: relative;
+}
+.google-login-btn img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
+.google-login-btn span {
+  margin-left: 10px;
 }
 
 .error-subtitle h4 {
@@ -11285,22 +11286,20 @@ body {
 }
 
 #dashboard nav {
-  max-width: 234px;
+  max-width: 235px;
+  background-color: #0A1929;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3) !important;
+}
+#dashboard nav .nav-pills .nav-link {
+  color: #66B2FF !important;
+}
+#dashboard nav .nav-pills a:hover {
+  color: #e9ecef !important;
 }
 #dashboard main {
   background-color: #adb5bd;
 }
-#dashboard .nav-link {
-  color: #66B2FF !important;
-}
-#dashboard a:hover {
-  color: #e9ecef !important;
-}
-#dashboard .sidebar-bg {
-  background-color: #0A1929;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3) !important;
-}
-#dashboard #dashboard-welcome {
+#dashboard main #dashboard-welcome {
   background-color: #66B2FF !important;
 }
 

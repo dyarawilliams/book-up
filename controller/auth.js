@@ -53,7 +53,7 @@ module.exports = {
             } else {
                 res.send('Logout Successful')
                 req.user = null
-                // res.redirect('/')
+                res.redirect('/')
             }
         })
         res.redirect('/')

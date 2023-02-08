@@ -17,32 +17,6 @@
         background: linear-gradient(to right, #0a1929, #0e2339, #122049, #163658);
     }
 
-    .google-login-btn {
-        width: 230px;
-        height: 40px;
-        border-radius: 5px;
-        border: none;
-        outline: none;
-        background-color: white;
-        box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
-        font-size: 16px;
-        font-weight: 500;
-        margin: 0 0 20px 0;
-        color: #2c444e;
-        cursor: pointer;
-        position: relative;
-
-        img {
-            width: 30px;
-            height: 30px;
-            object-fit: cover;
-        }
-
-        span {
-            margin-left: 10px;
-        }
-    }
-
     @media (min-width: 768px) {
         .gradient-form {
             height: 100vh !important;
@@ -78,5 +52,31 @@
 
         /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         background: linear-gradient(to right, #0a1929, #0e2339, #122049, #163658)
+    }
+}
+
+.google-login-btn {
+    width: 230px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 20px 0;
+    color: #2c444e;
+    cursor: pointer;
+    position: relative;
+
+    img {
+        width: 30px;
+        height: 30px;
+        object-fit: cover;
+    }
+
+    span {
+        margin-left: 10px;
     }
 }
