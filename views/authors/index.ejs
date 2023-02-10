@@ -16,7 +16,7 @@
                         <%= author.name %>
                     </h5>
                 </div>
-                <div class="card-footer d-flex justify-content-between">
+                <div class="card-footer d-flex justify-content-evenly align-items-center">
                     <a href="/authors/<%= author.id %>" class="btn btn-sm btn-dark">View</a>
                     <% if(isAuth) { %>
                         <a href="/authors/<%= author.id %>/edit" class="btn btn-sm btn-success"><i class="fa-solid fa-pen-to-square"></i></a>

@@ -10865,6 +10865,9 @@ body {
   border-radius: 15px;
 }
 
+#books {
+  color: #dee2e6;
+}
 #books .book-card {
   min-height: 450px;
 }
@@ -10873,7 +10876,6 @@ body {
   background-color: rgba(0, 0, 0, 0.7);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  color: #dee2e6;
 }
 #books .card img {
   border-radius: 0.375rem;
@@ -10884,6 +10886,10 @@ body {
 }
 #authors .author-card {
   background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+#author-view {
+  color: #dee2e6;
 }
 
 .footer {
@@ -11285,10 +11291,19 @@ body {
   background: rgba(0, 0, 0, 0.2);
 }
 
+#dashboard {
+  font-size: 1.2rem !important;
+}
 #dashboard nav {
-  max-width: 235px;
+  max-width: 275px;
   background-color: #0A1929;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3) !important;
+}
+#dashboard nav .dashboard-title {
+  font-weight: 700;
+}
+#dashboard nav .nav-pills .nav-item > .nav-link > span {
+  font-weight: 500;
 }
 #dashboard nav .nav-pills .nav-link {
   color: #66B2FF !important;
@@ -11297,7 +11312,7 @@ body {
   color: #e9ecef !important;
 }
 #dashboard main {
-  background-color: #adb5bd;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 #dashboard main #dashboard-welcome {
   background-color: #66B2FF !important;
