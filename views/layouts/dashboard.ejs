@@ -28,34 +28,34 @@
 
 <body>
   <div id="dashboard" class="container-fluid pt-2 px-4">
-    <div class="row flex-nowrap">
-      <nav class="col-auto col-md-3 px-sm-2 px-md-3 px-xl-4 sidebar-bg">
+    <div id="dash-parent" class="row flex-nowrap">
+      <nav class="col-auto col-md-3 px-sm-2 px-md-3 px-xl-4 sidebar-bg w-100">
         <div
-          class="sticky-top d-flex flex-column align-items-center align-items-sm-start px-2 pt-2 text-white min-vh-100">
-          <a href="/" class="d-flex align-items-center py-5 mb-md-0 me-md-auto text-white text-decoration-none">
+          class="sticky-top d-flex flex-column flex-sm-row align-items-sm-center align-items-md-start justify-content-sm-between px-2 pt-2 text-white min-md-vh-100 w-100">
+          <a href="/" class="d-flex align-items-center py-5 mb-md-0 me-md-auto text-white text-decoration-none d-sm-none">
             <span class="dashboard-title fs-5 d-none d-sm-inline">Bookup - Dashboard</span>
           </a>
-          <ul class="nav nav-pills mb-sm-auto mb-0 px-2 align-items-sm-start" id="menu">
+          <ul class="nav nav-pills mb-sm-auto mb-0 px-2 align-items-sm-center justify-content-sm-evenly w-100 h-100" id="menu">
             <li class="nav-item">
-              <a href="/" class="nav-link px-0">
+              <a href="/" class="nav-link px-md-0">
                 <i class="fa-solid fa-house fa-2x"></i> 
-                <span class="ms-2 p d-none d-sm-inline">Home</span>
+                <span class="ms-2 d-xs-none d-sm-inline">Home</span>
               </a>
             </li>
             <li class="nav-item">
               <a href="/dashboard"  class="nav-link px-0 d-inline">
                 <i class="fa-solid fa-chart-line fa-2x"></i>
-                <span class="ms-2 d-none d-sm-inline">Dashboard</span>
-                <a href="#submenu1" data-bs-toggle="collapse">
+                <span class="ms-2 d-xs-none d-sm-inline">Dashboard</span>
+                <!-- <a href="#submenu1" data-bs-toggle="collapse">
                   <i class="fa-solid fa-chevron-down"></i>
-                </a>
+                </a> -->
               </a>
               <ul class="collapse nav flex-column ms-2" id="submenu1" data-bs-parent="#menu">
-                <li class="w-100">
-                  <a href="/dashboard/books/new" class="nav-link px-3"><span class="d-none d-sm-inline">Add</span> New
+                <li class="mav-item">
+                  <a href="/dashboard/books/new" class="nav-link px-3 w-100"><span class="d-none d-sm-inline">Add</span> New
                     Book</a>
                 </li>
-                <li>
+                <li class="nav-item">
                   <a href="/authors/new" class="nav-link px-3"><span class="d-none d-sm-inline">Add</span> New Author
                   </a>
                 </li>
@@ -67,11 +67,11 @@
                 <span class="ms-2 d-none d-sm-inline">Books</span>
               </a>
               <ul class="collapse nav flex-column ms-2" id="submenu2" data-bs-parent="#menu">
-                <li class="w-100">
+                <li class="nav-item w-100">
                   <a href="/dashboard/books" class="nav-link px-3"> <span class="d-none d-sm-inline">All
                       Books</span></a>
                 </li>
-                <li>
+                <li class="nav-item">
                   <a href="/dashboard/mybooks" class="nav-link px-3"> <span class="d-none d-sm-inline">My Books </span>Added</a>
                 </li>
               </ul>
@@ -81,7 +81,7 @@
                 <i class="fa-solid fa-users fa-2x"></i> 
                 <span class="ms-2 d-none d-sm-inline">Authors</span> </a>
               <ul class="collapse nav flex-column ms-2" id="submenu3" data-bs-parent="#menu">
-                <li class="w-100">
+                <li class="nav-item">
                   <a href="/authors" class="nav-link px-0"> 
                   <span class="d-none d-sm-inline">All Authors</span></a>
                 </li>
@@ -113,7 +113,7 @@
           </div>
         </div>
       </nav>
-      <main class="col pt-4">
+      <main class="col-md pt-4">
         <div class="container-fluid pb-4">
   
           <%- body %>
