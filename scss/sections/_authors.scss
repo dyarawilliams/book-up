@@ -2,15 +2,13 @@
 @use '../components/mixins' as *;
 
 #authors {
-    
     color: $gray-300 !important;
 
-
     .author-card {
-        background-color: rgba(0, 0, 0, 0.7) !important;
+        background-color: $black !important;
     }
 }
 
 #author-view {
-    color: $gray-300;
+    color: $gray-300 !important;
 }

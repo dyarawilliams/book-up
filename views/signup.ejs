@@ -7,7 +7,7 @@
                 <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-5">
-                            <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                            <h2 class="text-uppercase text-center mb-3">Create an account</h2>
                             <% if (locals.messages.errors) { %>
                                 <% messages.errors.forEach( el => { %>
                                     <div class="alert alert-danger"><%= el.msg %></div>
@@ -15,22 +15,22 @@
                             <% } %>
                             <form action="/signup" method="POST">
 
-                                <div class="form-outline mb-4">
+                                <div class="form-outline mb-3">
                                     <input type="text" name="userName" id="form3Example1cg" class="form-control form-control-lg" />
                                     <label class="form-label" for="form3Example1cg">User Name</label>
                                 </div>
 
-                                <div class="form-outline mb-4">
+                                <div class="form-outline mb-3">
                                     <input type="email" name="email" id="form3Example3cg" class="form-control form-control-lg" />
                                     <label class="form-label" for="form3Example3cg">Your Email</label>
                                 </div>
 
-                                <div class="form-outline mb-4">
+                                <div class="form-outline mb-3">
                                     <input type="password" name="password" id="form3Example4cg" class="form-control form-control-lg" />
                                     <label class="form-label" for="form3Example4cg">Password</label>
                                 </div>
 
-                                <div class="form-outline mb-4">
+                                <div class="form-outline mb-3">
                                     <input type="password" name="confirmPassword" id="form3Example4cdg" class="form-control form-control-lg" />
                                     <label class="form-label" for="form3Example4cdg">Repeat your password</label>
                                 </div>
@@ -54,7 +54,7 @@
                                         </a>
                                 </div>
 
-                                <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="/login"
+                                <p class="text-center text-muted mt-3 mb-0">Already have an account? <a href="/login"
                                         class="fw-bold text-body"><u>Login</u></a>
                                 </p>
 

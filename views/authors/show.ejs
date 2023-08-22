@@ -1,12 +1,12 @@
-<div class="author-view container">
+<div id="author-view" class="container py-5">
     <h2> <%= author.name %></h2>
-    <div class="d-flex">
+    <div class="d-flex py-3">
         <a href="/authors/<%= author.id %>/edit" class="btn btn-sm btn-success mx-3"><i class="fa-solid fa-pen-to-square"></i></a>
         <%- include('../partials/deleteForm', { url: `/authors/${author.id}` }) %>
     </div>
 
     <% if(booksByAuthor.length > 0) { %>
-        <h2>Books By Author</h2>
+        <h2 class="py-3">Books By Author</h2>
         <div class="row">
             <!-- START OF BOOK ITEMS  -->
             <% booksByAuthor.forEach(book => { %>
