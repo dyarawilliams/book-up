@@ -44,7 +44,6 @@ app.use(bodyParser.json())
 app.use(methodOverride('_method'))
 
 // Sessions
-
 app.use(session({
         secret: 'keyboard cat',
         resave: false,
