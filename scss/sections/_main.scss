@@ -14,13 +14,14 @@ body {
 .hero-section {
     margin: 0;
     padding: 0;
-    width: 100%;
+    max-width: 100vw;
     height: 100vh;
+    position: relative;
 
     .hero-image {
-        width: 100%;
+        max-width: 100vw;
         height: 100%;
-        background: no-repeat center url('https://images.pexels.com/photos/1319855/pexels-photo-1319855.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+        background: center/cover no-repeat url('https://images.pexels.com/photos/1319855/pexels-photo-1319855.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
         -webkit-clip-path: polygon(40% 0, 100% 0%, 100% 100%, 55% 100%);
         clip-path: polygon(40% 0, 100% 0%, 100% 100%, 55% 100%);
     }
