@@ -1,70 +1,48 @@
-<section id="login" class="h-100 gradient-form">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center h-100">
-            <div class="col-xl-10">
-                <div class="card rounded-3 text-black">
-                    <div class="row g-0">
-                        <div class="col-lg-6">
-                            <div class="card-body p-md-5 mx-md-4">
+<section id="login" class="vh-100 d-flex flex-row justify-content-center">
+    <section class="login-form w-50 h-100 p-5 align-self-start">
+        <% if (locals.messages.errors) { %>
+            <% messages.errors.forEach( el => { %>
+                <div class="alert alert-danger"><%= el.msg %></div>
+            <% }) %>    
+        <% } %>
+        <% if (locals.messages.info) { %>
+            <% messages.info.forEach( el => { %>
+                <section class="alert alert-danger"><%= el.msg %></div>
+            <% }) %>    
+        <% } %>
+        <form action="/login" method="POST" class="mt-4">
+            <p class="text-center">Please login to your account</p>
 
-                                <div class="text-center">
-                                    <img src="/images/book-icon.png"
-                                        style="width: 140px;" alt="logo">
-                                    <h4 class="mt-1 mb-3 pb-1">We are Bookup</h4>
-                                </div>
-                                <% if (locals.messages.errors) { %>
-                                    <% messages.errors.forEach( el => { %>
-                                        <div class="alert alert-danger"><%= el.msg %></div>
-                                    <% }) %>    
-                                <% } %>
-                                <% if (locals.messages.info) { %>
-                                    <% messages.info.forEach( el => { %>
-                                        <div class="alert alert-danger"><%= el.msg %></div>
-                                    <% }) %>    
-                                <% } %>
-                                <form action="/login" method="POST">
-                                    <p class="text-center">Please login to your account</p>
-
-                                    <div class="form-outline mb-3">
-                                        <label class="form-label" for="form2Example11">Email</label>
-                                        <input type="email" name="email" id="form2Example11" class="form-control"
-                                            placeholder="Email address" />
-                                    </div>
-
-                                    <div class="form-outline mb-3">
-                                        <label class="form-label" for="form2Example22">Password</label>
-                                        <input type="password" name="password" id="form2Example22" class="form-control" 
-                                            placeholder="Password" />
-                                    </div>
-
-                                    <div class="text-center pt-1 mb-5 pb-1 d-flex flex-column justify-content-center align-items-center">
-                                        <input type="submit" value="Login" class="btn btn-login btn-primary btn-block fa-lg gradient-custom-2 mb-3 w-100">
-                                        <!-- <a class="text-muted" href="#!">Forgot password?</a> -->
-                                        <span class="py-3">or</span>
-                                        <a href="/auth/google" class="google-login-btn btn">
-                                            <img src="/images/google.png" alt="google icon">
-                                            <span>Continue with Google</span>
-                                        </a>
-                                    </div>
-
-                                    <div class="d-flex align-items-center justify-content-center pb-4">
-                                        <p class="mb-0 me-2">Don't have an account?</p>
-                                        <a href="/signup" class="btn btn-outline-primary">Create an Account</a>
-                                    </div>
-
-                                </form>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-                            <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                                <h4 class="mb-4">Find your next favorite book.</h4>
-                                <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="form-outline mb-3">
+                <label class="form-label" for="form2Example11">Email</label>
+                <input type="email" name="email" id="form2Example11" class="form-control"
+                    placeholder="Email address" />
             </div>
+
+            <div class="form-outline mb-3">
+                <label class="form-label" for="form2Example22">Password</label>
+                <input type="password" name="password" id="form2Example22" class="form-control" placeholder="Password" />
+            </div>
+
+            <div class="d-flex flex-column mb-3">
+                <input type="submit" value="Login" class="btn btn-success w-75 mb-3 align-self-center">
+                <!-- <a class="text-muted" href="#!">Forgot password?</a> -->
+                <a href="/auth/google" class="btn-google btn">
+                    <img src="/images/google.png" alt="google icon">
+                    <span>Continue with Google</span>
+                </a>
+            </div>
+
+            <div class="d-flex flex-column">
+                <p class="text-center">Don't have an account?</p>
+                <a href="/signup" class="btn btn-outline-primary w-50 align-self-center">Create an Account</a>
+            </div>
+
+        </form>
+    </section>
+    <section class="login-content w-50 align-self-center">
+        <div class="text-center">
+            <img src="/images/book-icon.png" alt="logo">
         </div>
-    </div>
+    </section>
 </section>

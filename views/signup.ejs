@@ -1,69 +1,40 @@
-<section id="signup" class="vh-100 bg-image"
-    style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
-    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-        <div class="container h-100">
-            
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                    <div class="card" style="border-radius: 15px;">
-                        <div class="card-body p-5">
-                            <h2 class="text-uppercase text-center mb-3">Create an account</h2>
-                            <% if (locals.messages.errors) { %>
-                                <% messages.errors.forEach( el => { %>
-                                    <div class="alert alert-danger"><%= el.msg %></div>
-                                <% }) %>    
-                            <% } %>
-                            <form action="/signup" method="POST">
-
-                                <div class="form-outline mb-3">
-                                    <input type="text" name="userName" id="form3Example1cg" class="form-control form-control-lg" />
-                                    <label class="form-label" for="form3Example1cg">User Name</label>
-                                </div>
-
-                                <div class="form-outline mb-3">
-                                    <input type="email" name="email" id="form3Example3cg" class="form-control form-control-lg" />
-                                    <label class="form-label" for="form3Example3cg">Your Email</label>
-                                </div>
-
-                                <div class="form-outline mb-3">
-                                    <input type="password" name="password" id="form3Example4cg" class="form-control form-control-lg" />
-                                    <label class="form-label" for="form3Example4cg">Password</label>
-                                </div>
-
-                                <div class="form-outline mb-3">
-                                    <input type="password" name="confirmPassword" id="form3Example4cdg" class="form-control form-control-lg" />
-                                    <label class="form-label" for="form3Example4cdg">Repeat your password</label>
-                                </div>
-
-                                <!-- <div class="form-check d-flex justify-content-center mb-5">
-                                    <input class="form-check-input me-2" type="checkbox" value=""
-                                        id="form2Example3cg" />
-                                    <label class="form-check-label" for="form2Example3g">
-                                        I agree all statements in <a href="#!" class="text-body"><u>Terms of
-                                                service</u></a>
-                                    </label>
-                                </div> -->
-
-                                <div class="d-flex justify-content-center flex-column justify-content-center align-items-center">
-                                        <input type="submit" value="Register" class="btn btn-primary btn-block btn-lg gradient-custom-4">
-
-                                        <span class="py-3">or</span>
-                                        <a href="/auth/google" class="google-login-btn btn">
-                                            <img src="/images/google.png" alt="google icon">
-                                            <span>Continue with Google</span>
-                                        </a>
-                                </div>
-
-                                <p class="text-center text-muted mt-3 mb-0">Already have an account? <a href="/login"
-                                        class="fw-bold text-body"><u>Login</u></a>
-                                </p>
-
-                            </form>
-
-                        </div>
-                    </div>
+<section id="signup" class="vh-100">
+    <div class="signup-image"></div>
+    <div class="signup-form">
+        <div class="">
+            <h2 class="text-uppercase text-center mb-3">Create an account</h2>
+            <% if (locals.messages.errors) { %>
+                <% messages.errors.forEach( el => { %>
+                    <p class="alert alert-danger"><%= el.msg %></p>
+                <% }) %>    
+            <% } %>
+            <form action="/signup" method="POST">
+                <div class="form-outline mb-3">
+                    <label class="form-label" for="userName">User Name</label>
+                    <input type="text" name="userName" id="userName" class="form-control" />
                 </div>
-            </div>
+                <div class="form-outline mb-3">
+                    <label class="form-label" for="email">Your Email</label>
+                    <input type="email" name="email" id="email" class="form-control" />
+                </div>
+                <div class="form-outline mb-3">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" name="password" id="password" class="form-control" />
+                </div>
+                <div class="form-outline mb-3">
+                    <label class="form-label" for="confirmPassword">Repeat your password</label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" />
+                </div>
+                <div class="d-flex justify-content-center flex-column justify-content-center">
+                        <input type="submit" value="Register" class="btn btn-success btn-lg">
+                        <a href="/auth/google" class="btn btn-google mt-3">
+                            <img src="/images/google.png" alt="google icon">
+                            <span>Continue with Google</span>
+                        </a>
+                </div>
+                <p class="text-center mt-3 mb-0">Already have an account? <a href="/login" class="fw-bold">Login</a>
+                    </p>
+            </form>
         </div>
     </div>
 </section>
