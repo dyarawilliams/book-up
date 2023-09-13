@@ -4,21 +4,39 @@
 
 body {
     background-color: $primary !important;
+    color: $gray-300 !important;
 }
 
 .wrapper {
     margin-top: 93px;
 }
 
-.bg-image {
+.hero-section {
+    margin: 0;
+    padding: 0;
     width: 100%;
-    height: 100%;
-    background: linear-gradient(163deg, rgba(0,0,0,0.25), rgba(0,0,0,1)), url('https://images.pexels.com/photos/1319855/pexels-photo-1319855.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
+    height: 100vh;
+
+    .hero-image {
+        width: 100%;
+        height: 100%;
+        background: url('https://images.pexels.com/photos/1319855/pexels-photo-1319855.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+        background-repeat: no-repeat;
+        background-position: center;
+        -webkit-clip-path: polygon(40% 0, 100% 0%, 100% 100%, 55% 100%);
+        clip-path: polygon(40% 0, 100% 0%, 100% 100%, 55% 100%);
+        // background-size: cover;
+        // background-attachment: fixed;
+    }
+
+    .hero-content {
+        position: absolute;
+        top: 40%;
+        left: 5%;
+        margin-right: 60%;
+    }
 }
+
 
 .form-section {
     margin: 0 auto;
