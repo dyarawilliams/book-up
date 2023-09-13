@@ -10805,9 +10805,7 @@ body {
 .hero-section .hero-image {
   width: 100%;
   height: 100%;
-  background: url("https://images.pexels.com/photos/1319855/pexels-photo-1319855.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-  background-repeat: no-repeat;
-  background-position: center;
+  background: no-repeat center url("https://images.pexels.com/photos/1319855/pexels-photo-1319855.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   -webkit-clip-path: polygon(40% 0, 100% 0%, 100% 100%, 55% 100%);
   clip-path: polygon(40% 0, 100% 0%, 100% 100%, 55% 100%);
 }
@@ -10818,14 +10816,34 @@ body {
   margin-right: 60%;
 }
 
-.form-section {
-  margin: 0 auto;
-  height: 210px;
-  margin-top: -50px;
-  text-align: center;
-  background: #0A1929;
+@media (min-width: 737px) and (max-width: 911px) {
+  .hero-section .hero-content {
+    top: 30%;
+  }
+  .hero-section .btn-home {
+    flex-direction: column;
+  }
+  .hero-section .btn-home a {
+    margin-bottom: 1rem;
+  }
 }
-
+@media screen and (max-width: 736px) {
+  .hero-section .hero-image {
+    display: none;
+  }
+  .hero-section .hero-content {
+    margin: 0;
+    text-align: center;
+  }
+  .hero-section .hero-content h2 {
+    font-size: 2.5rem;
+  }
+}
+@media screen and (max-width: 425px) {
+  .hero-section .hero-content h2 {
+    font-size: 2rem;
+  }
+}
 #booksHome .container {
   border-radius: 15px;
   color: #dee2e6;
@@ -10859,7 +10877,7 @@ body {
 }
 
 .footer {
-  background-color: #212529;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .contact-box {
@@ -10949,67 +10967,39 @@ body {
   text-decoration: underline;
 }
 
-#login .btn-login {
-  padding: 1.375rem 0.75rem !important;
+#signup .signup-form {
+  position: absolute;
+  top: 15%;
+  left: 60%;
 }
-#login .gradient-custom-2 {
-  /* fallback for old browsers */
-  background: #163658;
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to right, #0a1929, #0e2339, #122049, #163658);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to right, #0a1929, #0e2339, #122049, #163658);
-}
-@media (min-width: 768px) {
-  #login .gradient-form {
-    height: 100vh !important;
-  }
-}
-@media (min-width: 769px) {
-  #login .gradient-custom-2 {
-    border-top-right-radius: 0.3rem;
-    border-bottom-right-radius: 0.3rem;
-  }
+#signup .signup-image {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  background: no-repeat center url("https://images.pexels.com/photos/6549629/pexels-photo-6549629.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  -webkit-clip-path: polygon(0% 0%, 45% 0%, 55% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 45% 0%, 55% 100%, 0% 100%);
 }
 
-#signup .gradient-custom-3 {
-  /* fallback for old browsers */
-  background: #163658;
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to right, #0a1929, #0e2339, #122049, #163658);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to right, #0a1929, #0e2339, #122049, #163658);
+#login .login-form {
+  background-color: rgba(0, 0, 0, 0.7) !important;
 }
-#signup .gradient-custom-4 {
-  /* fallback for old browsers */
-  background: #84fab0;
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to right, #0a1929, #0e2339, #122049, #163658);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to right, #0a1929, #0e2339, #122049, #163658);
+#login .login-content img {
+  margin: 0 auto;
+  max-width: 100%;
+  height: 400px;
 }
 
-.google-login-btn {
-  width: 230px;
-  height: 40px;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
-  font-size: 16px;
-  font-weight: 500;
-  margin: 0 0 20px 0;
-  color: #2c444e;
+.btn-google {
+  background-color: #fff !important;
   cursor: pointer;
-  position: relative;
 }
-.google-login-btn img {
+.btn-google img {
   width: 30px;
   height: 30px;
   object-fit: cover;
 }
-.google-login-btn span {
+.btn-google span {
   margin-left: 10px;
 }
 
