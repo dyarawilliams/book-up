@@ -13,7 +13,7 @@
     <a href="https://github.com/dyarawilliams/book-up"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/dyarawilliams/book-up">View Demo</a>
+    <a href="https://bookup.onrender.com/">View Demo</a>
     ·
     <a href="https://github.com/dyarawilliams/book-up/issues">Report Bug</a>
     ·
