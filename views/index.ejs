@@ -5,46 +5,47 @@
         <input type="submit" value="Search" class="search-btn form-control w-25 mt-3 btn-secondary" />
     </form>
 </section> -->
-
-<section class="hero-section">
-    <div class="hero-image"></div>
-    <div class="hero-content px-3">
-        <h2 class="text-center">Bookup: Your Library in the Clouds</h2>
-        <p>We're redefining the way you experience literature. Say goodbye to shelf space limitations and hello to a limitless literary universe.</p>
-        <p><strong>Join us today</strong> and redefine the way you interact with you favorite book and authors. Your literary journey knows no boundaries when it's in the clouds.</p>
-        <div class="btn-home d-flex justify-content-around">
-            <a href="/signup" class="btn btn-success btn-lg text-white">Get Started</a>
-            <a href="/about" class="btn btn-outline-secondary btn-lg text-white">Learn More</a>
-        </div>
-    </div>
-</section>
-
-<section id="booksHome" class="books">
-    <div class="container pt-4 pb-4">
-        <header class="row text-center">
-            <h3 class="text-capitalize">Recently Added</h3>
-            <div class="heading-line"></div>
-            <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates dolore veritatis omnis quod sunt! Neque!</p> -->
-        </header>
-        <!-- FILTER BUTTONS -->
-        <div class="row text-center mt-2 mb-4 h-3">
-            <div class="col-md-12">
-                <button class="btn btn-outline-primary">All</button>
-                <button class="btn btn-outline-primary">Today</button>
-                <button class="btn btn-outline-primary">Yesterday</button>
+<div class="container">
+    <section class="hero-section">
+        <div class="hero-image"></div>
+        <div class="hero-content px-3">
+            <h2 class="text-center">Bookup: Your Library in the Clouds</h2>
+            <p>We're redefining the way you experience literature. Say goodbye to shelf space limitations and hello to a limitless literary universe.</p>
+            <p><strong>Join us today</strong> and redefine the way you interact with you favorite book and authors. Your literary journey knows no boundaries when it's in the clouds.</p>
+            <div class="btn-home d-flex justify-content-around">
+                <a href="/signup" class="btn btn-success btn-lg text-white">Get Started</a>
+                <a href="/about" class="btn btn-outline-secondary btn-lg text-white">Learn More</a>
             </div>
         </div>
-
-        <div class="book-container row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-            <!-- START OF BOOK ITEMS  -->
-            <% books.forEach(book=> { %>
-                <div class="book-box col text-center mh-100">
-                    <a class="h-100" href="/books/<%= book.id %>">
-                        <img src="<%= book.coverImagePath %>" alt="Book Cover" class="img-fluid h-100" width="200">
-                    </a>
+    </section>
+    
+    <section id="booksHome" class="books">
+        <div class="container pt-4 pb-4">
+            <header class="row text-center">
+                <h3 class="text-capitalize">Recently Added</h3>
+                <div class="heading-line"></div>
+                <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates dolore veritatis omnis quod sunt! Neque!</p> -->
+            </header>
+            <!-- FILTER BUTTONS -->
+            <div class="row text-center mt-2 mb-4 h-3">
+                <div class="col-md-12">
+                    <button class="btn btn-outline-primary">All</button>
+                    <button class="btn btn-outline-primary">Today</button>
+                    <button class="btn btn-outline-primary">Yesterday</button>
                 </div>
-                <% }) %>
-                    <!-- END OF BOOK ITEMS  -->
+            </div>
+    
+            <div class="book-container row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                <!-- START OF BOOK ITEMS  -->
+                <% books.forEach(book=> { %>
+                    <div class="book-box col text-center mh-100">
+                        <a class="h-100" href="/books/<%= book.id %>">
+                            <img src="<%= book.coverImagePath %>" alt="Book Cover" class="img-fluid h-100" width="200">
+                        </a>
+                    </div>
+                    <% }) %>
+                        <!-- END OF BOOK ITEMS  -->
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>

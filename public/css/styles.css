@@ -11280,9 +11280,6 @@ body {
     margin-top: 0;
     flex-direction: column !important;
   }
-  .wrapper * {
-    border: 2px solid red;
-  }
   #dashboard {
     width: 20%;
     height: 100vh;
