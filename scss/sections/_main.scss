@@ -8,15 +8,14 @@ body {
 }
 
 #main-home {
-    margin-top: 100px;
-    width: 100%;
 
     img {
         margin: 0 auto;
         height: 300px;
     }
-
+    
     .about-section {
+        margin-top: 100px;
         display: grid;
         grid-template-columns: 1fr 3fr;
 

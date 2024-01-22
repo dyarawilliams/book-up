@@ -10792,15 +10792,12 @@ body {
   color: #dee2e6 !important;
 }
 
-#main-home {
-  margin-top: 100px;
-  width: 100%;
-}
 #main-home img {
   margin: 0 auto;
   height: 300px;
 }
 #main-home .about-section {
+  margin-top: 100px;
   display: grid;
   grid-template-columns: 1fr 3fr;
 }
