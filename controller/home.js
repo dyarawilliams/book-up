@@ -11,5 +11,12 @@ module.exports = {
             books = []
             console.error(err)
         }
+    },
+    getAbout: async (req, res) => {
+        try {
+            res.render('about', { title: 'Home', isAuth: req.isAuthenticated() })
+        } catch (err) {
+            console.error(err)
+        }
     }
 }

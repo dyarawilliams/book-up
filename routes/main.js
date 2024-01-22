@@ -11,6 +11,10 @@ const authController = require('../controller/auth')
 // @route GET /
 router.get('/', homeController.getIndex)
 
+// @desc About Page
+// @route GET /about
+router.get('/about', homeController.getAbout)
+
 // @desc Login/Sign Up Page
 // @route GET /login
 router.get('/login', authController.getLogin)
