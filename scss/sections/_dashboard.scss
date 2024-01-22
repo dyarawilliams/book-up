@@ -1,71 +1,78 @@
 @use '../custom' as *;
 @use '../components/mixins' as *;
 
-#dashboard {
-    /* Basic styling for the header */
-    header {
-        color: $gray-300;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        
-        .logo img {
-             width: 40px;
-             height: 40px;
-             margin-right: 10px;
-         }
-    }
+.wrapper {
+    display: flex;
+}
+
+@media (min-width: 993px){
+    .wrapper {
+        margin-top: 0;
+        flex-direction: column !important;
     
-    
-    nav ul {
-        list-style: none;
-        
-        li {
-            display: inline;
-            margin-right: 20px;
+        * {
+            // border: 2px solid red;
         }
     }
-    
-    
-    nav a {
-        text-decoration: none;
-        color: $gray-300;
-        font-weight: bold;
-    }
-    
-    /* Sidebar styles */
-    aside {
+
+    #dashboard {
+        width: 20%;
+        height: 100vh;
+        margin: 0 !important;
+        padding: 0;
         background-color: $black;
         color: $gray-300;
-        width: 200px;
-        padding: 20px;
         
-        ul {
-            list-style: none;
-            
-            li {
-                margin-bottom: 10px;
+        .nav {
+            height: 100vh;
+
+            .navbar {
+                width: 100%;
+                height: 100vh;
+                flex-direction: column;
+                justify-content: flex-start;
+                background-color: $black !important;
+
+                * {
+                    border: 1px solid yellow;
+                }
+
+                .navbar-brand, .navbar-list, .navbar-profile {
+                    width: 100%;
+                    max-height: 100%;
+                }
+
+                .navbar-brand {
+                    
+                }
+    
+                .navbar-list {
+                    height: 50%;
+                }
+    
+                .navbar-profile {
+                    height: 100px;
+                    
+                    .profile {
+                        background-color: $white;
+                    }
+                }
             }
         }
-        
-        a {
-            text-decoration: none;
-            color: $gray-300;
-            font-weight: bold;
-        }
     }
-    
-    
-    /* Main content area styles */
-    main {
-        padding: 20px;
+
+    #dashboard-main {
+        padding: 1.5rem;
+        width: 100%;
     }
-    
-    /* Footer styles */
-    footer {
-        color: $gray-300;
-        text-align: center;
-        padding: 10px 0;
+}
+
+@media screen and (max-width: 992px){
+    .wrapper {
+        flex-direction: column !important;
+    }
+
+    #dashboard {
+        visibility: hidden;
     }
 }

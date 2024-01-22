@@ -60,10 +60,12 @@ app.use(passport.session())
 app.use(flash())
 
 app.use('/', mainRouter)
+
 app.use('/authors', authorRouter)
 app.use('/books', bookRouter)
-app.use('/auth', authRouter)
 app.use('/dashboard', dashboardRouter)
+
+app.use('/auth', authRouter)
 
 app.use((req, res) => {
     res.status(404).render('error/404', {
