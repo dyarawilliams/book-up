@@ -10794,6 +10794,7 @@ body {
 
 #main-home {
   margin-top: 100px;
+  margin-bottom: 1rem;
 }
 #main-home .about-section {
   margin-top: 100px;
@@ -11018,9 +11019,6 @@ body {
   clip-path: polygon(0% 0%, 45% 0%, 55% 100%, 0% 100%);
 }
 
-#login {
-  margin-top: 100px;
-}
 #login .login-form {
   background-color: rgba(0, 0, 0, 0.7) !important;
 }
