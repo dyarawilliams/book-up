@@ -10793,7 +10793,7 @@ body {
 }
 
 #main-home {
-  width: 100%;
+  margin-top: 100px;
 }
 #main-home .about-section {
   margin-top: 100px;
@@ -10820,7 +10820,6 @@ body {
 }
 
 .hero-section {
-  margin-top: 93px;
   padding: 0;
   max-width: 100vw;
   height: 90vh;
@@ -11019,13 +11018,11 @@ body {
   clip-path: polygon(0% 0%, 45% 0%, 55% 100%, 0% 100%);
 }
 
+#login {
+  margin-top: 100px;
+}
 #login .login-form {
   background-color: rgba(0, 0, 0, 0.7) !important;
-}
-#login .login-content img {
-  margin: 0 auto;
-  max-width: 100%;
-  height: 400px;
 }
 
 .btn-google {
@@ -11041,6 +11038,14 @@ body {
   margin-left: 10px;
 }
 
+@media screen and (max-width: 767px) {
+  #signup .signup-form {
+    left: 20%;
+  }
+  #signup .signup-image {
+    display: none !important;
+  }
+}
 .error-subtitle h4 {
   color: #253858;
   margin-bottom: 0.8rem;
