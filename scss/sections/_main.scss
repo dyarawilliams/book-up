@@ -8,16 +8,17 @@ body {
 }
 
 #main-home {
-
-    img {
-        margin: 0 auto;
-        height: 300px;
-    }
+    width: 100%;
     
     .about-section {
         margin-top: 100px;
         display: grid;
         grid-template-columns: 1fr 3fr;
+
+        img {
+            margin: 0 auto;
+            height: 300px;
+        }
 
         header {
             padding: 1.5rem 0 0 0;
@@ -43,7 +44,7 @@ body {
     margin-top: 93px;
     padding: 0;
     max-width: 100vw;
-    height: 100vh;
+    height: 90vh;
     position: relative;
 
     .hero-image {
@@ -81,6 +82,24 @@ body {
 
             a {
                 margin-bottom: 1rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px){
+    .about-section {
+        grid-template-columns: 1fr !important;
+
+        header {
+            padding: 1rem;
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            p {
+                font-size: 1rem;
             }
         }
     }
