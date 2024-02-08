@@ -3,6 +3,7 @@ const router = express.Router()
 const Book = require('../models/book')
 const Author = require('../models/author')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
+const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 // @desc All Books
 // @route GET /books/
@@ -77,18 +78,19 @@ router.get('/:id', async (req, res) => {
 
 // @desc Edit Book 
 // @route GET /books/:id/edit
-router.get('/:id/edit', async (req, res) => {
+router.get('/:id/edit', ensureAuth, async (req, res) => {
     try {
         const book = await Book.findById(req.params.id)
         renderEditPage(res, book)
     } catch (error) {
+        console.log(error)
         res.redirect('/')
     }
 })
 
 // @desc Update Book 
 // @route PUT /books/:id 
-router.put('/:id', async (req, res) => {
+router.put('/:id', ensureAuth, async (req, res) => {
     let book 
     try {
         book = await Book.findById(req.params.id)
@@ -116,7 +118,7 @@ router.put('/:id', async (req, res) => {
 
 // @desc Delete Book 
 // @route GET /books/:id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', ensureAuth, async (req, res) => {
     let book 
     try {
         book = await Book.findById(req.params.id)
