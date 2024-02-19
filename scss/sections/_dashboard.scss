@@ -54,7 +54,7 @@
     }
     
     .sidebar-logo a {
-        color: #FFF;
+        color: $white;
         font-size: 1.15rem;
         font-weight: 600;
     }
@@ -71,7 +71,7 @@
     
     a.sidebar-link {
         padding: .625rem 1.625rem;
-        color: #FFF;
+        color: $white;
         display: block;
         font-size: 0.9rem;
         white-space: nowrap;
