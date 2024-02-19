@@ -2,133 +2,40 @@
 @use "../components/mixins" as *;
 @use "../components/animations" as *;
 
-body {
-    background-color: $primary !important;
-    color: $gray-300 !important;
-}
-
 #main-home {
-    margin-top: 100px;
-    margin-bottom: 1rem;
+    padding-top: 120px;
+    background-color: $primary;
+    color: $gray-300;
     
-    .about-section {
-        margin-top: 100px;
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-
-        img {
-            margin: 0 auto;
-            height: 300px;
-        }
-
-        header {
-            padding: 1.5rem 0 0 0;
-            
-            h1 {
-                font-size: 3rem;
-            }
-            
-            hr {
-                color: $white;
-            }
-            
-            p {
-                font-size: 1.5rem;
-                font-style: italic;
-                font-weight: 300;
-            }
-        }
-    }
-}
-
-.hero-section {
-    padding: 0;
-    max-width: 100vw;
-    height: 90vh;
-    position: relative;
-
-    .hero-image {
+    .hero-section {
         max-width: 100vw;
-        height: 100%;
-        background: center/cover no-repeat url('https://images.pexels.com/photos/1319855/pexels-photo-1319855.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-        -webkit-clip-path: polygon(40% 0, 100% 0%, 100% 100%, 55% 100%);
-        clip-path: polygon(40% 0, 100% 0%, 100% 100%, 55% 100%);
-    }
-
-    .hero-content {
-        position: absolute;
-        top: 20%;
-        left: 5%;
-        margin-right: 60%;
-    }
-}
-
-// .form-section {
-//     margin: 0 auto;
-//     height: 210px;
-//     margin-top: -50px;
-//     text-align: center;
-//     background: $primary;
-//     clip-path: polygon(100% 80%, 100% 0%, 0% 0%, 0% 100%);
-// }
-
-@media (min-width: 737px) and (max-width: 911px) {
-    .hero-section {
-        .hero-content {
-            top: 30%;
-        }
-        .btn-home {
-            flex-direction: column;
-
-            a {
-                margin-bottom: 1rem;
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 767px){
-    .about-section {
-        grid-template-columns: 1fr !important;
-
-        header {
-            padding: 1rem;
-            
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            p {
-                font-size: 1rem;
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 736px){
-    .hero-section {
+        height: 100vh;
+        position: relative;
+    
         .hero-image {
-        display: none;
+            max-width: 100vw;
+            height: 50%;
+            background: center/cover no-repeat url('https://images.pexels.com/photos/1319855/pexels-photo-1319855.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
         }
-
+    
         .hero-content {
-            margin: 0;
-            text-align: center;
+            padding: 2rem 6rem;
 
             h2 {
-                font-size: 2.5rem;
+                font-size: 2.7rem;
             }
         }
+
     }
-}
 
-@media screen and (max-width: 425px){
-    .hero-section {
-        .hero-content { 
+    #about {
+        
+        h1 {
+            font-size: 3.3rem;
+        }
 
-            h2 {
-                font-size: 2rem;
-            }
+        header + section > section {
+            padding: 0 1.5rem;
         }
     }
 }

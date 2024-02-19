@@ -10,10 +10,14 @@
 
 
 #books {
-    color: $gray-300;
+    
+    .books-search-box {
+        color: $gray-300 !important;
+    }
     
     .book-card {
         min-height: 450px;
+        color: $gray-300;
     }
 
     .card {

@@ -5,7 +5,7 @@ $light-blue: #66B2FF;
 $red: #d0181e;
 
 // WHITE AND GRAY COLORS 
-$white:    #fff;
+$white:    #ffffff;
 $gray-100: #f8f9fa;
 $gray-200: #e9ecef;
 $gray-300: #dee2e6;
@@ -22,7 +22,8 @@ $secondary: $light-blue;
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 *, *::before, *::after {
     margin: 0;
@@ -30,5 +31,5 @@ $secondary: $light-blue;
 }
 
 html {
-    font-family: 'Lora', serif;
+    font-family: "Montserrat", sans-serif;
 }
