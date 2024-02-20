@@ -2,7 +2,7 @@
 @use '../components/mixins' as *;
 
 .footer {
-    background-color: $black;
+    background-color: $black !important;
 }
 
 // STYLE THE CONTACT BOX 

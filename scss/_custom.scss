@@ -15,21 +15,19 @@ $gray-600: #6c757d;
 $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #212529;
-$black: rgba(0,0,0, 0.7);
+$black: rgba(0,0,0, 0.9);
 
 $primary: $dark-blue;
 $secondary: $light-blue;
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
 *, *::before, *::after {
     margin: 0;
     padding: 0;
+    font-family: "Montserrat", sans-serif !important;
 }
 
-html {
-    font-family: "Montserrat", sans-serif;
+body {
+    font-family: inherit;
 }
