@@ -1,8 +1,8 @@
-<div class="container-fluid">
-    <section class="hero-section">
+
+<section class="hero-section container-fluid">
         <div class="hero-image"></div>
-        <div class="hero-content">
-            <h2 class="text-center">Your Library in the Clouds</h2>
+        <div class="hero-content text-center">
+            <h2 class="p-sm-2 p-md-5">Your Library in the Clouds</h2>
             <p>We're redefining the way you experience literature. Say goodbye to shelf space limitations and hello to a limitless literary universe.</p>
             <p><strong>Join us today</strong> and redefine the way you interact with you favorite book and authors. Your literary journey knows no boundaries when it's in the clouds.</p>
             <div class="btn-home d-flex justify-content-around">
@@ -20,20 +20,20 @@
                 <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates dolore veritatis omnis quod sunt! Neque!</p> -->
             </header>
             <!-- FILTER BUTTONS -->
-            <div class="row text-center mt-2 mb-4 h-3">
+            <!-- <div class="row text-center mt-2 mb-4 h-3">
                 <div class="col-md-12">
                     <button class="btn btn-outline-primary">All</button>
                     <button class="btn btn-outline-primary">Today</button>
                     <button class="btn btn-outline-primary">Yesterday</button>
                 </div>
-            </div>
+            </div> -->
     
-            <div class="book-container row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-5">
                 <!-- START OF BOOK ITEMS  -->
                 <% books.forEach(book=> { %>
-                    <div class="book-box col text-center mh-100">
-                        <a class="h-100" href="/books/<%= book.id %>">
-                            <img src="<%= book.coverImagePath %>" alt="Book Cover" class="img-fluid h-100" width="200">
+                    <div class="col text-center">
+                        <a class="h-auto" href="/books/<%= book.id %>">
+                            <img src="<%= book.coverImagePath %>" alt="<%= book.title %> Cover">
                         </a>
                     </div>
                     <% }) %>
@@ -41,4 +41,3 @@
             </div>
         </div>
     </section>
-</div>
