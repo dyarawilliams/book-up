@@ -11900,12 +11900,17 @@ body {
   background-color: #0A1929;
   font-size: 1rem;
   font-weight: 700;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
 }
 .navbar a {
   color: #dee2e6 !important;
 }
-.navbar .navbar-toggler {
-  background-color: #dee2e6;
+.navbar .navbar-dark .navbar-toggler {
+  border: 1px solid rgb(222, 226, 230);
+}
+.navbar .navbar-dark .navbar-toggler-icon {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path stroke="rgba("222, 226, 230, 1") stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/></svg>');
 }
 .navbar .navbar-collapse {
   background-color: #0A1929;
@@ -11938,11 +11943,12 @@ body {
   height: 50%;
   background: center/cover no-repeat url("https://images.pexels.com/photos/1319855/pexels-photo-1319855.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 }
-#main-home .hero-section .hero-content {
-  padding: 2rem 6rem;
-}
 #main-home .hero-section .hero-content h2 {
   font-size: 2.7rem;
+}
+#main-home .hero-section img {
+  width: 100%;
+  height: auto;
 }
 #main-home #about h1 {
   font-size: 3.3rem;
@@ -11954,6 +11960,10 @@ body {
 #booksHome .container {
   border-radius: 15px;
   color: #dee2e6;
+}
+#booksHome img {
+  width: 100%;
+  height: auto;
 }
 
 #books .books-search-box {
