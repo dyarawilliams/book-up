@@ -6,13 +6,19 @@
     background-color: $primary;
     font-size: 1rem;
     font-weight: 700;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
 
     a {
         color: $gray-300 !important;
     }
 
-    .navbar-toggler {
-        background-color: $gray-300;
+    .navbar-dark .navbar-toggler {
+        border: 1px solid rgba(222, 226, 230, 1);
+    }
+
+    .navbar-dark .navbar-toggler-icon {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path stroke="rgba("222, 226, 230, 1") stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/></svg>');
     }
 
     .navbar-collapse {
