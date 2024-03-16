@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "compile:sass": "sass --watch scss:public/css"
+    "compile:sass": "sass --watch --no-source-map scss:public/css"
   },
   "repository": {
     "type": "git",
