@@ -1,43 +1,31 @@
 
-<section class="hero-section container-fluid">
-        <div class="hero-image"></div>
-        <div class="hero-content text-center">
-            <h2 class="p-sm-2 p-md-5">Your Library in the Clouds</h2>
-            <p>We're redefining the way you experience literature. Say goodbye to shelf space limitations and hello to a limitless literary universe.</p>
-            <p><strong>Join us today</strong> and redefine the way you interact with you favorite book and authors. Your literary journey knows no boundaries when it's in the clouds.</p>
-            <div class="btn-home d-flex justify-content-around">
-                <a href="/signup" class="btn btn-success btn-lg text-white">Get Started</a>
-                <a href="/about" class="btn btn-outline-secondary btn-lg text-white">Learn More</a>
-            </div>
-        </div>
+<section class="hero-section container">
+    <div class="hero-image"></div>
+    <section class="hero-content text-center pt-5">
+        <h2>Your Library in the Clouds</h2>
+        <p>We're redefining the way you experience literature. Say goodbye to shelf space limitations and hello to a limitless literary universe. <span>Join us today</span> and redefine the way you interact with you favorite book and authors. Your literary journey knows no boundaries when it's in the clouds.</p>
+        <section class="btn-home d-flex justify-content-evenly">
+            <a href="/signup" class="btn btn-success btn-lg text-white">Get Started</a>
+            <a href="/about" class="btn btn-outline-secondary btn-lg text-white">Learn More</a>
+        </section>
     </section>
+</section>
     
-    <section id="booksHome" class="books">
-        <div class="container pt-4 pb-4">
-            <header class="row text-center">
-                <h3 class="text-capitalize">Recently Added</h3>
-                <div class="heading-line"></div>
-                <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates dolore veritatis omnis quod sunt! Neque!</p> -->
-            </header>
-            <!-- FILTER BUTTONS -->
-            <!-- <div class="row text-center mt-2 mb-4 h-3">
-                <div class="col-md-12">
-                    <button class="btn btn-outline-primary">All</button>
-                    <button class="btn btn-outline-primary">Today</button>
-                    <button class="btn btn-outline-primary">Yesterday</button>
+<section id="booksHome" class="books">
+    <div class="container pt-4 pb-4">
+        <header class="row text-center">
+            <h3 class="text-capitalize">Recently Added</h3>
+            <div class="heading-line"></div>
+        </header>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-5">
+            <% books.forEach(book=> { %>
+                <div class="col text-center">
+                    <a class="h-auto" href="/books/<%= book.id %>">
+                        <img src="<%= book.coverImagePath %>" alt="<%= book.title %> Cover">
+                    </a>
                 </div>
-            </div> -->
-    
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-5">
-                <!-- START OF BOOK ITEMS  -->
-                <% books.forEach(book=> { %>
-                    <div class="col text-center">
-                        <a class="h-auto" href="/books/<%= book.id %>">
-                            <img src="<%= book.coverImagePath %>" alt="<%= book.title %> Cover">
-                        </a>
-                    </div>
-                    <% }) %>
-                        <!-- END OF BOOK ITEMS  -->
-            </div>
+            <% }) %>
         </div>
-    </section>
+    </div>
+</section>
