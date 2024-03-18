@@ -20,7 +20,7 @@ $black: rgba(0,0,0, 0.9);
 $primary: $dark-blue;
 $secondary: $light-blue;
 
-$fa-font-path: "../fontawesome/webfonts/";
+$fa-font-path: "../fontawesome/webfonts";
 @import "../node_modules/@fortawesome/fontawesome-free/scss/functions";
 @import "../node_modules/@fortawesome/fontawesome-free/scss/variables";
 
