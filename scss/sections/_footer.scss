@@ -2,107 +2,52 @@
 @use '../components/mixins' as *;
 
 .footer {
-    background-color: $black !important;
-}
+    background-color: $secondary !important;
 
-// STYLE THE CONTACT BOX 
-.contact-box {
-    position: relative;
+    hr {
+        width: 100%;
+        height: 2px;
 
-    &__icon {
-        width: 2rem;
-        stroke: $secondary;
-        padding-top: 0.5rem;
-
-        @include media-breakpoint-up(sm) {
-            width: 4rem;
-        }
     }
 
-    &__info {
-        padding: 0.4rem;
-        font-weight: 600;
+    .company-list {
+        display: block;
+        list-style-type: none;
 
-        &--title {
-            color: $white;
+
+        li {
+            margin-bottom: 0.5rem;
             text-decoration: none;
-            font-size: 1rem;
-
-            @include media-breakpoint-up(sm) {
-                width: 1.4rem;
-            }
-
-            &:hover {
-                color: $secondary;
-            }
-        }
-
-        &--subtitle {
-            color: $gray-600;
-            text-decoration: none;
-            font-size: 0.8rem;
-
-            @include media-breakpoint-up(sm) {
-                font-size: 1rem;
+    
+            a {
+                color: $gray-300;
+                text-decoration: none;
+    
+                &:hover {
+                    color: $secondary;
+                }
             }
         }
     }
-}
 
-// STYLE SOCIAL MEDIA CONTENT 
-.footer-sm {
+    // Style the copyright content
+    .footer-bottom {
+        background-color: $primary;
 
-    a {
-        color: $white;
-
-        i {
-            font-size: 1rem;
-            margin-left: 1rem;
-
-            @include media-breakpoint-up(sm) {
-                font-size: 1.6rem;
-            }
-        }
-    }
-}
-
-// STYLE THE COMPANY INFO CONTENT 
-.company-list {
-    display: block;
-    list-style-type: none;
-    position: relative;
-
-    li {
-        margin-bottom: 0.5rem;
-        text-decoration: none;
-
-        a {
-            color: $white;
-            text-decoration: none;
-
-            &:hover {
-                color: $secondary;
-            }
-        }
-    }
-}
-
-// Style the copyright content
-.footer-bottom {
-    background-color: $primary;
-
-    &__copyright {
-        color: $gray-600;
-        font-weight: 400;
-
-        a {
+        &__copyright {
             color: $gray-300;
-            text-decoration: none;
+            font-weight: 400;
 
-            &:hover {
-                color: $secondary;
-                text-decoration: underline;
+            a {
+                color: $gray-300;
+                text-decoration: none;
+
+                &:hover {
+                    color: $gray-600;
+                    text-decoration: underline;
+                }
             }
         }
     }
 }
+
