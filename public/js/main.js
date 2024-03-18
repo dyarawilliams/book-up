@@ -1,9 +1,30 @@
-// const myCarouselElement = document.querySelector('#carouselExampleCaptions')
+document.addEventListener('DOMContentLoaded', function() {
 
-// const carousel = new bootstrap.Carousel(myCarouselElement, {
-//     interval: 2000,
-//     wrap: false
-// })
+    // Register plugins 
+    FilePond.registerPlugin(
+        FilePondPluginImagePreview,
+        FilePondPluginImageResize,
+        FilePondPluginFileEncode,
+    );
+
+    console.log('filepond registered')
+
+    FilePond.setOptions({
+        stylePanelAspectRatio: 85 / 100,
+        imageResizeTargetWidth: 100,
+        imageResizeTargetHeight: 150,
+        // imagePreviewHeight: 100,
+    })
+    
+    // Create FilePond object
+    const inputElement = document.querySelector('input[type="file"]');
+    const pond = FilePond.create(inputElement);
+    
+    FilePond.parse(document.body);
+});
+
+
+// Dashboard JS
 
 const hamBurger = document.querySelector(".toggle-btn");
 
