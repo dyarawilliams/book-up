@@ -31,7 +31,6 @@ router.get('/', async (req, res) => {
 router.get('/new', ensureAuth, (req, res) => {
     res.render('authors/new', { 
         title: 'Add New Author',
-        layout: 'layouts/dashboard',
         user: req.user,
         isAuth: req.isAuthenticated(),
         author: new Author(),

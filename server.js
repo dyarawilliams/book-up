@@ -60,7 +60,6 @@ app.use(passport.session())
 app.use(flash())
 
 app.use('/', mainRouter)
-
 app.use('/authors', authorRouter)
 app.use('/books', bookRouter)
 app.use('/dashboard', dashboardRouter)
