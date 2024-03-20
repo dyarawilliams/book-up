@@ -66,7 +66,7 @@ app.use('/dashboard', dashboardRouter)
 
 app.use('/auth', authRouter)
 
-app.use((req, res) => {
+app.use(async (req, res) => {
     res.status(404).render('error/404', {
         title: '404',
         isAuth: req.isAuthenticated()

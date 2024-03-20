@@ -4,7 +4,7 @@ const validator = require('validator')
 const User = require('../models/user')
 
 module.exports = {
-    getLogin: (req, res) => {
+    getLogin: async (req, res) => {
         try {
             if (req.user) {
                 return res.redirect('/dashboard', { isAuth: req.isAuthenticated() })
@@ -14,7 +14,7 @@ module.exports = {
             console.error(err)
         }
     },
-    postLogin: (req, res, next) => {
+    postLogin: async (req, res, next) => {
         try {
             const validationErrors = []
             if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
@@ -26,13 +26,13 @@ module.exports = {
             }
             req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
     
-            passport.authenticate('local', (err, user, info) => {
+            passport.authenticate('local', async (err, user, info) => {
                 if (err) { return next(err) }
                 if (!user) {
                     req.flash('errors', info)
                     return res.redirect('/login')
                 }
-                req.logIn(user, (err) => {
+                req.logIn(user, async (err) => {
                     if (err) { return next(err) }
                     req.flash('success', { msg: 'Success! You are logged in.' })
                     res.redirect(req.session.returnTo || '/dashboard',)
@@ -42,23 +42,28 @@ module.exports = {
             console.error(err)
         }
     },
-    logout: (req, res, next) => {
-        req.logout((err) => {
-            if (err) { return next(err); }
-            console.log('User has logged out.')
-        })
-        req.session.destroy((err) => {
-            if (err) {
-                console.log('Error : Failed to destroy the session during logout.', err)
-            } else {
-                res.send('Logout Successful')
-                req.user = null
-                res.redirect('/')
-            }
-        })
-        res.redirect('/')
+    logout: async (req, res, next) => {
+        try {
+            req.logout((err) => {
+                if (err) { return next(err); }
+                console.log('User has logged out.')
+            })
+            req.session.destory((err) => {
+                if (err) {
+                    console.log('Error : Failed to destroy the session during logout.', err)
+                } else {
+                    res.send('Logout Successful')
+                    req.user = null
+                    res.redirect('/')
+                }
+            })
+            res.redirect('/')
+        } catch (err) {
+            // console.log('Error : Failed to destroy the session during logout.', err)
+            console.error(err);
+        }
     },
-    getSignUp: (req, res) => {
+    getSignUp: async (req, res) => {
         try {
             if (req.user) {
                 return res.redirect('/dashboard', { title: 'Signup', isAuth: req.isAuthenticated() })
@@ -68,7 +73,7 @@ module.exports = {
             console.error(err)
         }
     },
-    postSignUp: (req, res, next) => {
+    postSignUp: async (req, res, next) => {
         try {
             const validationErrors = []
             if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
@@ -87,27 +92,19 @@ module.exports = {
                 password: req.body.password
             })
     
-            User.findOne({
+            const existingUser = await User.findOne({
                 $or: [
                     { email: req.body.email },
                     { userName: req.body.userName }
                 ]
-            }, (err, existingUser) => {
-                if (err) { return next(err) }
-                if (existingUser) {
-                    req.flash('errors', { msg: 'Account with that email address or username already exists.' })
-                    return res.redirect('../signup')
-                }
-                user.save((err) => {
-                    if (err) { return next(err) }
-                    req.logIn(user, (err) => {
-                        if (err) {
-                            return next(err)
-                        }
-                        res.redirect('/dashboard')
-                    })
-                })
-            })
+            });
+            if (existingUser) {
+                req.flash('errors', { msg: 'Account with that email address or username already exists.' });
+                return res.redirect('../signup');
+            }
+            await user.save();
+            await req.logIn(user);
+            res.redirect('/dashboard')
         } catch (err) {
             console.error(err)
         }
