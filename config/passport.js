@@ -4,9 +4,9 @@ const mongoose = require('mongoose')
 const User = require('../models/user')
 
 module.exports = function (passport) {
-    passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
-        User.findOne({ email: email.toLowerCase() }, (err, user) => {
-            if (err) { return done(err) }
+    passport.use(new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
+        try {
+            const user = await User.findOne({ email: email.toLowerCase() });
             if (!user) {
                 return done(null, false, { msg: `Email ${email} not found.` })
             }
@@ -14,13 +14,16 @@ module.exports = function (passport) {
                 return done(null, false, { msg: 'Your account was registered using a sign-in provider. To enable password login, sign in using a provider, and then set a password under your user profile.' })
             }
             user.comparePassword(password, (err, isMatch) => {
-                if (err) { return done(err) }
+                if (err) { return done(err); }
                 if (isMatch) {
-                    return done(null, user)
+                    return done(null, user);
                 }
-                return done(null, false, { msg: 'Invalid email or password.' })
-            })
-        })
+                return done(null, false, { msg: 'Invalid email or password.' });
+            });
+        } catch (err) {
+            return done(err)
+            console.error(err)
+        }
     })),
     passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
@@ -43,11 +46,11 @@ module.exports = function (passport) {
             let user = await User.findOne({ googleId: profile.id })
             if (user) {
                 // If user present in Database
-                done(null, user)
+                done(null, user);
             } else {
                 // If user is not present in database save user to database
-                user = await User.create(newUser)
-                done(null, user)
+                user = await User.create(newUser);
+                done(null, user);
             }
         } catch (err) {
             console.error(err)
@@ -55,14 +58,13 @@ module.exports = function (passport) {
     }))
 
     // Persist user data (after successful authentication) into session
-    passport.serializeUser((user, done) => {
-    done(null, user.id)
+    passport.serializeUser(async (user, done) => {
+        done(null, user.id);
     })
 
     // Retrieve user data from session
-    passport.deserializeUser((id, done) => {
-        User.findById(id, (err, user) => {
-            done(err, user)
-        })
+    passport.deserializeUser(async (id, done) => {
+        const user = User.findById(id);
+        done(null, user);
     })
 }

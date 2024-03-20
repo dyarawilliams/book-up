@@ -151,7 +151,7 @@ router.delete('/books/:id', async (req, res) => {
     let book 
     try {
         book = await Book.findById(req.params.id)
-        await book.remove()
+        await book.deleteOne()
         res.redirect('/dashboard/books')
     } catch (err) {
         console.error(err)
