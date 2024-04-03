@@ -7,27 +7,11 @@ const Book = require('../models/book')
 const Author = require('../models/author')
 const User = require('../models/user')
 
+const dashboardController = require('../controller/dashboard')
+
 // @desc Dashboard
 // @route GET /dashboard
-router.get('/', ensureAuth, async (req, res) => {
-    try {
-        const books = await Book.find().exec();
-        const booksCount = await Book.countDocuments({}).exec()
-        const authorsCount = await Author.countDocuments({}).exec()
-        res.render('dashboard', { 
-            title: 'Dashboard', 
-            layout: 'layouts/dashboard', 
-            isAuth: req.isAuthenticated(),
-            user: req.user,
-            books: books,
-            booksCount: booksCount,
-            authorsCount: authorsCount,
-        })
-    } catch (err) {
-        console.error(err)
-        // res.render('error/500')
-    }
-})
+router.get('/', ensureAuth, dashboardController.getIndex)
 
 // @desc All Books
 // @route GET /dashboard/books/
@@ -187,7 +171,7 @@ router.get('/mybooks', async (req, res) => {
     }
 })
 
-// @desc New Book 
+// @desc New Author
 // @route GET /dashboard/authors/new
 router.get('/authors/new', ensureAuth, (req, res) => {
     res.render('authors/new', { 
