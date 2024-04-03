@@ -1,32 +1,55 @@
 <section class="d-flex justify-content-between w-100">
-    <div class="w-50">
+    <section class="w-50">
         <input type="search" name="search" id="search" placeholder="Search a book">
-    </div>
-    <div>
+    </section>
+    <section>
         <span>Username</span>
         <img src="" alt="Image of user profile">
-    </div>
+    </section>
 </section>
-<section class="mt-3 px-3 border w-75">
-    <div class="pt-3 d-flex justify-content-between align-items-center">
-        <h3>Books for You</h3>
-        <span>View All</span>
-    </div>
-    <div class="book-container d-flex align-items-center">
-        <span class="book-image w-25">Book Image</span>
-        <div class="w-75">
-            <div class="d-flex flex-column">
-                <span class="book-title">Book Title</span>
-                <span class="book-author">Author</span>
-            </div>
-            <div class="d-flex justify-content-evenly">
-                <span class="book-review_count">Review Count</span>
-                <span class="book-rating">Ratings Count</span>
-                <div>
-                    <span>Stars</span>
+<section class="mt-3 d-flex">
+    <section class="px-3 py-3 border w-75">
+        <section class="d-flex justify-content-between align-items-center">
+            <h3>Books for You</h3>
+            <span>View All</span>
+        </section>
+        <section class="book-container d-flex flex-column">
+            <% books.forEach(book => { %>
+            <section class="book-content d-flex py-3">
+                <img src="<%= book.coverImagePath %>" alt="Image of book" class="img-fluid" width="70">
+                <div class="w-75">
+                    <div class="d-flex flex-column">
+                        <span class="book-title"><%= book.title %></span>
+                        <span class="book-author"><%= book.author.name %></span>
+                    </div>
+                    <div class="d-flex justify-content-evenly">
+                        <span class="book-review_count">Review Count</span>
+                        <span class="book-rating">Ratings Count</span>
+                        <div>
+                            <span>Stars</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <a href="/books/<%= book.id %>" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-greater-than"></i>
+                </a>
+            </section>
+            <% }) %>
+            
+        </section>
+    </section>
+    <section class="px-3 py-3 border w-25 text-center">
+        <div>
+            <h4>Total Authors:</h4>
+            <span>
+                <%= booksCount %>
+            </span>
         </div>
-        <i class="fa-solid fa-greater-than"></i>
-    </div>
+        <div>
+            <h4>Total Books:</h4>
+            <span>
+                <%= authorsCount %>
+            </span>
+        </div>
+    </section>
 </section>

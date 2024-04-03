@@ -31,14 +31,12 @@ router.get('/', async (req, res) => {
     } catch {
         res.redirect('/')
     }
-    // res.send('All Book')
 })
 
 // @desc New Book 
 // @route GET /books/new
-router.get('/new', async (req, res) => {
+router.get('/new', (req, res) => {
     renderNewPage(res, new Book())
-    // res.send('New Book')
 })
 
 // @desc Create Book
@@ -61,7 +59,6 @@ router.post('/', async (req, res) => {
     } catch {
         renderNewPage(res, book, true)
     }
-    // res.send('Create Book')
 })
 
 // @desc Show Book 
@@ -151,8 +148,8 @@ async function renderFormPage(res, book, form, hasError = false){
         const params = {
             authors: authors,
             book: book,
-            title: 'Form Page',
-            isAuth: req.isAuthenticated(),
+            title: `${form} book`,
+            isAuth: req.isAuthenticated()
         }
         if(hasError) {
             if(form === 'edit'){
