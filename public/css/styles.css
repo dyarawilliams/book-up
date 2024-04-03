@@ -4,7 +4,7 @@
 }
 
 html {
-  font-family: "Ninito", sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 body {
@@ -8458,7 +8458,7 @@ readers do not read off random characters that represent icons */
   color: #253858;
   margin-bottom: 0.8rem;
   position: relative;
-  font-family: "Ninito", sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 1.5rem;
 }
 
@@ -8471,7 +8471,7 @@ readers do not read off random characters that represent icons */
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   color: rgb(113, 120, 126);
-  font-family: "Ninito", sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 .btn-primary:hover {
@@ -8700,6 +8700,7 @@ readers do not read off random characters that represent icons */
 
 #dashboard {
   display: flex;
+  font-family: "Nunito", sans-serif;
 }
 #dashboard a {
   text-decoration: none;
