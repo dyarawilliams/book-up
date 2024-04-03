@@ -8415,22 +8415,15 @@ readers do not read off random characters that represent icons */
   text-decoration: underline;
 }
 
-#signup .signup-form {
-  position: absolute;
-  top: 15%;
-  left: 60%;
+#signup {
+  width: 100%;
 }
 #signup .signup-image {
-  width: 100%;
-  height: 100%;
-  background-color: #ffffff;
-  background: center/cover no-repeat url("https://images.pexels.com/photos/6549629/pexels-photo-6549629.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-  -webkit-clip-path: polygon(0% 0%, 45% 0%, 55% 100%, 0% 100%);
-  clip-path: polygon(0% 0%, 45% 0%, 55% 100%, 0% 100%);
+  width: 49%;
+  background: center/cover no-repeat url("/images/directory.jpeg");
 }
-
-#login .login-form {
-  background-color: rgba(0, 0, 0, 0.9) !important;
+#signup .signup-form {
+  width: 49%;
 }
 
 .btn-google {
@@ -8447,11 +8440,11 @@ readers do not read off random characters that represent icons */
 }
 
 @media screen and (max-width: 767px) {
-  #signup .signup-form {
-    left: 20%;
-  }
   #signup .signup-image {
     display: none !important;
+  }
+  #signup .signup-form {
+    width: 75%;
   }
 }
 .error-subtitle h4 {
