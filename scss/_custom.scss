@@ -29,5 +29,13 @@ $fa-font-path: "../fontawesome/webfonts";
     padding: 0;
 }
 
+html {
+    font-family: "Ninito", sans-serif;
+}
+
+body {
+    font-family: inherit
+}
+
 @import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
