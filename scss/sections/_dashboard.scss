@@ -2,7 +2,6 @@
 @use '../components/mixins' as *;
 
 #dashboard {
-    display: flex;
     font-family: "Nunito", sans-serif;
 
     a {
@@ -17,12 +16,11 @@
         font-weight: 600;
         font-size: 1.5rem;
     }
-    
 
     .main {
         min-height: 100vh;
         width: 100%;
-        overflow: hidden;
+        overflow: scroll;
         transition: all 0.35s ease-in-out;
         background-color: #fafbfe;
     }

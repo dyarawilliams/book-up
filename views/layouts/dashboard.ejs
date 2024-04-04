@@ -25,14 +25,14 @@
 </head>
 
 <body>
-  <div id="dashboard" class="wrapper">
+  <div id="dashboard" class="wrapper vh-100 d-flex">
     <nav id="sidebar">
       <div class="d-flex">
         <button class="toggle-btn" type="button">
           <img src="https://github.com/dyarawilliams/book-up/blob/main/public/images/book-icon.png?raw=true" alt="Bookup logo" style="width: 40px;">
         </button>
         <div class="sidebar-logo">
-          <a href="#"><h1>Bookup</h1></a>
+          <a href="/"><h1>Bookup</h1></a>
         </div>
       </div>
       <ul class="sidebar-nav">
@@ -43,19 +43,19 @@
           </a>
         </li>
         <li class="sidebar-item">
-          <a href="/authors/new" class="sidebar-link">
+          <a href="/dashboard/authors/new" class="sidebar-link">
             <i class="fa-solid fa-pen-to-square"></i>
             <span>Add Author</span>
           </a>
         </li>
         <li class="sidebar-item">
-          <a href="/books" class="sidebar-link">
+          <a href="/dashboard/books" class="sidebar-link">
             <i class="fa-solid fa-book"></i>
             <span>All Books</span>
           </a>
         </li>
         <li class="sidebar-item">
-          <a href="/books/new" class="sidebar-link">
+          <a href="/dashboard/books/new" class="sidebar-link">
             <i class="fa-solid fa-pen-to-square"></i>
             <span>Add New Book</span>
           </a>
@@ -75,29 +75,6 @@
             </li>
           </ul>
         </li>
-        <!-- <li class="sidebar-item">
-          <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#multi"
-            aria-expanded="false" aria-controls="multi">
-            <i class="lni lni-layout"></i>
-            <span>Multi Level</span>
-          </a>
-          <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-            <li class="sidebar-item">
-              <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#multi-two"
-                aria-expanded="false" aria-controls="multi-two">
-                Two Links
-              </a>
-              <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
-                <li class="sidebar-item">
-                  <a href="#" class="sidebar-link">Link 1</a>
-                </li>
-                <li class="sidebar-item">
-                  <a href="#" class="sidebar-link">Link 2</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li> -->
         <li class="sidebar-item">
           <a href="#" class="sidebar-link">
             <i class="fa-solid fa-bell"></i>

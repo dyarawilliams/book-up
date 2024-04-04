@@ -3,7 +3,7 @@
         <input type="search" name="search" id="search" placeholder="Search a book">
     </section>
     <section>
-        <span>Username</span>
+        <span><%= user.userName %></span>
         <img src="" alt="Image of user profile">
     </section>
 </section>
@@ -16,8 +16,8 @@
         <section class="book-container d-flex flex-column">
             <% books.forEach(book => { %>
             <section class="book-content d-flex py-3">
-                <img src="<%= book.coverImagePath %>" alt="Image of book" class="img-fluid" width="70">
-                <div class="w-75">
+                <img src="<%= book.coverImagePath %>" alt="Image of book" class="img-fluid" width="100">
+                <div class="w-75 px-sm-2 px-md-4">
                     <div class="d-flex flex-column">
                         <span class="book-title"><%= book.title %></span>
                         <span class="book-author"><%= book.author.name %></span>
