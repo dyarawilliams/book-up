@@ -1,5 +1,5 @@
-<section id="login" class="vh-75 d-flex flex-row justify-content-center">
-    <section class="login-form w-50 h-100 p-5 align-self-start">
+<section id="login" class="w-100 h-100 d-flex justify-content-center">
+    <section class="login-form">
         <% if (locals.messages.errors) { %>
             <% messages.errors.forEach( el => { %>
                 <div class="alert alert-danger"><%= el.msg %></div>
