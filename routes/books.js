@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Book = require('../models/book')
 const Author = require('../models/author')
+const User = require('../models/user')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
@@ -28,38 +29,39 @@ router.get('/', async (req, res) => {
             searchOptions: req.query,
             isAuth: req.isAuthenticated()
         })
-    } catch {
+    } catch (err) {
+        console.log(err)
         res.redirect('/')
     }
 })
 
 // @desc New Book 
 // @route GET /books/new
-router.get('/new', (req, res) => {
-    renderNewPage(res, new Book())
-})
+// router.get('/new', async (req, res) => {
+//     renderNewPage(res, new Book())
+// })
 
 // @desc Create Book
 // @route POST /books/
-router.post('/', async (req, res) => {
-    const book = new Book({
-        isbn: req.body.isbn,
-        title: req.body.title,
-        author: req.body.author,
-        publishDate: new Date(req.body.publishDate),
-        pageCount: req.body.pageCount,
-        description: req.body.description
-    })
-    saveCover(book, req.body.cover)
+// router.post('/', async (req, res) => {
+//     const book = new Book({
+//         isbn: req.body.isbn,
+//         title: req.body.title,
+//         author: req.body.author,
+//         publishDate: new Date(req.body.publishDate),
+//         pageCount: req.body.pageCount,
+//         description: req.body.description
+//     })
+//     saveCover(book, req.body.cover)
 
-    try {
-        const newBook = await book.save()
-        // res.redirect(`books/${newBook.id}`)
-        res.redirect('books')
-    } catch {
-        renderNewPage(res, book, true)
-    }
-})
+//     try {
+//         const newBook = await book.save()
+//         // res.redirect(`books/${newBook.id}`)
+//         res.redirect('books')
+//     } catch {
+//         renderNewPage(res, book, true)
+//     }
+// })
 
 // @desc Show Book 
 // @route GET /books/:id
@@ -75,64 +77,64 @@ router.get('/:id', async (req, res) => {
 
 // @desc Edit Book 
 // @route GET /books/:id/edit
-router.get('/:id/edit', ensureAuth, async (req, res) => {
-    try {
-        const book = await Book.findById(req.params.id)
-        renderEditPage(res, book)
-    } catch (error) {
-        console.log(error)
-        res.redirect('/')
-    }
-})
+// router.get('/:id/edit', ensureAuth, async (req, res) => {
+//     try {
+//         const book = await Book.findById(req.params.id)
+//         renderEditPage(res, book)
+//     } catch (error) {
+//         console.log(error)
+//         res.redirect('/')
+//     }
+// })
 
 // @desc Update Book 
 // @route PUT /books/:id 
-router.put('/:id', ensureAuth, async (req, res) => {
-    let book 
-    try {
-        book = await Book.findById(req.params.id)
-        book.title = req.body.title
-        book.author = req.body.author
-        book.isbn = req.body.isbn
-        book.publishDate = new Date(req.body.publishDate)
-        book.pageCount = req.body.pageCount
-        book.description = req.body.description
-        // Checks to see if cover exist and not an empty string
-        if(req.body.cover != null && req.body.cover !== ''){
-            saveCover(book, req.body.cover)
-        }
-        await book.save()
-        res.redirect(`/books/${book.id}`)
-    } catch (err) {
-        console.log(err)
-        if(book != null){
-            renderEditPage(res, book, true)
-        } else {
-            redirect('/')
-        }
-    }
-})
+// router.put('/:id', ensureAuth, async (req, res) => {
+//     let book 
+//     try {
+//         book = await Book.findById(req.params.id)
+//         book.title = req.body.title
+//         book.author = req.body.author
+//         book.isbn = req.body.isbn
+//         book.publishDate = new Date(req.body.publishDate)
+//         book.pageCount = req.body.pageCount
+//         book.description = req.body.description
+//         // Checks to see if cover exist and not an empty string
+//         if(req.body.cover != null && req.body.cover !== ''){
+//             saveCover(book, req.body.cover)
+//         }
+//         await book.save()
+//         res.redirect(`/books/${book.id}`)
+//     } catch (err) {
+//         console.log(err)
+//         if(book != null){
+//             renderEditPage(res, book, true)
+//         } else {
+//             redirect('/')
+//         }
+//     }
+// })
 
 // @desc Delete Book 
 // @route GET /books/:id
-router.delete('/:id', ensureAuth, async (req, res) => {
-    let book 
-    try {
-        book = await Book.findById(req.params.id)
-        await book.deleteOne()
-        res.redirect('/books')
-    } catch (error) {
-        if(book != null){
-            res.render('books/show', {
-                book: book,
-                errorMessage: 'Could not remove book',
-                title: 'Error Page'
-            })
-        } else {
-            res.render('/')
-        }
-    }
-})
+// router.delete('/:id', ensureAuth, async (req, res) => {
+//     let book 
+//     try {
+//         book = await Book.findById(req.params.id)
+//         await book.deleteOne()
+//         res.redirect('/books')
+//     } catch (error) {
+//         if(book != null){
+//             res.render('books/show', {
+//                 book: book,
+//                 errorMessage: 'Could not remove book',
+//                 title: 'Error Page'
+//             })
+//         } else {
+//             res.render('/')
+//         }
+//     }
+// })
 
 async function renderNewPage(res, book, hasError = false){
     renderFormPage(res, book, 'new', hasError)
