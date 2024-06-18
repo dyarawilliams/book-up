@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const { ensureAuth } = require('../middleware/auth')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
+const Book = require('../models/book')
+const Author = require('../models/author')
 
 const dashboardController = require('../controller/dashboard')
 const booksController = require('../controller/books')
@@ -10,10 +12,6 @@ const authorController = require('../controller/author')
 // @desc Dashboard
 // @route GET /dashboard
 router.get('/', ensureAuth, dashboardController.getIndex)
-
-// @desc All Books
-// @route GET /dashboard/books/
-router.get('/books', booksController.getBooks)
 
 // @desc New Book 
 // @route GET /dashboard/books/new
@@ -24,7 +22,7 @@ router.get('/books/new', ensureAuth, async (req, res) => {
 
 // @desc Create Book
 // @route POST /dashboard/books/
-router.post('/books', dashboardController.createBook)
+router.post('/books', booksController.createBook)
 
 // // @desc Show Book 
 // // @route GET /dashboard/books/:id
@@ -44,11 +42,11 @@ router.get('/books/:id/edit', async (req, res) => {
 
 // @desc Update Book 
 // @route PUT /dashboard/books/:id 
-router.put('/books/:id', ensureAuth, dashboardController.updateBook)
+router.put('/books/:id', ensureAuth, booksController.updateBook)
 
 // @desc Delete Book 
 // @route GET /dashboard/books/:id
-router.delete('/books/:id', ensureAuth, dashboardController.deleteBook)
+router.delete('/books/:id', ensureAuth, booksController.deleteBook)
 
 // @desc New Author
 // @route GET /dashboard/authors/new
