@@ -8349,10 +8349,6 @@ readers do not read off random characters that represent icons */
   border-radius: 15px;
   color: #dee2e6;
 }
-#booksHome img {
-  width: 100%;
-  height: auto;
-}
 
 #books .books-search-box {
   color: #dee2e6 !important;

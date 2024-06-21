@@ -12,7 +12,7 @@
 </section>
 
 <section id="booksHome" class="books">
-    <div class="container pt-4 pb-4">
+    <div class="container py-4">
         <header class="row text-center">
             <h3 class="text-capitalize">Recently Added</h3>
             <div class="heading-line"></div>
@@ -22,7 +22,7 @@
             <% books.forEach(book=> { %>
                 <div class="col text-center">
                     <a class="h-auto" href="/books/<%= book.id %>">
-                        <img src="<%= book.coverImagePath %>" alt="<%= book.title %> Cover">
+                        <img src="<%= book.coverImagePath %>" alt="<%= book.title %> Cover" class="img-fluid h-100">
                     </a>
                 </div>
             <% }) %>
