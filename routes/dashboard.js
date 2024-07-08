@@ -3,11 +3,8 @@ const router = express.Router()
 const { ensureAuth } = require('../middleware/auth')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 
-const Book = require('../models/book')
-const Author = require('../models/author')
-const User = require('../models/user')
-
 const dashboardController = require('../controller/dashboard')
+const booksController = require('../controller/books')
 const authorController = require('../controller/author')
 
 // @desc Dashboard
@@ -16,7 +13,7 @@ router.get('/', ensureAuth, dashboardController.getIndex)
 
 // @desc All Books
 // @route GET /dashboard/books/
-router.get('/books', dashboardController.getBooks)
+router.get('/books', booksController.getBooks)
 
 // @desc New Book 
 // @route GET /dashboard/books/new
@@ -29,9 +26,9 @@ router.get('/books/new', ensureAuth, async (req, res) => {
 // @route POST /dashboard/books/
 router.post('/books', dashboardController.createBook)
 
-// @desc Show Book 
-// @route GET /dashboard/books/:id
-router.get('/books/:id', dashboardController.showBook)
+// // @desc Show Book 
+// // @route GET /dashboard/books/:id
+router.get('/books/:id', booksController.showBook)
 
 // @desc Edit Book 
 // @route GET /dashboard/books/:id/edit
@@ -53,28 +50,25 @@ router.put('/books/:id', ensureAuth, dashboardController.updateBook)
 // @route GET /dashboard/books/:id
 router.delete('/books/:id', ensureAuth, dashboardController.deleteBook)
 
-// @desc Books Added
-// @route Get /dashboard/books/mybooks
-// router.get('/mybooks', async (req, res) => {
-//     let query = Book.find()
-
-//     try {
-//         const books = await query.exec()
-//         res.render('books/show-added', {
-//             layout: 'layouts/dashboard',
-//             title: 'My Books Added',
-//             user: req.user,
-//             isAuth: req.isAuthenticated(),
-//             books: books
-//         })
-//     } catch (err) {
-//         console.error(err)
-//     }
-// })
-
 // @desc New Author
 // @route GET /dashboard/authors/new
 router.get('/authors/new', ensureAuth, authorController.newAuthor)
+
+// @desc Create Author
+// @route POST /dashboard/authors/
+router.post('/authors', ensureAuth, authorController.createNewAuthor)
+
+// @desc Edit Author
+// @route GET /dashboard/authors/:id/edit
+router.get('/authors/:id/edit', ensureAuth, authorController.editAuthor)
+
+// @desc Update Author
+// @route PUT /dashboard/authors/:id
+router.put('/authors/:id', ensureAuth, authorController.updateAuthor)
+
+// @desc Delete Author
+// @route DELETE /dashboard/authors/:id/
+router.delete('/authors/:id', ensureAuth, authorController.deleteAuthor)
 
 async function renderNewPage(req, res, book, hasError = false){
     renderFormPage(req, res, book, 'new', hasError)

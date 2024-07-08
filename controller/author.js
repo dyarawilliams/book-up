@@ -1,3 +1,4 @@
+const Book = require('../models/book')
 const Author = require('../models/author')
 const User = require('../models/user')
 
@@ -16,8 +17,8 @@ module.exports = {
                 searchOptions: req.query,
             })
         } catch (err) {
+            console.error(err)
             res.redirect('/')
-            console.log(err)
         }
     },
     newAuthor: (req, res) => {
@@ -35,13 +36,16 @@ module.exports = {
         })
         try {
             const newAuthor = await author.save()
-            res.redirect(`authors/${newAuthor.id}`)
+            // res.redirect(`authors/${newAuthor.id}`)
+            res.redirect('/authors')
         } catch (err) {
             res.render('authors/new', {
+                title: 'Add New Author',
+                layout: 'layouts/dashboard',
                 author: author,
                 errorMessage: 'Error creating Author'
             })
-            console.log(err)
+            // console.error(err)
         }
     },
     showAuthor: async (req, res) => {
@@ -50,6 +54,7 @@ module.exports = {
             const books = await Book.find({ author: author.id }).limit(6).exec()
             res.render('authors/show', {
                 title: `${author.name}`,
+                layout: 'layouts/layout',
                 isAuth: req.isAuthenticated(),
                 author: author,
                 booksByAuthor: books,
@@ -65,6 +70,7 @@ module.exports = {
             const author = await Author.findById(req.params.id)
             res.render('authors/edit', { 
                 title: 'Edit Author',
+                layout: 'layouts/dashboard',
                 author: author,
                 isAuth: req.isAuthenticated()
             })
@@ -86,8 +92,9 @@ module.exports = {
                 res.redirect('/')
             } else {
                 res.render('authors/edit', {
-                author: author,
-                errorMessage: 'Error updating Author'
+                    layout: 'layouts/dashboard',
+                    author: author,
+                    errorMessage: 'Error updating Author'
                 })
             }
         }
