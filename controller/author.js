@@ -45,7 +45,7 @@ module.exports = {
                 author: author,
                 errorMessage: 'Error creating Author'
             })
-            // console.error(err)
+            console.error(err)
         }
     },
     showAuthor: async (req, res) => {
