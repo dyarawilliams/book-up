@@ -6,34 +6,11 @@ const User = require('../models/user')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
+const booksController = require('../controller/books')
+
 // @desc All Books
 // @route GET /books/
-router.get('/', async (req, res) => {
-    let query = Book.find().populate('author')
-    if (req.query.title != null && req.query.title != '') {
-        query = query.regex('title', new RegExp(req.query.title, 'i'))
-    }
-    // Publish Before filter
-    if (req.query.publishedBefore != null && req.query.publishedBefore != '') {
-        query = query .lte('publishDate', req.query.publishedBefore)
-    }
-    // Publish After filter
-    if (req.query.publishedAfter != null && req.query.publishedAfter != '') {
-        query = query .gte('publishDate', req.query.publishedAfter)
-    }
-    try {
-        const books = await query.exec()
-        res.render('books/index', {
-            title: 'All Books',
-            books: books,
-            searchOptions: req.query,
-            isAuth: req.isAuthenticated()
-        })
-    } catch (err) {
-        console.log(err)
-        res.redirect('/')
-    }
-})
+router.get('/', booksController.getBooks)
 
 // @desc New Book 
 // @route GET /books/new

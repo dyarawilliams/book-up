@@ -19,7 +19,7 @@ module.exports = {
         try {
             const books = await query.exec()
             res.render('books/index', {
-                layout: 'layouts/dashboard',
+                // layout: 'layouts/dashboard',
                 title: 'All Books',
                 user: req.user,
                 books: books,
@@ -31,6 +31,72 @@ module.exports = {
             res.redirect('/')
         }
         // res.send('All Book')
+    },
+    createBook: async (req, res) => {
+        const book = new Book({
+            isbn: req.body.isbn,
+            title: req.body.title,
+            author: req.body.author,
+            publishDate: new Date(req.body.publishDate),
+            pageCount: req.body.pageCount,
+            description: req.body.description
+        })
+        saveCover(book, req.body.cover)
+    
+        try {
+            const newBook = await book.save()
+            // res.redirect(`books/${newBook.id}`)
+            res.redirect('/dashboard/books')
+        } catch (err) {
+            console.error(err)
+            renderNewPage(res, book, true)
+        }
+        // res.send('Create Book')
+    },
+    updateBook: async (req, res) => {
+        let book 
+        try {
+            book = await Book.findById(req.params.id)
+            book.title = req.body.title
+            book.author = req.body.author
+            book.isbn = req.body.isbn
+            book.publishDate = new Date(req.body.publishDate)
+            book.pageCount = req.body.pageCount
+            book.description = req.body.description
+            // Checks to see if cover exist and not an empty string
+            if(req.body.cover != null && req.body.cover !== ''){
+                saveCover(book, req.body.cover)
+            }
+            await book.save()
+            res.redirect(`/dashboard/books/${book.id}`)
+        } catch (err) {
+            console.error(err)
+            if(book != null){
+                renderEditPage(res, book, true)
+            } else {
+                redirect('/')
+            }
+        }
+    },
+    deleteBook: async (req, res) => {
+        let book 
+        try {
+            book = await Book.findById(req.params.id)
+            await book.deleteOne()
+            res.redirect('/dashboard/books')
+        } catch (err) {
+            console.error(err)
+            if(book != null){
+                res.render('books/show', {
+                    book: book,
+                    errorMessage: 'Could not remove book',
+                    title: 'Error Page'
+                })
+            } else {
+                res.render('/')
+            }
+    
+        }
     },
     showBook: async (req, res) => {
         try {
