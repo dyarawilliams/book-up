@@ -2,7 +2,7 @@
     <div class="col">
         <div class="form-outline">
             <label class="form-label">Title</label>
-            <input class="form-control" type="text" name="title" value="<%= book.title %>">
+            <input class="form-control" type="text" name="title" value="<%= book.title %>" required>
         </div>
     </div>
     
@@ -24,25 +24,25 @@
 
 <div class="mb-4">
     <label class="form-label">ISBN</label>
-    <input class="form-control" type="text" name="isbn" value="<%= book.isbn %>">
+    <input class="form-control" type="text" name="isbn" value="<%= book.isbn %>" pattern="[0-9]{13}" maxlength="13" required>
 </div>
 
 <div class="mb-4">
     <label class="form-label">Publish Date</label>
     <input class="form-control" type="date" name="publishDate" value="<%= book.publishDate == null ? '' :
-            book.publishDate.toISOString().split('T')[0] %>">
+            book.publishDate.toISOString().split('T')[0] %>" required>
 </div>
 
 <div class="mb-4">
     <label class="form-label">Page Count</label>
-    <input class="form-control" type="number" name="pageCount" min="1" value="<%= book.pageCount %>">
+    <input class="form-control" type="number" name="pageCount" min="1" value="<%= book.pageCount %>" required>
 </div>
 
 <div class="row mb-4">
     <div class="col">
         <div class="form-outline">
             <label class="form-label">Cover</label>
-            <input type="file" name="cover" class="filepond">
+            <input type="file" name="cover" class="filepond" accept=".jpeg, .jpg, .png, .gif">
         </div>
     </div>
     
