@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { ensureAuth } = require('../middleware/auth')
+const { ensureAuth, ensureGuest } = require('../middleware/auth')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 const Book = require('../models/book')
 const Author = require('../models/author')
@@ -22,18 +22,18 @@ router.get('/books/new', ensureAuth, async (req, res) => {
 
 // @desc Create Book
 // @route POST /dashboard/books/
-router.post('/books', booksController.createBook)
+router.post('/books', ensureAuth, booksController.createBook)
 
 // // @desc Show Book 
 // // @route GET /dashboard/books/:id
-router.get('/books/:id', booksController.showBook)
+router.get('/books/:id', ensureAuth, booksController.showBook)
 
 // @desc Edit Book 
 // @route GET /dashboard/books/:id/edit
 router.get('/books/:id/edit', async (req, res) => {
     try {
         const book = await Book.findById(req.params.id)
-        renderEditPage(res, book)
+        renderEditPage(req, res, book)
     } catch (err) {
         console.error(err)
         res.redirect('/')
@@ -47,6 +47,12 @@ router.put('/books/:id', ensureAuth, booksController.updateBook)
 // @desc Delete Book 
 // @route GET /dashboard/books/:id
 router.delete('/books/:id', ensureAuth, booksController.deleteBook)
+
+/* * * * * * * * * * * * * * * *
+*
+* Author Routes in Dashboard
+*
+* * * * * * * * * * * * * * * */
 
 // @desc New Author
 // @route GET /dashboard/authors/new
@@ -68,14 +74,17 @@ router.put('/authors/:id', ensureAuth, authorController.updateAuthor)
 // @route DELETE /dashboard/authors/:id/
 router.delete('/authors/:id', ensureAuth, authorController.deleteAuthor)
 
+// This function is responsible for rendering a page to create a new book.
 async function renderNewPage(req, res, book, hasError = false){
-    renderFormPage(req, res, book, 'new', hasError)
+    await renderFormPage(req, res, book, 'new', hasError)
 }
 
-async function renderEditPage(res, book, hasError = false){
-    renderFormPage(res, book, 'edit', hasError)
+// This function is responsible for rendering a page to edit an existing book.
+async function renderEditPage(req, res, book, hasError = false){
+    await renderFormPage(req, res, book, 'edit', hasError)
 }
 
+// This function is a general-purpose function to render form pages for creating or editing books.
 async function renderFormPage(req, res, book, form, hasError = false){
     try {
         const authors = await Author.find({})
@@ -88,16 +97,12 @@ async function renderFormPage(req, res, book, form, hasError = false){
             isAuth: req.isAuthenticated()
         }
         if(hasError) {
-            if(form === 'edit'){
-                params.errorMessage = 'Error Updating Book'
-            } else {
-                params.errorMessage = 'Error Creating Book'
-            }
+            params.errorMessage = form === 'edit' ? 'Error Updating Book' : 'Error Creating Book';
         }
         res.render(`books/${form}`, params)
     } catch(err) {
         console.error(err)
-        res.redirect('/dashboard')
+        res.redirect('/dashboard/books')
     }
 }
 

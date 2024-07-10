@@ -36,8 +36,8 @@ module.exports = {
         })
         try {
             const newAuthor = await author.save()
-            // res.redirect(`authors/${newAuthor.id}`)
-            res.redirect('/authors')
+            res.redirect(`authors/${newAuthor.id}`)
+            // res.redirect('/authors')
         } catch (err) {
             res.render('authors/new', {
                 title: 'Add New Author',

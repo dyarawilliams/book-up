@@ -19,7 +19,7 @@ module.exports = {
         try {
             const books = await query.exec()
             res.render('books/index', {
-                // layout: 'layouts/dashboard',
+                layout: 'layouts/layout',
                 title: 'All Books',
                 user: req.user,
                 books: books,
@@ -31,6 +31,21 @@ module.exports = {
             res.redirect('/')
         }
         // res.send('All Book')
+    },
+    showBook: async (req, res) => {
+        try {
+            const book = await Book.findById(req.params.id).populate('author')
+            .exec()
+            res.render('books/show', { 
+                title: 'Show Book',  
+                user: req.user, 
+                book: book,
+                isAuth: req.isAuthenticated(), 
+            })
+        } catch (err) {
+            console.error(err)
+            res.redirect('/')
+        }
     },
     createBook: async (req, res) => {
         const book = new Book({
@@ -45,11 +60,11 @@ module.exports = {
     
         try {
             const newBook = await book.save()
-            // res.redirect(`books/${newBook.id}`)
-            res.redirect('/dashboard/books')
+            res.redirect(`books/${newBook.id}`)
+            // res.redirect('books')
         } catch (err) {
             console.error(err)
-            renderNewPage(res, book, true)
+            await renderNewPage(req, res, book, true)
         }
         // res.send('Create Book')
     },
@@ -72,7 +87,7 @@ module.exports = {
         } catch (err) {
             console.error(err)
             if(book != null){
-                renderEditPage(res, book, true)
+                renderEditPage(req, res, book, true)
             } else {
                 redirect('/')
             }
@@ -96,22 +111,6 @@ module.exports = {
                 res.render('/')
             }
     
-        }
-    },
-    showBook: async (req, res) => {
-        try {
-            const book = await Book.findById(req.params.id).populate('author')
-            .exec()
-            res.render('books/show', { 
-                title: 'Show Book', 
-                layout: 'layouts/dashboard', 
-                isAuth: req.isAuthenticated(), 
-                user: req.user, 
-                book: book 
-            })
-        } catch (err) {
-            console.error(err)
-            res.redirect('/')
         }
     }
 }

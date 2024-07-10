@@ -38,7 +38,7 @@ router.get('/logout', authController.logout)
 
 // @desc View Profile
 // @route /profile
-router.get('/profile', ensureAuth, (req, res) => {
+router.get('/profile', ensureAuth, async (req, res) => {
     res.render('profile', {
         title: "Profile", 
         layout: 'layouts/layout',
