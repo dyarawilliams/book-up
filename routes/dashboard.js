@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
-const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 const Book = require('../models/book')
 const Author = require('../models/author')
 
@@ -106,12 +105,4 @@ async function renderFormPage(req, res, book, form, hasError = false){
     }
 }
 
-function saveCover(book, coverEncoded){
-    if (coverEncoded == null || coverEncoded.length < 1) return 
-    const cover = JSON.parse(coverEncoded)
-    if (cover != null && imageMimeTypes.includes(cover.type)){
-        book.coverImage = new Buffer.from(cover.data, 'base64')
-        book.coverImageType = cover.type
-    }
-}
 module.exports = router

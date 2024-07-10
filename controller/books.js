@@ -2,6 +2,8 @@ const Author = require('../models/author')
 const Book = require('../models/book')
 const User = require('../models/user')
 
+const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
+
 module.exports = {
     getBooks: async (req, res) => {
         let query = Book.find()
@@ -112,5 +114,14 @@ module.exports = {
             }
     
         }
+    }
+}
+
+function saveCover(book, coverEncoded){
+    if (coverEncoded == null || coverEncoded.length < 1) return 
+    const cover = JSON.parse(coverEncoded)
+    if (cover != null && imageMimeTypes.includes(cover.type)){
+        book.coverImage = new Buffer.from(cover.data, 'base64')
+        book.coverImageType = cover.type
     }
 }
