@@ -1,55 +1,59 @@
-<section class="d-flex justify-content-between w-100">
-    <section class="w-50">
-        <input type="search" name="search" id="search" placeholder="Search a book">
-    </section>
-    <section>
-        <span><%= user.userName %></span>
-        <img src="" alt="Image of user profile">
-    </section>
+<section class="welcome mt-4">
+    <h2>Welcome, <%= user.userName %></h2>
+    <img src="" alt="Profile picture of user ">
 </section>
-<section class="mt-3 d-flex">
-    <section class="px-3 py-3 border w-75">
-        <section class="d-flex justify-content-between align-items-center">
-            <h3>Books for You</h3>
-            <span>View All</span>
-        </section>
-        <section class="book-container d-flex flex-column">
-            <% books.forEach(book => { %>
-            <section class="book-content d-flex py-3">
-                <img src="<%= book.coverImagePath %>" alt="Image of book" class="img-fluid" width="100">
-                <div class="w-75 px-sm-2 px-md-4">
-                    <div class="d-flex flex-column">
-                        <span class="book-title"><%= book.title %></span>
-                        <span class="book-author"><%= book.author.name %></span>
-                    </div>
-                    <div class="d-flex justify-content-evenly">
-                        <span class="book-review_count">Review Count</span>
-                        <span class="book-rating">Ratings Count</span>
-                        <div>
-                            <span>Stars</span>
-                        </div>
-                    </div>
-                </div>
-                <a href="/books/<%= book.id %>" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-solid fa-greater-than"></i>
-                </a>
-            </section>
-            <% }) %>
-            
-        </section>
-    </section>
-    <section class="px-3 py-3 border w-25 text-center">
-        <div>
-            <h4>Total Authors:</h4>
-            <span>
+
+<section class="search-bar mt-4">
+    <form id="searchForm" class="d-flex">
+        <input type="text" id="searchInput" class="form-control me-2"
+            placeholder="Search by Title, or Author">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</section>
+
+<section class="stats row mt-4">
+    <div class="col-md-4">
+        <div class="stats-card">
+            <div class="icon">📚</div>
+            <h3>
                 <%= booksCount %>
-            </span>
+            </h3>
+            <p>Total Books</p>
         </div>
-        <div>
-            <h4>Total Books:</h4>
-            <span>
+    </div>
+    <div class="col-md-4">
+        <div class="stats-card">
+            <div class="icon">🖋️</div>
+            <h3>
                 <%= authorsCount %>
-            </span>
+            </h3>
+            <p>Total Authors</p>
         </div>
-    </section>
+    </div>
 </section>
+
+<section class="books-grid mt-4 mb-4">
+    <% books.forEach(book=> { %>
+        <div class="book-card">
+            <a href="/books/<%= book.id %>" class="d-flex justify-content-center">
+                <img src="<%= book.coverImagePath %>" alt="Book Cover">
+            </a> 
+            <div class="details">
+                <h5><%= book.title %></h5>
+                <span>by <%= book.author %></span>
+                <!-- <span><b>ISBN13:</b> <% book.isbn %></span> -->
+            </div>
+        </div>
+        <% }) %>
+</section>
+
+<!-- <section class="activity-feed mt-4">
+    <h4>Recent Activities</h4>
+    <ul>
+        <% activities.forEach(activity => { %>
+            <li>
+                <%= activity %>
+            </li>
+        <% }) %>
+    </ul>
+</section> -->

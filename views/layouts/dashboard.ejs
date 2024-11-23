@@ -25,77 +25,11 @@
 </head>
 
 <body>
-  <div id="dashboard" class="wrapper vh-100 d-flex">
-    <nav id="sidebar">
-      <div class="d-flex">
-        <button class="toggle-btn" type="button">
-          <img src="https://github.com/dyarawilliams/book-up/blob/main/public/images/book-icon.png?raw=true" alt="Bookup logo" style="width: 40px;">
-        </button>
-        <div class="sidebar-logo">
-          <a href="/"><h1>Bookup</h1></a>
-        </div>
-      </div>
-      <ul class="sidebar-nav">
-        <li class="sidebar-item">
-          <a href="/authors" class="sidebar-link">
-            <i class="fa-solid fa-list"></i>
-            <span>Authors</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a href="/dashboard/authors/new" class="sidebar-link">
-            <i class="fa-solid fa-pen-to-square"></i>
-            <span>Add Author</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a href="/books" class="sidebar-link">
-            <i class="fa-solid fa-book"></i>
-            <span>All Books</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a href="/dashboard/books/new" class="sidebar-link">
-            <i class="fa-solid fa-pen-to-square"></i>
-            <span>Add New Book</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a href="/settings" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#auth"
-            aria-expanded="false" aria-controls="auth">
-            <i class="fa-solid fa-user-gear"></i>
-            <span>Settings</span>
-          </a>
-          <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-            <li class="sidebar-item">
-              <a href="/profile" class="sidebar-link">Profile</a>
-            </li>
-            <!-- <li class="sidebar-item">
-              <a href="#" class="sidebar-link">???</a>
-            </li> -->
-          </ul>
-        </li>
-        <li class="sidebar-item">
-          <a href="#" class="sidebar-link">
-            <i class="fa-solid fa-bell"></i>
-            <span>Notification</span>
-          </a>
-        </li>
-      </ul>
-      <div class="sidebar-footer">
-        <a href="/logout" class="sidebar-link">
-          <i class="fa-solid fa-arrow-right-from-bracket"></i>
-          <span>Logout</span>
-        </a>
-      </div>
-    </nav>
-    <main id="dashboard-main" class="main p-3">
-      <div>
-        <%- include('../partials/errorMessage') %>
-        <%- body %>
-      </div>
-    </main>
-  </div>
+  <%- include('../partials/header') %>
+  <main class="dashboard container mt-5">
+    <%- body %>
+  </main>
+  <%- include('../partials/footer') %>
 
   <script src="/js/main.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

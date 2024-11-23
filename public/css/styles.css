@@ -8725,108 +8725,39 @@ readers do not read off random characters that represent icons */
   background: rgba(0, 0, 0, 0.2);
 }
 
-#dashboard {
-  font-family: "Nunito", sans-serif;
-}
-#dashboard a {
-  text-decoration: none;
-}
-#dashboard li {
-  list-style: none;
-}
-#dashboard h1 {
-  font-weight: 600;
-  font-size: 1.5rem;
-}
-#dashboard .main {
-  min-height: 100vh;
-  width: 100%;
-  overflow: scroll;
-  transition: all 0.35s ease-in-out;
-  background-color: #fafbfe;
-}
-#dashboard #sidebar {
-  width: 70px;
-  min-width: 70px;
-  z-index: 1000;
-  transition: all 0.25s ease-in-out;
-  background-color: #0e2238;
-  display: flex;
-  flex-direction: column;
-}
-#dashboard #sidebar.expand {
-  width: 260px;
-  min-width: 260px;
-}
-#dashboard .toggle-btn {
-  background-color: transparent;
-  cursor: pointer;
-  border: 0;
+.dashboard .stats-card {
+  border: 1px solid #0A1929;
+  border-radius: 8px;
   padding: 1rem;
+  color: #0A1929;
+  text-align: center;
 }
-#dashboard .sidebar-logo {
-  margin: auto 0;
+.dashboard .stats-card .icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
-#dashboard .sidebar-logo a {
-  color: #ffffff;
-  font-size: 1.15rem;
-  font-weight: 600;
+.dashboard .books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
 }
-#dashboard #sidebar:not(.expand) .sidebar-logo,
-#dashboard #sidebar:not(.expand) a.sidebar-link span {
-  display: none;
+.dashboard .books-grid .book-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
 }
-#dashboard .sidebar-nav {
-  padding: 2rem 0;
-  flex: 1 1 auto;
-}
-#dashboard a.sidebar-link {
-  padding: 0.625rem 1.625rem;
-  color: #ffffff;
-  display: block;
-  font-size: 0.9rem;
-  white-space: nowrap;
-  border-left: 3px solid transparent;
-}
-#dashboard .sidebar-link i {
-  font-size: 1.1rem;
-  margin-right: 0.75rem;
-}
-#dashboard a.sidebar-link:hover {
-  background-color: rgba(255, 255, 255, 0.075);
-  border-left: 3px solid #3b7ddd;
-}
-#dashboard .sidebar-item {
-  position: relative;
-}
-#dashboard #sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
-  position: absolute;
-  top: 0;
-  left: 70px;
-  background-color: #0e2238;
-  padding: 0;
-  min-width: 15rem;
-  display: none;
-}
-#dashboard #sidebar:not(.expand) .sidebar-item:hover .has-dropdown + .sidebar-dropdown {
-  display: block;
-  max-height: 15em;
+.dashboard .books-grid .book-card img {
   width: 100%;
-  opacity: 1;
+  height: auto;
 }
-#dashboard #sidebar.expand .sidebar-link[data-bs-toggle=collapse]::after {
-  border: solid;
-  border-width: 0 0.075rem 0.075rem 0;
-  content: "";
-  display: inline-block;
-  padding: 2px;
-  position: absolute;
-  right: 1.5rem;
-  top: 1.4rem;
-  transform: rotate(-135deg);
-  transition: all 0.2s ease-out;
+.dashboard .books-grid .book-card .details {
+  padding: 0.5rem;
 }
-#dashboard #sidebar.expand .sidebar-link[data-bs-toggle=collapse].collapsed::after {
-  transform: rotate(45deg);
-  transition: all 0.2s ease-out;
+.dashboard .books-grid .book-card .details h5 {
+  margin: 0.5rem 0;
+}
+.dashboard .books-grid .book-card .details p {
+  font-size: 0.9rem;
+  color: gray;
 }
