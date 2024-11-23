@@ -15,6 +15,61 @@
     }
 }
 
+#login {
+    .login-container {
+        section.card {
+            background: $gray-300;
+            border-radius: 12px;
+            border: none;
+            max-width: 360px;
+            width: 90%;
+
+            header h1 {
+                font-size: 1.8rem;
+                font-weight: 600;
+                color: #343a40;
+            }
+
+            label.form-label {
+                font-size: 0.9rem;
+                font-weight: 500;
+                color: #495057;
+            }
+
+            input.form-control {
+                border-radius: 8px;
+                border: 1px solid #ced4da;
+                transition: all 0.3s;
+
+                &:focus {
+                    border-color: #007bff;
+                    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+                }
+            }
+
+            .btn {
+                margin-bottom: 10px;
+                border-radius: 50px;
+                font-size: 1rem;
+                padding: 0.6rem;
+            }
+
+            footer p {
+                font-size: 0.85rem;
+
+                a {
+                    color: #007bff;
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .btn-google {
     background-color: $white !important;
     cursor: pointer;
