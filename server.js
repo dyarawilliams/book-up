@@ -50,7 +50,7 @@ app.use(session({
         saveUninitialized: true,
         store: MongoStore.create({ mongoUrl: process.env.DB_STRING }),
         cookie: { 
-            maxAge: 600000 // 10 minutes in milliseconds
+            maxAge: 1200000 // 20 minutes in milliseconds
         }
     })
 )
