@@ -24,18 +24,15 @@ $fa-font-path: "../fontawesome/webfonts";
 @import "../node_modules/@fortawesome/fontawesome-free/scss/functions";
 @import "../node_modules/@fortawesome/fontawesome-free/scss/variables";
 
+
+@import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+
 *, *::before, *::after {
     margin: 0;
     padding: 0;
 }
 
-html {
-    font-family: "Nunito", sans-serif;
-}
-
 body {
-    font-family: inherit
+    font-family: "Nunito", sans-serif !important;
 }
-
-@import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import "../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
