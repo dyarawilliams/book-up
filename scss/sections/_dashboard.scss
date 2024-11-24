@@ -2,6 +2,7 @@
 @use '../components/mixins' as *;
 
 .dashboard {
+    margin-top: 90px !important;
 
     .stats-card {
         border: 1px solid $primary;
@@ -18,8 +19,8 @@
 
     .books-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
 
         .book-card {
             border: 1px solid #ddd;
@@ -42,6 +43,34 @@
                 p {
                     font-size: 0.9rem;
                     color: gray;
+                }
+            }
+        }
+    }
+
+    .activity-feed {
+        section.card {
+            background: $primary;
+            border-radius: 12px;
+            border: none;
+            color: $gray-300;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                border-bottom: 1px solid #ddd;
+                padding: 10px 0;
+
+                strong {
+                    color: #333;
+                }
+
+                small {
+                    color: #888;
+                    font-size: 0.8rem;
                 }
             }
         }

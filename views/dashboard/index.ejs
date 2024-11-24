@@ -1,6 +1,6 @@
-<section class="welcome mt-4">
+<section class="welcome mt-4 pt-4">
     <h2>Welcome, <%= user.userName %></h2>
-    <img src="" alt="Profile picture of user ">
+    <!-- <img src="" alt="Profile picture of user "> -->
 </section>
 
 <section class="search-bar mt-4">
@@ -32,28 +32,32 @@
     </div>
 </section>
 
-<section class="books-grid mt-4 mb-4">
-    <% books.forEach(book=> { %>
-        <div class="book-card">
-            <a href="/books/<%= book.id %>" class="d-flex justify-content-center">
-                <img src="<%= book.coverImagePath %>" alt="Book Cover">
-            </a> 
-            <div class="details">
-                <h5><%= book.title %></h5>
-                <span>by <%= book.author %></span>
-                <!-- <span><b>ISBN13:</b> <% book.isbn %></span> -->
+<section class="row mt-4">
+    <section class="books-grid mt-4 col-md-8">
+        <% books.forEach(book=> { %>
+            <div class="book-card">
+                <a href="/books/<%= book.id %>" class="d-flex justify-content-center">
+                    <img src="<%= book.coverImagePath %>" alt="Book Cover">
+                </a> 
+                <div class="details">
+                    <h5><%= book.title %></h5>
+                    <span>by <%= book.author %></span>
+                    <!-- <span><b>ISBN13:</b> <% book.isbn %></span> -->
+                </div>
             </div>
-        </div>
-        <% }) %>
-</section>
+            <% }) %>
+    </section>
 
-<!-- <section class="activity-feed mt-4">
-    <h4>Recent Activities</h4>
-    <ul>
-        <% activities.forEach(activity => { %>
-            <li>
-                <%= activity %>
-            </li>
-        <% }) %>
-    </ul>
-</section> -->
+    <section class="activity-feed mt-4 px-4 col-md-4">
+        <section class="card p-4 shadow">
+            <h4 class="text-center">Recent Activities</h4>
+            <ul>
+                <% activities.forEach(activity => { %>
+                    <li>
+                        <%= activity %>
+                    </li>
+                <% }) %>
+            </ul>
+        </section>
+    </section>
+</section>
