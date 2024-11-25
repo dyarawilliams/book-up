@@ -9,6 +9,13 @@ module.exports = {
             const booksCount = await Book.countDocuments({}).exec()
             const authorsCount = await Author.countDocuments({}).exec()
             const user = await User.findOne({})
+
+            const activities = [
+                'Added "New Book 1"',
+                'Updated author details for "Author 2"',
+                'Deleted "Old Book"',
+            ];
+
             res.render('dashboard', { 
                 title: 'Dashboard', 
                 layout: 'layouts/dashboard', 
@@ -17,6 +24,7 @@ module.exports = {
                 books: books,
                 booksCount: booksCount,
                 authorsCount: authorsCount,
+                activities
             })
         } catch (err) {
             console.error(err)
