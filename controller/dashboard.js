@@ -5,7 +5,7 @@ const User = require('../models/user')
 module.exports = {
     getIndex: async (req, res) => {
         try {
-            const books = await Book.find().exec();
+            const books = await Book.find().populate('author');
             const booksCount = await Book.countDocuments({}).exec()
             const authorsCount = await Author.countDocuments({}).exec()
             const user = await User.findOne({})
@@ -28,7 +28,6 @@ module.exports = {
             })
         } catch (err) {
             console.error(err)
-            // res.render('error/500')
         }
     }
 }
