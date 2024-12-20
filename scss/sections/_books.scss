@@ -1,7 +1,7 @@
 @use '../custom' as *;
 @use '../components/mixins' as *;
 
-#booksHome {
+#books-home {
     .container {
         border-radius: 15px;
         color: $gray-300;
@@ -10,6 +10,8 @@
 
 
 #books {
+    padding: 98px 0;
+    
     .books-search-box {
         color: $gray-300 !important;
     }

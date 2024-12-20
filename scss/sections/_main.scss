@@ -3,25 +3,42 @@
 @use "../components/animations" as *;
 
 #main-home {
-    padding: 120px 0;
+    max-width: 100vw;
     background-color: $primary;
     color: $gray-300;
     
     .hero-section {
-        max-width: 100vw;
         height: 100vh;
-        position: relative;
         
-        img {
-            width: 100%;
-            height: 50vh;
+        .hero-content {
+            height: 100vh;
+
+            .hero-img {
+                display: none;
+                width: 100%;
+                height: 100%;
+
+                img {
+                    width: 100%;
+                    height: 100%; 
+                    object-fit: cover;
+                    clip-path: polygon(25% 0%, 100% 0%, 100% 99%, 0% 100%); 
+                }
+            }
+
+            .hero-text {
+                h1 {
+                    font-size: 3.5rem;
+                }
+            }
         }
 
     }
 
     #about {
-        
-        h1 {
+        padding: 98px 0;
+
+        h2 {
             font-size: 3.3rem;
         }
 

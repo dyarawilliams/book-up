@@ -1,19 +1,21 @@
 
-<section class="hero-section container">
-    <div class="container">
-        <img src="/images/library.jpg" alt="A picture of a library">
-        <section class="hero-content text-center pt-5">
-            <h2>Your Library in the Clouds</h2>
-            <p>We're redefining the way you experience literature. Say goodbye to shelf space limitations and hello to a limitless literary universe. <span>Join us today</span> and redefine the way you interact with you favorite book and authors. Your literary journey knows no boundaries when it's in the clouds.</p>
-            <section class="btn-home d-flex justify-content-evenly">
+<section class="hero-section overflow-hidden">
+    <div class="hero-content container d-flex flex-sm-column flex-md-row align-items-center">
+        <section class="hero-img col-md-6 order-md-1 w-100 d-sm-block">
+            <img src="/images/library.jpg" alt="A picture of a library" class="mx-lg-auto img-fluid" width="1920" height="1280" loading="lazy">
+        </section>
+        <section class="hero-text col-md-6 text-center text-lg-start pt-lg-5 mt-xl-4">
+            <h1 class="fw-bold display-3 mb-4">Your Library in the Clouds</h1>
+            <p>We're redefining the way you experience literature. Say goodbye to shelf space limitations and hello to a limitless literary universe. <span>Join us today</span> and redefine the way you interact with you favorite books and authors. Your literary journey knows no boundaries when it's in the clouds.</p>
+            <div class="btn-home d-flex justify-content-evenly">
                 <a href="/signup" class="btn btn-success btn-lg text-white">Get Started</a>
                 <a href="/about" class="btn btn-outline-secondary btn-lg text-white">Learn More</a>
-            </section>
+            </div>
         </section>
     </div>
 </section>
 
-<section id="booksHome" class="books">
+<section id="books-home" class="books py-4">
     <div class="container py-4">
         <header class="row text-center">
             <h3 class="text-capitalize">Recently Added</h3>
@@ -24,7 +26,7 @@
             <% books.forEach(book=> { %>
                 <div class="col text-center">
                     <a class="h-auto" href="/books/<%= book.id %>">
-                        <img src="<%= book.coverImagePath %>" alt="<%= book.title %> Cover" class="img-fluid h-100">
+                        <img src="<%= book.coverImagePath %>" title="<%= book.title %>" alt="<%= book.title %> Cover" class="img-fluid h-100" loading="lazy">
                     </a>
                 </div>
             <% }) %>

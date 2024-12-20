@@ -16,7 +16,7 @@
             <% booksByAuthor.forEach(book => { %>
                 <div class="col-6 col-sm-4">
                     <a href="/books/<%= book.id %>">
-                        <img src="<%= book.coverImagePath %>" alt="Book Cover" class="img-fluid" width="200" />
+                        <img src="<%= book.coverImagePath %>" alt="Book Cover" class="img-fluid" width="200" loading="lazy" />
                     </a>
                 </div>
             <% }) %>
