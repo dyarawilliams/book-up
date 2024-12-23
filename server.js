@@ -10,6 +10,7 @@ const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')//(session)
 const flash = require('express-flash')
+const compression = require('compression')
 
 const connectDB = require('./config/database');
 const mainRouter = require('./routes/main')
@@ -42,6 +43,9 @@ app.set('layout', './layouts/layout');
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
 app.use(bodyParser.json())
 app.use(methodOverride('_method'))
+
+// To compress the response bodies
+app.use(compression())
 
 // Sessions
 app.use(session({

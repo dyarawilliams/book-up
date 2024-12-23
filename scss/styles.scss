@@ -1,17 +1,17 @@
 @use 'custom';
 
 // Import the components
-@use 'components/mixins';
-@use 'components/typography';
-@use 'components/animations';
+// @use 'components/mixins';
+// @use 'components/typography';
+// @use 'components/animations';
 
 // Import the sections
 
 @use 'sections/navbar';
 @use 'sections/main';
+@use 'sections/error';
 @use 'sections/books';
 @use 'sections/authors';
-@use 'sections/footer';
 @use 'sections/login';
-@use 'sections/error';
 @use 'sections/dashboard';
+@use 'sections/footer';

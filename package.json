@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "compile:sass": "sass --watch --no-source-map scss:public/css"
+    "compile:sass": "sass --watch --no-source-map scss:public/css",
+    "build:css": "sass scss:public/css",
+    "postcss": "postcss public/css/styles.css -o public/css/styles.min.css",
+    "build": "npm run build:css && npm run postcss"
   },
   "repository": {
     "type": "git",
@@ -26,9 +29,12 @@
   "homepage": "https://github.com/dyarawilliams/book-up#readme",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.1",
+    "@fullhuman/postcss-purgecss": "^7.0.2",
+    "autoprefixer": "^10.4.20",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
-    "bootstrap": "^5.3.2",
+    "bootstrap": "^5.3.3",
+    "compression": "^1.7.5",
     "connect-mongo": "^5.1.0",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.9",
@@ -43,6 +49,8 @@
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
     "validator": "^13.11.0"
   },
   "devDependencies": {
