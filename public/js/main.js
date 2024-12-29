@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Dashboard JS
 
-const hamBurger = document.querySelector(".toggle-btn");
+// const hamBurger = document.querySelector(".toggle-btn");
 
-hamBurger.addEventListener("click", function () {
-    document.querySelector("#sidebar").classList.toggle("expand");
-});
+// hamBurger.addEventListener("click", function () {
+//     document.querySelector("#sidebar").classList.toggle("expand");
+// });

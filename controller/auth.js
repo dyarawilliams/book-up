@@ -22,42 +22,56 @@ module.exports = {
     
             if (validationErrors.length) {
                 req.flash('errors', validationErrors)
+                console.log('Validation errors:', validationErrors)
                 return res.redirect('/login')
             }
             req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
+            console.log('Normalized email:', req.body.email)
     
             passport.authenticate('local', async (err, user, info) => {
-                if (err) { return next(err) }
+                if (err) {
+                    console.error('Authentication error:', err)
+                    return next(err) 
+                }
                 if (!user) {
+                    console.log('Authentication error:', info)
                     req.flash('errors', info)
                     return res.redirect('/login')
                 }
                 req.logIn(user, async (err) => {
-                    if (err) { return next(err) }
+                    if (err) {
+                        console.error('Login error:', err)
+                        return next(err) 
+                    }
                     req.flash('success', { msg: 'Success! You are logged in.' })
+                    console.log('User logged in:', user)
                     res.redirect(req.session.returnTo || '/dashboard',)
                 })
             })(req, res, next)
         } catch (err) {
-            console.error(err)
+            console.error('Post login error', err)
         }
     },
     logout: async (req, res, next) => {
         try {
-            req.logout((err) => {
-                if (err) { return next(err); }
-                console.log('User has logged out.')
-            })
-            req.session.destory((err) => {
-                if (err) {
-                    console.log('Error : Failed to destroy the session during logout.', err)
-                } else {
-                    res.send('Logout Successful')
-                    req.user = null
-                    res.redirect('/')
-                }
-            })
-            res.redirect('/')
+            if (req.session) {
+                req.logout((err) => {
+                    if (err) {
+                        console.error('Logout error:', err)
+                        return next(err)
+                    }
+                    req.session.regenerate((err) => {
+                        if (err) {
+                            console.error('Session regeneration error:', err)
+                            return next(err)
+                        }
+                        req.flash('success', { msg: 'Success! You are logged out.' })
+                        res.redirect('/')
+                    })
+                })
+            } else {
+                res.redirect('/')
+            }
         } catch (err) {
             // console.log('Error : Failed to destroy the session during logout.', err)
             console.error(err);
