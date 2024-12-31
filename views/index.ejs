@@ -24,7 +24,7 @@
 
 <section id="books-home" class="py-4">
     <div class="container py-4">
-        <header class="row text-center">
+        <header class="row text-center py-4">
             <h3 class="text-capitalize">Recently Added</h3>
             <div class="heading-line"></div>
         </header>
@@ -33,7 +33,7 @@
             <% books.forEach(book=> { %>
                 <div class="col text-center">
                     <a class="h-auto" href="/books/<%= book.id %>">
-                        <img src="<%= book.coverImagePath %>" title="<%= book.title %>" alt="<%= book.title %> Cover" class="img-fluid h-100" loading="lazy">
+                        <img src="<%= book.coverImagePath %>" title="<%= book.title %>" alt="<%= book.title %> Cover" width="200" height="250" class="img-fluid h-100" loading="lazy">
                     </a>
                 </div>
             <% }) %>

@@ -14,20 +14,20 @@
 <section class="stats row mt-4">
     <div class="col-md-4">
         <div class="stats-card">
-            <div class="icon">📚</div>
             <h3>
                 <%= booksCount %>
             </h3>
             <p>Total Books</p>
+            <a href="/books/new" class="btn btn-sm btn-success">Add new Book</a>
         </div>
     </div>
     <div class="col-md-4">
         <div class="stats-card">
-            <div class="icon">🖋️</div>
             <h3>
                 <%= authorsCount %>
             </h3>
             <p>Total Authors</p>
+            <a href="/authors/new" class="btn btn-sm btn-success">Create new Author</a>
         </div>
     </div>
 </section>
@@ -38,7 +38,7 @@
             <div class="book-card card mb-4">
                 <div class="row h-auto">
                     <a href="/books/<%= book.id %>" class="d-block col-sm-5">
-                        <img src="<%= book.coverImagePath %>" alt="Book Cover" class="img-fluid" loading="lazy">
+                        <img src="<%= book.coverImagePath %>" alt="Book Cover" class="img-fluid" width="200" height="250" loading="lazy">
                     </a> 
                     <div class="details col-sm-7">
                         <div class="card-body">

@@ -20499,12 +20499,17 @@ body {
   border-radius: 0.375rem;
 }
 
+#book-view {
+  padding: 98px 0;
+}
+
 #authors .author-card {
   background-color: rgba(0, 0, 0, 0.9) !important;
 }
 
 #author-view {
   color: #dee2e6 !important;
+  padding: 98px 0;
 }
 
 #signup {

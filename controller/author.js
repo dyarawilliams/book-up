@@ -106,13 +106,13 @@ module.exports = {
             await author.deleteOne()
             res.redirect('/authors')
         } catch (err) {
-            if(author == null) {
+            if(author !== null) {
                 res.redirect('/')
             } else {
                 res.redirect(`/authors/${author.id}`)
             }
+            console.error(err)
         }
-        // res.send('Delete Author ' + req.params.id)
     }
 
 }
