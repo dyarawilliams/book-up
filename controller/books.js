@@ -20,11 +20,20 @@ module.exports = {
         }
         try {
             const books = await query.exec()
+            // handle cases where the author might be null
+            const booksWithAuthors = books.map(book => {
+                if (book.author) {
+                    return book
+                } else {
+                    book.author = { name: 'Unknown Author' }
+                    return book
+                }
+            })
             res.render('books/index', {
                 layout: 'layouts/layout',
                 title: 'All Books',
                 user: req.user,
-                books: books,
+                books: booksWithAuthors,
                 searchOptions: req.query,
                 isAuth: req.isAuthenticated()
             })
@@ -102,7 +111,6 @@ module.exports = {
             await book.deleteOne()
             res.redirect('/dashboard/books')
         } catch (err) {
-            console.error(err)
             if(book != null){
                 res.render('books/show', {
                     book: book,
@@ -112,7 +120,7 @@ module.exports = {
             } else {
                 res.render('/')
             }
-    
+            console.error(err)
         }
     }
 }
