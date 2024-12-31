@@ -1,8 +1,8 @@
-<div class="h-100 container">
+<div class="container pt-4" style="height: 50vh;">
     <h2>New Author</h2>
-    <form action="/dashboard/authors" method="POST">
+    <form action="/authors" method="POST">
         <%- include('_form_fields') %>
-        <div class="my-3 d-flex">
+        <div class="w-50 my-3 d-flex justify-content-evenly">
             <a href="/authors" class="btn btn-md btn-danger">Cancel</a>
             <button type="submit" class="btn btn-md btn-success">Create</button>
         </div>
