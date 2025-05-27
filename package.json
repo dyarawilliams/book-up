@@ -8,8 +8,8 @@
     "dev": "nodemon server.js",
     "compile:sass": "sass --watch --no-source-map scss:public/css",
     "build:css": "sass scss:public/css",
-    "postcss": "postcss public/css/styles.css -o public/css/styles.min.css",
-    "build": "npm run build:css && npm run postcss"
+    "build:postcss": "postcss public/css/styles.css -o public/css/styles.min.css",
+    "build": "npm run build:css && npm run build:postcss"
   },
   "repository": {
     "type": "git",
@@ -49,12 +49,13 @@
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
-    "postcss": "^8.4.49",
-    "postcss-cli": "^11.0.0",
     "validator": "^13.11.0"
   },
   "devDependencies": {
+    "cssnano": "^7.0.7",
     "nodemon": "^3.1.0",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
     "sass": "^1.72.0"
   }
 }
