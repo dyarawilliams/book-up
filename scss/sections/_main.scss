@@ -6,6 +6,7 @@
     max-width: 100vw;
     background-color: $primary;
     color: $gray-300;
+    margin-top: 90px;
     
     .hero-section {
         height: 100vh;
@@ -36,14 +37,21 @@
     }
 
     #about {
-        padding: $top-padding 0;
 
         h2 {
-            font-size: 3.3rem;
+            font-size: 3rem;
         }
 
         header + section > section {
             padding: 0 1.5rem;
+
+            h3 {
+                padding-top: 1.5rem;
+            }
+
+            h3, p {
+                text-align: left
+            }
         }
     }
 }
