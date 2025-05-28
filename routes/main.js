@@ -47,7 +47,7 @@ router.get('/profile', ensureAuth, async (req, res) => {
     })
 })
 
-router.get('profile/edit', ensureAuth, (req, res) => {
+router.put('profile/edit', ensureAuth, (req, res) => {
     res.render('editprofile', {
         title: "Edit Profile",
         layout: 'layouts/layout',

@@ -62,10 +62,10 @@ module.exports = {
         const book = new Book({
             isbn: req.body.isbn,
             title: req.body.title,
-            author: req.body.author,
+            description: req.body.description,
             publishDate: new Date(req.body.publishDate),
             pageCount: req.body.pageCount,
-            description: req.body.description
+            author: req.body.author
         })
         saveCover(book, req.body.cover)
     

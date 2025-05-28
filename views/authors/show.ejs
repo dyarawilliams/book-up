@@ -1,5 +1,6 @@
 <div id="author-view" class="container">
     <h2> <%= author.name %></h2>
+    <%- include('../partials/errorMessage') %>
     <div class="d-flex py-3">
         <% if(isAuth) { %>
             <a href="/authors/<%= author.id %>/edit" class="btn btn-md btn-success mx-3">
