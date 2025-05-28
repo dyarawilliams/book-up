@@ -22627,9 +22627,6 @@ body {
   color: #dee2e6;
 }
 
-#books {
-  padding: 98px 0;
-}
 #books .books-search-box {
   color: #dee2e6 !important;
 }
@@ -22649,9 +22646,6 @@ body {
   padding: 98px 0;
 }
 
-#authors {
-  padding: 1.3rem 0;
-}
 #authors .author-card {
   background-color: rgba(0, 0, 0, 0.9) !important;
 }
