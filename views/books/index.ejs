@@ -18,21 +18,21 @@
         <div class="card-body">
             <form action="/books" method="GET">
                 <div class="form-outline">
-                    <label class="form-label">Title</label>
-                    <input class="form-control" type="text" name="title" value="<%= searchOptions.title %>" placeholder="Enter title of book">
+                    <label for="title" class="form-label">Title</label>
+                    <input id="title" class="form-control" type="text" name="title" value="<%= searchOptions.title %>" placeholder="Enter title of book">
                 </div>
                 <div class="row flex-xs-column">
                     <div class="col pt-3">
                         <div class="form-outline">
-                            <label class="form-label">Published After</label>
-                            <input class="form-control" type="date" name="publishedAfter"
+                            <label for="publishedAfter" class="form-label">Published After</label>
+                            <input id="publishedAfter" class="form-control" type="date" name="publishedAfter"
                                 value="<%= searchOptions.publishedAfter %>">
                         </div>
                     </div>
                     <div class="col pt-3">
                         <div class="form-outline">
-                            <label class="form-label">Published Before</label>
-                            <input class="form-control" type="date" name="publishedBefore"
+                            <label for="publishedBefore" class="form-label">Published Before</label>
+                            <input id="publishedBefore" class="form-control" type="date" name="publishedBefore"
                                 value="<%= searchOptions.publishedBefore %>">
                         </div>
                     </div>
