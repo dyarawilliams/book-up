@@ -1,4 +1,4 @@
-<section id="authors">
+<section id="authors" class="py-4">
     <h2>Search Authors</h2>
     <form action="/authors" method="GET">
         <label for="search-name">Name</label>
@@ -6,24 +6,24 @@
         <button type="submit" class="btn btn-primary">Search</button>
     </form>
     <br>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <section class="row row-cols-1 row-cols-md-3 g-4">
     <% authors.forEach(author => { %>
-        <div class="col-sm-6 col-md-4 col-lg-3 text-center">
+        <section class="col-sm-6 col-md-4 col-lg-3 text-center">
             <div class="author-card card h-100">
                 <div class="card-body">
                     <h5 class="card-title text-white">
                         <%= author.name %>
                     </h5>
                 </div>
-                <div class="card-footer d-flex justify-content-around">
+                <div class="card-footer d-flex justify-content-between">
                     <a href="/authors/<%= author.id %>" class="btn btn-md btn-dark">View</a>
                     <% if(isAuth) { %>
-                        <a href="/authors/<%= author.id %>/edit" class="btn btn-md btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="/authors/<%= author.id %>/edit" class="btn btn-md btn-success">Edit</a>
                         <%- include('../partials/deleteForm', { url: `/authors/${author.id}` }) %>
                     <% } %>
                 </div>
             </div>
-        </div>
+        </section>
     <% }) %>
-    </div>
+    </section>
 </section>
