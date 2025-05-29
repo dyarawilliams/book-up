@@ -11,7 +11,7 @@
 %>
 
 <section id="books">
-    <div class="books-search-box card mb-4">
+    <section class="books-search-box card mb-4">
         <div class="card-header border-light">
             <h2>Search Book</h2>
         </div>
@@ -42,9 +42,9 @@
                 </div>
             </form>
         </div>
-    </div>
+    </section>
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+    <section class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
         <!-- START OF BOOK ITEMS  -->
         <% books.forEach(book => { %>
             <div class="col">
@@ -52,21 +52,21 @@
                     <div class="row">
                         <div class="book-img col">
                             <a href="/books/<%= book.id %>" class="d-flex justify-content-center">
-                                <img src="<%= book.coverImagePath %>" alt="Book Cover" height="150" width="100" loading="lazy" />
+                                <img src="<%= book.coverImagePath %>" alt="Book Cover" height="250" width="200" loading="lazy" />
                             </a>
                         </div>
-                        <div class="col p-2">
+                        <!-- <div class="col p-2">
                             <p class="fw-bold"><%= truncate(book.title, 50) %></p>
                             <p>By: <%= book.author.name %></p>
                         </div>
                         <p class="mt-3"><%= truncate(book.description, 180) %></p>
                         <p class="d-block mt-1"><span class="fw-bold">ISBN13:</span>
                             <%= book.isbn %>
-                        </p>
+                        </p> -->
                     </div>
                 </div>
             </div>
         <% }) %>
         <!-- END OF BOOK ITEMS  -->
-    </div>
+    </section>
 </section>

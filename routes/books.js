@@ -13,7 +13,7 @@ const booksController = require('../controller/books')
 router.get('/', booksController.getBooks)
 
 // @desc New Book 
-// @route GET /dashboard/books/new
+// @route GET /books/new
 router.get('/new', ensureAuth, async (req, res) => {
     try {
         renderNewPage(req, res, new Book())
@@ -24,15 +24,15 @@ router.get('/new', ensureAuth, async (req, res) => {
 })
 
 // @desc Create Book
-// @route POST /dashboard/books/
+// @route POST /books/
 router.post('/', ensureAuth, booksController.createBook)
 
 // // @desc Show Book 
-// // @route GET /dashboard/books/:id
+// // @route GET /books/:id
 router.get('/:id', ensureAuth, booksController.showBook)
 
 // @desc Edit Book 
-// @route GET /dashboard/books/:id/edit
+// @route GET /books/:id/edit
 router.get('/:id/edit', async (req, res) => {
     try {
         const book = await Book.findById(req.params.id)
@@ -44,11 +44,11 @@ router.get('/:id/edit', async (req, res) => {
 })
 
 // @desc Update Book 
-// @route PUT /dashboard/books/:id 
+// @route PUT /books/:id 
 router.put('/:id', ensureAuth, booksController.updateBook)
 
 // @desc Delete Book 
-// @route GET /dashboard/books/:id
+// @route GET /books/:id
 router.delete('/:id', ensureAuth, booksController.deleteBook)
 
 

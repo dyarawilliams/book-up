@@ -96,7 +96,6 @@ module.exports = {
             await book.save()
             res.redirect(`/dashboard/books/${book.id}`)
         } catch (err) {
-            console.error(err)
             if(book != null){
                 renderEditPage(req, res, book, true)
             } else {
@@ -109,7 +108,7 @@ module.exports = {
         try {
             book = await Book.findById(req.params.id)
             await book.deleteOne()
-            res.redirect('/dashboard/books')
+            res.redirect('/books')
         } catch (err) {
             if(book != null){
                 res.render('books/show', {
