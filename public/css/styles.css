@@ -22631,7 +22631,7 @@ body {
   color: #dee2e6 !important;
 }
 #books .book-card {
-  min-height: 450px;
+  min-height: 100%;
   color: #dee2e6;
 }
 #books .card {
@@ -22643,7 +22643,7 @@ body {
 }
 
 #book-view {
-  padding: 98px 0;
+  padding: 1rem 0;
 }
 
 #authors .author-card {
@@ -22651,8 +22651,8 @@ body {
 }
 
 #author-view {
+  padding: 1rem 0;
   color: #dee2e6 !important;
-  padding: 98px 0;
 }
 
 #signup {
@@ -22667,7 +22667,7 @@ body {
 }
 
 #login {
-  padding: 98px 0;
+  padding: 1rem 0;
 }
 #login .login-container section.card {
   background: #dee2e6;
@@ -22740,7 +22740,6 @@ body {
   border: 1px solid #0A1929;
   border-radius: 8px;
   padding: 1rem;
-  color: #0A1929;
   text-align: center;
 }
 .dashboard .stats-card .icon {
