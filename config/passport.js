@@ -64,7 +64,13 @@ module.exports = function (passport) {
 
     // Retrieve user data from session
     passport.deserializeUser(async (id, done) => {
-        const user = User.findById(id);
-        done(null, user);
+        try {
+            const user = User.findById(id);
+            done(null, user);
+
+        } catch (err) {
+            console.error(err);
+            done(err);
+        }
     })
 }
