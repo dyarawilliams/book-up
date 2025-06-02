@@ -1,0 +1,18 @@
+<section class="profile-container">
+    <% if (user) { %>
+        <section>
+            <h2><%= user.userName || user.firstName %> Profile</h2>
+            <div class="profile-details">
+                <ul>
+                    <li><strong>Email:</strong> <%= user.email %></li>
+                </ul>
+            </div>
+            <a href="/profile/edit" class="edit-profile-btn">Edit Profile</a>
+        </section>
+    <% } else { %>
+        <section>
+            <h2>Profile Not Found</h2>
+            <p class="fs-3">You must be logged in to view your profile.</p>
+        </section>
+    <% } %>
+</section>

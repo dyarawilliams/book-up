@@ -1,5 +1,5 @@
 <section class="welcome mt-4 pt-4">
-    <h2>Welcome, <%= user ? (user.firstName || user.userName) : 'Guest' %></h2>
+    <h2>Welcome, <%= user ? user.userName || user.firstName : 'Guest' %></h2>
     <!-- <img src="<%= user ? user.profilePicture : '' %>" alt="Profile picture of user "> -->
 </section>
 

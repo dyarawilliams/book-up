@@ -59,15 +59,20 @@ module.exports = function (passport) {
 
     // Persist user data (after successful authentication) into session
     passport.serializeUser(async (user, done) => {
-        done(null, user.id);
+        try {
+            console.log('Serializing user:', user.id);
+            done(null, user.id); // Store the user ID in the session
+        } catch (err) {
+            console.error(err);
+            return done(err);
+        }
     })
 
     // Retrieve user data from session
     passport.deserializeUser(async (id, done) => {
         try {
-            const user = User.findById(id);
+            const user = await User.findById(id); // Retrieve user from the database 
             done(null, user);
-
         } catch (err) {
             console.error(err);
             done(err);

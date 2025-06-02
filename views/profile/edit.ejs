@@ -1,0 +1,32 @@
+<div class="container-xl px-4 py-4">
+    <div class="row">
+        <div class="col-xl-8">
+            <div class="card mb-4">
+                <div class="card-header">Edit Account Details</div>
+                <div class="card-body">
+                    <form action="/profile/edit" method="POST">
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputUserName">Username</label>
+                            <input class="form-control" id="inputUserName" name="userName" type="text" value="<%= user.userName %>" required>
+                        </div>
+                        <div class="row gx-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputFirstName">First name</label>
+                                <input class="form-control" id="inputFirstName" name="firstName" type="text" value="<%= user.firstName %>">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLastName">Last name</label>
+                                <input class="form-control" id="inputLastName" name="lastName" type="text" value="<%= user.lastName %>">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                            <input class="form-control" id="inputEmailAddress" name="email" type="email" value="<%= user.email %>" required>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Save changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -51,10 +51,10 @@ app.use(compression())
 app.use(session({
         secret: 'keyboard cat',
         resave: false,
-        saveUninitialized: true,
+        saveUninitialized: false,
         store: MongoStore.create({ mongoUrl: process.env.DB_STRING }),
         cookie: { 
-            maxAge: 24 * 60 * 60 * 1000 // 1 day
+            maxAge: 3600000, // 1 hour
         }
     })
 )
