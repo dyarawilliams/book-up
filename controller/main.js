@@ -24,13 +24,12 @@ module.exports = {
     },
     getProfile: async (req, res) => {
         try {
-            console.log('req.user:', req.user) 
             // req.user is populated by passport middleware
             const user = req.user;
             console.log(user)
 
             if (!user) {
-                return res.redirect('/login')
+                res.redirect('/login');
             }
 
             res.render('profile/index', {
@@ -38,7 +37,7 @@ module.exports = {
                 layout: 'layouts/dashboard',
                 isAuth: req.isAuthenticated(),
                 user: user,
-            })
+            });
 
         } catch (err) {
             console.error(err)
@@ -46,24 +45,49 @@ module.exports = {
         }
     },
     getEditProfile: async (req, res) => {
-    
-        res.render('profile/edit', { user })
+        try {
+            const user = req.user;
+            if (!user) {
+                return res.redirect('/login')
+            }
+
+            res.render('profile/edit', { 
+                title: 'Edit Profile',
+                layout: 'layouts/dashboard',
+                user: user, 
+                isAuth: req.isAuthenticated() 
+            })
+        } catch (err) {
+            console.error(err)
+            res.redirect('/profile')
+        }
     },
-    // postEditProfile: async (req, res) => {
-    //     try {
-    //         const user = await User.findById(req.user.id)
-    //         user.userName = req.body.userName
-    //         user.firstName = req.body.firstName
-    //         user.lastName = req.body.lastName
-    //         user.email = req.body.email
-    //         await user.save()
-    //         res.redirect('/profile')
-    //     } catch (err) {
-    //         res.render('profile/edit', { 
-    //             user: req.body, 
-    //             errorMessage: 'Error updating profile',
-    //             isAuth: req.isAuthenticated()
-    //         })
-    //     }
-    // }
+    postEditProfile: async (req, res) => {
+        try {
+            const user = await User.findById(req.user.id)
+
+            if (!user) {
+                res.redirect('/profile')
+            }
+
+            // Update user properties
+            user.userName = req.body.userName || user.userName; // Keep existing if not provided
+            user.firstName = req.body.firstName || user.firstName;
+            user.lastName = req.body.lastName || user.lastName;
+            user.email = req.body.email || user.email;
+
+            await user.save()
+            res.redirect('/profile')
+        } catch (err) {
+            console.error(err)
+            // Handle errors
+            res.render('profile/edit', {
+                title: 'Edit Profile',
+                layout: 'layouts/dashboard',
+                user: req.body, 
+                errorMessage: 'Error updating profile',
+                isAuth: req.isAuthenticated()
+            })
+        }
+    }
 }

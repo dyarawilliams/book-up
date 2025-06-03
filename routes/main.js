@@ -35,18 +35,17 @@ router.post('/signup', authController.postSignUp)
 // @route /logout
 router.get('/logout', authController.logout)
 
-
-// @desc View User Profile By ID
+// @desc View User Profile
 // @route /profile
 router.get('/profile', ensureAuth, mainController.getProfile)
 
 // @desc Edit Profile
 // @route GET /profile/edit
-// router.put('/profile/edit', ensureAuth, mainController.getEditProfile)
+router.get('/profile/edit', ensureAuth, mainController.getEditProfile)
 
 // @desc Update Profile
 // @route POST /profile/edit
-// router.post('/profile/:id/edit', ensureAuth, mainController.postEditProfile)
+router.post('/profile/edit', ensureAuth, mainController.postEditProfile)
 
 // router.get('*', (req, res) => {
 //     try {
