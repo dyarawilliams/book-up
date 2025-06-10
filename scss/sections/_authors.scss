@@ -1,13 +1,12 @@
 @use '../custom' as *;
 
 #authors {
-
     .author-card {
         background-color: $black !important;
     }
 }
 
 #author-view {
+    padding: 1rem 0;
     color: $gray-300 !important;
-    padding: $top-padding 0;
 }

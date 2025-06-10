@@ -8,7 +8,15 @@ module.exports = {
             const books = await Book.find().populate('author');
             const booksCount = await Book.countDocuments({}).exec()
             const authorsCount = await Author.countDocuments({}).exec()
-            const user = await User.findOne({})
+
+            if (!req.isAuthenticated()) {
+                return res.redirect('/login');
+            }
+
+            // Fetch the user that is authenticated in the passport session
+            // This assumes that the user is stored in the session by Passport.js
+            const user = req.user
+            console.log(user)
 
             const activities = [
                 'Added "New Book 1"',

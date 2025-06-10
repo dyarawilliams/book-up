@@ -1,0 +1,89 @@
+<section class="profile-container pt-4">
+    <% if (user) { %>
+        <section>
+            <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                    <section class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img src="<%= user.image %>" alt="<%= user.firstName %> Profile Picture" class="rounded-circle" width="150">
+                                <div class="mt-3">
+                                    <h2><%= user.firstName %> <%= user.lastName %></h2>
+                                    <!-- <p class="text-secondary mb-1">Full Stack Developer</p> -->
+                                    <!-- <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p> -->
+                                    <!-- <button class="btn btn-primary">Follow</button> -->
+                                    <!-- <button class="btn btn-outline-primary">Message</button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="card mt-3">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0"><i class="fa-solid fa-globe mx-1"></i>Website</h6>
+                                <span class="text-secondary">N/A</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0"><i class="fa-brands fa-square-x-twitter mx-1"></i>X (formerly known as Twitter)</h6>
+                                <span class="text-secondary">N/A</span>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Full Name</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= user.firstName %> <%= user.lastName %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= user.email %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Username</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= user.userName %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Date Created: </h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= user.createdAt %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a class="btn btn-info " target="__blank"
+                                        href="/profile/edit">Edit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <% } else { %>
+            <section>
+                <h2>Profile Not Found</h2>
+                <p class="fs-3">You must be logged in to view your profile.</p>
+            </section>
+            <% } %>
+</section>

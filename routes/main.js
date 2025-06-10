@@ -4,16 +4,16 @@ const passport = require('passport')
 const validator = require('validator')
 const { ensureAuth } = require('../middleware/auth')
 
-const homeController = require('../controller/home')
+const mainController = require('../controller/main')
 const authController = require('../controller/auth')
 
 // @desc Hompage
 // @route GET /
-router.get('/', homeController.getIndex)
+router.get('/', mainController.getIndex)
 
 // @desc About Page
 // @route GET /about
-router.get('/about', homeController.getAbout)
+router.get('/about', mainController.getAbout)
 
 // @desc Login/Sign Up Page
 // @route GET /login
@@ -35,26 +35,17 @@ router.post('/signup', authController.postSignUp)
 // @route /logout
 router.get('/logout', authController.logout)
 
-
-// @desc View Profile
+// @desc View User Profile
 // @route /profile
-router.get('/profile', ensureAuth, async (req, res) => {
-    res.render('profile', {
-        title: "Profile", 
-        layout: 'layouts/layout',
-        user: req.user,
-        isAuth: req.isAuthenticated()
-    })
-})
+router.get('/profile', ensureAuth, mainController.getProfile)
 
-router.get('profile/edit', ensureAuth, (req, res) => {
-    res.render('editprofile', {
-        title: "Edit Profile",
-        layout: 'layouts/layout',
-        user: req.user,
-        isAuth: req.isAuthenticated()
-    })
-})
+// @desc Edit Profile
+// @route GET /profile/edit
+router.get('/profile/edit', ensureAuth, mainController.getEditProfile)
+
+// @desc Update Profile
+// @route POST /profile/edit
+router.post('/profile/edit', ensureAuth, mainController.postEditProfile)
 
 // router.get('*', (req, res) => {
 //     try {

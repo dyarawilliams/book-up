@@ -62,10 +62,10 @@ module.exports = {
         const book = new Book({
             isbn: req.body.isbn,
             title: req.body.title,
-            author: req.body.author,
+            description: req.body.description,
             publishDate: new Date(req.body.publishDate),
             pageCount: req.body.pageCount,
-            description: req.body.description
+            author: req.body.author
         })
         saveCover(book, req.body.cover)
     
@@ -96,7 +96,6 @@ module.exports = {
             await book.save()
             res.redirect(`/dashboard/books/${book.id}`)
         } catch (err) {
-            console.error(err)
             if(book != null){
                 renderEditPage(req, res, book, true)
             } else {
@@ -109,7 +108,7 @@ module.exports = {
         try {
             book = await Book.findById(req.params.id)
             await book.deleteOne()
-            res.redirect('/dashboard/books')
+            res.redirect('/books')
         } catch (err) {
             if(book != null){
                 res.render('books/show', {

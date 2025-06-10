@@ -37,7 +37,6 @@ module.exports = {
         try {
             const newAuthor = await author.save()
             res.redirect(`authors/${newAuthor.id}`)
-            // res.redirect('/authors')
         } catch (err) {
             res.render('authors/new', {
                 title: 'Add New Author',
@@ -75,7 +74,6 @@ module.exports = {
                 isAuth: req.isAuthenticated()
             })
         } catch (err) {
-            console.log(err)
             // Redirects user back to authors index page 
             res.redirect('/authors')
         }
@@ -100,18 +98,31 @@ module.exports = {
         }
     },
     deleteAuthor: async (req, res) => {
-        let author
         try {
-            author = await Author.findById(req.params.id)
-            await author.deleteOne()
+            const author = await Author.findById(req.params.id)
+            if (!author) {
+                return res.redirect('/authors')
+            }
+            // Checks for books before deleting author
+            const books = await Book.find({ author: author._id }).limit(1)
+            // If books exist, render the author's show page with a error message
+            if (books.length > 0) {
+                // Author has books, show error message
+                return res.render('authors/show', {
+                    title: `${author.name}`,
+                    layout: 'layouts/layout',
+                    isAuth: req.isAuthenticated(),
+                    author: author,
+                    booksByAuthor: await Book.find({ author: author._id }).limit(6),
+                    errorMessage: 'This author has books still'
+                })
+            }
+            // If no books, delete the author directly
+            await Author.deleteOne({ _id: author._id })
             res.redirect('/authors')
         } catch (err) {
-            if(author !== null) {
-                res.redirect('/')
-            } else {
-                res.redirect(`/authors/${author.id}`)
-            }
             console.error(err)
+            res.redirect('/')
         }
     }
 
