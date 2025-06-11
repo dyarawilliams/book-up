@@ -12,6 +12,8 @@ module.exports = {
                 defaultExtractor: content => content.match(/[\w-/:]+(?=\s|[})])/g) || []
             }),
         ] : []),
-        require('cssnano')({ preset: 'default' })
+        require('cssnano')({ 
+            preset: 'default' 
+        }),
     ]
 };
