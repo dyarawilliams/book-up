@@ -15,7 +15,7 @@ $gray-600: #6c757d;
 $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #212529;
-$black: rgba(0,0,0, 0.9);
+$black: #000000;
 
 $primary: $dark-blue;
 $secondary: $light-blue;
@@ -39,6 +39,6 @@ $fa-font-path: "../fontawesome/webfonts";
     padding: 0;
 }
 
-body {
+html, body {
     font-family: "Nunito", sans-serif !important;
 }

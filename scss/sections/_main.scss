@@ -3,37 +3,49 @@
 @use "../components/animations" as *;
 
 #main-home {
-    max-width: 100vw;
     background-color: $primary;
     color: $gray-300;
     margin-top: 90px;
-    
+
     .hero-section {
-        height: 100vh;
-        
         .hero-content {
-            height: 100vh;
-
-            .hero-img {
-                display: none;
-                width: 100%;
-                height: 100%;
-
-                img {
-                    width: 100%;
-                    height: 100%; 
-                    object-fit: cover;
-                    clip-path: polygon(25% 0%, 100% 0%, 100% 99%, 0% 100%); 
-                }
-            }
 
             .hero-text {
-                h1 {
-                    font-size: 3.5rem;
+                flex: 1;
+                min-width: 0;
+                flex-basis: 40%;
+            }
+
+            .hero-img {
+                flex: 1;
+                width: auto;
+                min-width: 0;
+                min-height: 500px;
+                flex-basis: 60%;
+
+                .cloud-shape {
+                    height: 420px;
+                    object-fit: fill;
+                    clip-path: path('M 90 240 A 30 30 90 0 1 180 150 A 30 30 90 0 1 330 180 A 30 30 90 0 1 390 210 A 22.5 22.5 90 0 1 420 240 A 9 9 90 0 1 420 270 A 37.5 30 0 0 1 360 300 A 45 30 0 0 1 270 300 A 60 30 0 0 1 120 300 A 30 30 90 0 1 90 240');
                 }
             }
         }
+    }
 
+    @include media-breakpoint-up(lg) {
+        .hero-section {
+            .hero-content {
+
+                .hero-text {
+                    flex-basis: 50%;
+                }
+
+                .hero-img {
+                    flex-basis: 50%;
+                    min-height: 600px;
+                }
+            }
+        }
     }
 
     #about {
@@ -42,14 +54,15 @@
             font-size: 3rem;
         }
 
-        header + section > section {
+        header+section>section {
             padding: 0 1.5rem;
 
             h3 {
                 padding-top: 1.5rem;
             }
 
-            h3, p {
+            h3,
+            p {
                 text-align: left
             }
         }

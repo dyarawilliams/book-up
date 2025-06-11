@@ -1,42 +1,23 @@
 
-<section class="hero-section overflow-hidden">
-    <div class="hero-content container d-flex flex-sm-column flex-md-row align-items-center">
-        <section class="hero-img col-md-6 order-md-1 w-100 d-sm-block">
-            <img 
-                src="/images/library-large.jpg" 
-                srcset="/images/library-small.jpg 600w, /images/library-medium.jpg 1200w, /images/library-large.jpg 1800w" 
-                sizes="(max-width: 600px) 600px, (max-width: 1200px) 1200px, 1800px" 
-                alt="A picture of a library" 
-                class="mx-lg-auto img-fluid d-block" 
-                width="2400" 
-                height="1600">
-        </section>
-        <section class="hero-text col-md-6 text-center text-lg-start pt-lg-5 mt-xl-4">
-            <h1 class="fw-bold display-3 mb-4">Your Library in the Clouds</h1>
-            <p>We're redefining the way you experience literature. Say goodbye to shelf space limitations and hello to a limitless literary universe. <span>Join us today</span> and redefine the way you interact with you favorite books and authors. Your literary journey knows no boundaries when it's in the clouds.</p>
+<section class="hero-section py-5">
+    <div class="hero-content container d-flex flex-column flex-md-row justify-content-center align-items-center">
+        <section class="hero-text">
+            <h1 class="fw-bold fs-1 fs-md-3 fs-lg-2">Your Library in the Clouds</h1>
+            <p>We're redefining the way you experience literature. Say goodbye to shelf space limitations and hello to a limitless literary universe.</p>
+            <hr> 
             <div class="btn-home d-flex justify-content-evenly">
                 <a href="/signup" class="btn btn-success btn-lg text-white">Get Started</a>
                 <a href="/about" class="btn btn-outline-secondary btn-lg text-white">Learn More</a>
             </div>
+            <hr>
+            <p class="fst-italic">Join us today and redefine the way you interact with you favorite books and authors. Your literary journey knows no boundaries when it's in the clouds.</p>
         </section>
-    </div>
-</section>
-
-<section id="books-home">
-    <div class="container py-4">
-        <header class="row text-center py-4">
-            <h3 class="text-capitalize">Recently Added</h3>
-            <div class="heading-line"></div>
-        </header>
-
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-5">
-            <% books.forEach(book=> { %>
-                <div class="col text-center">
-                    <a class="h-auto" href="/books/<%= book.id %>">
-                        <img src="<%= book.coverImagePath %>" title="<%= book.title %>" alt="<%= book.title %> Cover" width="200" height="250" class="img-fluid h-100" loading="lazy">
-                    </a>
-                </div>
-            <% }) %>
-        </div>
+        <section class="hero-img d-none d-md-block">
+            <img 
+                src="/images/library-small.jpg" 
+                alt="A picture of a library"
+                class="cloud-shape"
+            />
+        </section>
     </div>
 </section>
