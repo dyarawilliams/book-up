@@ -29,7 +29,7 @@ router.post('/', ensureAuth, booksController.createBook)
 
 // // @desc Show Book 
 // // @route GET /books/:id
-router.get('/:id', ensureAuth, booksController.showBook)
+router.get('/:id', booksController.showBook)
 
 // @desc Edit Book 
 // @route GET /books/:id/edit
