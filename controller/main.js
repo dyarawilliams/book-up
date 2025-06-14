@@ -26,7 +26,6 @@ module.exports = {
         try {
             // req.user is populated by passport middleware
             const user = req.user;
-            console.log(user)
 
             if (!user) {
                 res.redirect('/login');
