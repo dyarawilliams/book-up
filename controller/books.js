@@ -47,6 +47,7 @@ module.exports = {
         try {
             const book = await Book.findById(req.params.id).populate('author')
             .exec()
+            
             res.render('books/show', { 
                 title: 'Show Book',  
                 user: req.user, 
