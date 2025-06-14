@@ -22804,40 +22804,26 @@ html, body {
 
 .footer {
   background-color: #143252 !important;
+  color: #dee2e6 !important;
 }
 .footer hr {
   width: 100%;
   height: 2px;
 }
-.footer .company-list {
-  display: block;
-  list-style-type: none;
-}
 .footer .company-list li {
   margin-bottom: 0.5rem;
-  text-decoration: none;
-}
-.footer .company-list li a {
-  color: #dee2e6;
-  text-decoration: none;
-}
-.footer .company-list li a:hover {
-  color: #143252;
 }
 .footer .footer-bottom {
   background-color: #0A1929;
 }
 .footer .footer-bottom__copyright {
-  color: #dee2e6;
   font-weight: 400;
 }
-.footer .footer-bottom__copyright a {
+.footer a {
   color: #dee2e6;
   text-decoration: none;
 }
-.footer .footer-bottom__copyright a:hover {
+.footer a:hover {
   color: #6c757d;
   text-decoration: underline;
 }
-
-/*# sourceMappingURL=styles.css.map */

@@ -3,30 +3,17 @@
 
 .footer {
     background-color: $secondary !important;
+    color: $gray-300 !important;
 
     hr {
         width: 100%;
         height: 2px;
-
     }
 
     .company-list {
-        display: block;
-        list-style-type: none;
-
 
         li {
             margin-bottom: 0.5rem;
-            text-decoration: none;
-    
-            a {
-                color: $gray-300;
-                text-decoration: none;
-    
-                &:hover {
-                    color: $secondary;
-                }
-            }
         }
     }
 
@@ -35,19 +22,17 @@
         background-color: $primary;
 
         &__copyright {
-            color: $gray-300;
             font-weight: 400;
+        }
+    }
 
-            a {
-                color: $gray-300;
-                text-decoration: none;
+    a {
+        color: $gray-300;
+        text-decoration: none;
 
-                &:hover {
-                    color: $gray-600;
-                    text-decoration: underline;
-                }
-            }
+        &:hover {
+            color: $gray-600;
+            text-decoration: underline;
         }
     }
 }
-
