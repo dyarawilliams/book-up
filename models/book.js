@@ -38,6 +38,8 @@ const bookSchema = new mongoose.Schema({
         required: true,
         ref: 'Author'
     }
+},  {
+    timestamps: true,
 })
 
 // derives value from variable
