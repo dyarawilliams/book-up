@@ -9,7 +9,7 @@
             <p>Description: <%= book.description %></p>
             <p>ISBN(13): <%= book.isbn %></p>
             
-            <div class="d-flex">
+            <div class="d-flex justify-content-around">
                 <% if(isAuth) { %>
                 <a href="/books/<%= book.id %>/edit" class="btn btn-md btn-success">Edit</a>
                 <%- include('../partials/deleteForm', { url: `/books/${book.id}` }) %>
