@@ -22349,10 +22349,24 @@ html, body {
     opacity: 1;
   }
 }
+.spinner-wrapper {
+  background-color: #0A1929;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  transition: all 0.2s;
+}
+.spinner-wrapper .spinner-border {
+  width: 60px;
+  height: 60px;
+}
+
 #main-home {
   background-color: #0A1929;
   color: #dee2e6;
-  margin-top: 90px;
 }
 #main-home .hero-section .hero-content .hero-text {
   flex: 1;
@@ -22827,3 +22841,5 @@ html, body {
   color: #6c757d;
   text-decoration: underline;
 }
+
+/*# sourceMappingURL=styles.css.map */
