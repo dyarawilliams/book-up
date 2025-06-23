@@ -12,6 +12,7 @@ module.exports = {
                 defaultExtractor: content => content.match(/[\w-/:]+(?=\s|[})])/g) || []
             }),
         ] : []),
+        require('postcss-short'),
         require('cssnano')({ 
             preset: 'default' 
         }),
