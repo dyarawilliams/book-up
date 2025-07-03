@@ -22785,21 +22785,31 @@ h3 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
-.dashboard .books-grid {
-  height: 100%;
-}
-.dashboard .books-grid .book-card {
-  background-color: #0A1929;
-  color: #dee2e6;
-}
-.dashboard .books-grid .book-card .details {
+.dashboard th, .dashboard td {
+  width: 9.09%;
   padding: 0.5rem;
 }
-.dashboard .books-grid .book-card .details h5 {
-  margin: 0.5rem 0;
+.dashboard td {
+  border-bottom: 1px solid #333;
 }
-.dashboard .books-grid .book-card .details p {
-  font-size: 1rem;
+.dashboard .position {
+  width: 3%;
+}
+.dashboard .cover {
+  width: 10%;
+  text-align: center;
+}
+.dashboard .cover img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.dashboard .title {
+  width: 20%;
+}
+.dashboard td.isbn13 {
+  width: 15%;
+  font-size: 0.8rem;
 }
 .dashboard .activity-feed section.card {
   background: #143252;

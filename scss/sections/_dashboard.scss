@@ -16,25 +16,37 @@
         }
     }
 
-    .books-grid {
-        height: 100%;
+    th, td {
+        width: 9.09%;
+        padding: 0.5rem;
+    }
 
-        .book-card {
-            background-color: $primary;
-            color: $gray-300;
+    td {
+        border-bottom: 1px solid #333;
+    }
 
-            .details {
-                padding: 0.5rem;
+    .position {
+        width: 3%;
+    }
 
-                h5 {
-                    margin: 0.5rem 0;
-                }
+    .cover {
+        width: 10%;
+        text-align: center;
 
-                p {
-                    font-size: 1rem;
-                }
-            }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
         }
+    }
+
+    .title {
+        width: 20%;
+    }
+
+    td.isbn13 {
+        width: 15%;
+        font-size: 0.8rem;
     }
 
     .activity-feed {
