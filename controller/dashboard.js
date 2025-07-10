@@ -6,6 +6,7 @@ module.exports = {
     getIndex: async (req, res) => {
         try {
             const books = await Book.find().populate('author');
+            console.log(books)
             const booksCount = await Book.countDocuments({}).exec()
             const authorsCount = await Author.countDocuments({}).exec()
 
