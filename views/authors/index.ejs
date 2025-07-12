@@ -1,19 +1,26 @@
 <section id="authors" class="py-4">
-    <h2>Search Authors</h2>
+    <h1>Search Authors</h1>
     <form action="/authors" method="GET">
-        <label for="search-name">Name</label>
+        <label for="search-name">Author Name: </label>
         <input type="text" id="search-name" name="name" value="<%= searchOptions.name %>">
         <button type="submit" class="btn btn-primary">Search</button>
     </form>
-    <br>
+    <section class="mt-4">
+        <h2>Authors List</h2>
+        <% if(authors.length === 0) { %>
+            <p>No authors found.</p>
+        <% } else { %>
+            <p>Found <%= authors.length %> authors.</p>
+        <% } %>
+    </section>
     <section class="row row-cols-1 row-cols-md-3 g-4">
     <% authors.forEach(author => { %>
         <section class="col-sm-6 col-md-4 col-lg-3 text-center">
             <div class="author-card card">
                 <div class="card-body">
-                    <h5 class="card-title text-white">
+                    <h3 class="card-title text-white">
                         <%= author.name %>
-                    </h5>
+                    </h3>
                 </div>
                 <div class="card-footer d-flex justify-content-around">
                     <a href="/authors/<%= author.id %>" class="btn btn-md btn-dark">View</a>
