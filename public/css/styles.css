@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!
- * Bootstrap  v5.3.6 (https://getbootstrap.com/)
+ * Bootstrap  v5.3.7 (https://getbootstrap.com/)
  * Copyright 2011-2025 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
@@ -22316,6 +22316,9 @@ html, body {
 }
 .navbar a {
   color: #dee2e6 !important;
+}
+.navbar a:focus-visible {
+  outline: -webkit-focus-ring-color auto 1px;
 }
 .navbar .navbar-dark .navbar-toggler {
   border: 1px solid rgb(222, 226, 230);

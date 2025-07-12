@@ -11,6 +11,10 @@
 
     a {
         color: $gray-300 !important;
+
+        &:focus-visible {
+            outline: -webkit-focus-ring-color auto 1px;
+        }
     }
 
     .navbar-dark .navbar-toggler {
