@@ -9,7 +9,7 @@
     "compile:sass": "sass --watch --no-source-map scss:public/css",
     "build:css": "sass scss:public/css",
     "build:postcss": "postcss public/css/styles.css -o public/css/styles.min.css",
-    "build": "npm run build:css && npm run build:postcss"
+    "build": "npm run build:postcss"
   },
   "repository": {
     "type": "git",
