@@ -616,11 +616,8 @@ html, body {
         height: 2px;
     }
 
-    .company-list {
-
-        li {
-            margin-bottom: 0.5rem;
-        }
+    li {
+        margin-bottom: 0.5rem;
     }
 
     /* Style the copyright content */
