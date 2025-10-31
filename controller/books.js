@@ -64,6 +64,7 @@ module.exports = {
             isbn: req.body.isbn,
             title: req.body.title,
             description: req.body.description,
+            genre: req.body.genre || 'Other',
             publishDate: new Date(req.body.publishDate),
             pageCount: req.body.pageCount,
             author: req.body.author
@@ -90,6 +91,7 @@ module.exports = {
             book.publishDate = new Date(req.body.publishDate)
             book.pageCount = req.body.pageCount
             book.description = req.body.description
+            book.genre = req.body.genre || 'Other'
             // Checks to see if cover exist and not an empty string
             if(req.body.cover != null && req.body.cover !== ''){
                 saveCover(book, req.body.cover)

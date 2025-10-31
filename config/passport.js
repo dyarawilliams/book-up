@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const User = require('../models/user')
 
 module.exports = function (passport) {
+
     passport.use(new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
         try {
             const user = await User.findOne({ email: email.toLowerCase() });
@@ -24,7 +25,9 @@ module.exports = function (passport) {
             return done(err)
             console.error(err)
         }
-    })),
+    }))
+
+    if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
     passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -56,6 +59,8 @@ module.exports = function (passport) {
             console.error(err)
         }
     }))
+    }
+    
 
     // Persist user data (after successful authentication) into session
     passport.serializeUser(async (user, done) => {
