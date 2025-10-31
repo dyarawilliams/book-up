@@ -4,6 +4,7 @@ const Book = require('../models/book')
 const Author = require('../models/author')
 const User = require('../models/user')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
+const genres = require('../config/genres')
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 const booksController = require('../controller/books')
@@ -70,6 +71,7 @@ async function renderFormPage(req, res, book, form, hasError = false){
             layout: 'layouts/dashboard',
             authors: authors,
             book: book,
+            genres,
             title: 'Form Page',
             user: req.user,
             isAuth: req.isAuthenticated()

@@ -11,6 +11,36 @@
     </form>
 </section>
 
+<section class="genre-controls mt-3">
+    <form method="GET" action="/dashboard" class="row g-2 align-items-end">
+        <div class="col-sm-6 col-md-4">
+            <label class="form-label" for="genreFilter">Genre</label>
+            <select name="genre" id="genreFilter" class="form-control">
+                <option value="">All genres</option>
+                <% if (genres && genres.length) { %>
+                    <% genres.forEach(function(genre){ %>
+                        <option value="<%= genre %>" <%= selectedGenre === genre ? 'selected' : '' %>><%= genre %></option>
+                    <% }) %>
+                <% } %>
+            </select>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <label class="form-label" for="genreSort">Sort</label>
+            <select name="genreSort" id="genreSort" class="form-control">
+                <option value="">Sort by genre</option>
+                <option value="asc" <%= genreSort === 'asc' ? 'selected' : '' %>>Genre A → Z</option>
+                <option value="desc" <%= genreSort === 'desc' ? 'selected' : '' %>>Genre Z → A</option>
+            </select>
+        </div>
+        <div class="col-sm-6 col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Apply</button>
+        </div>
+        <div class="col-sm-6 col-md-2">
+            <a href="/dashboard" class="btn btn-outline-secondary w-100">Reset</a>
+        </div>
+    </form>
+</section>
+
 <section class="stats row mt-4">
     <div class="col-md-4">
         <div class="stats-card">
@@ -49,6 +79,9 @@
                     </th>
                     <th alt="author" class="header field author">
                         <a href="">author</a>
+                    </th>
+                    <th alt="genre" class="header field genre">
+                        <a href="">genre</a>
                     </th>
                     <th alt="isbn13" class="header field isbn13">
                         <a href="">isbn13</a>
@@ -90,6 +123,7 @@
                     </td>
                     <td class="field title"><%= book.title %></td>
                     <td class="field author"><%= book.author.name %></td>
+                    <td class="field genre"><%= book.genre || 'Other' %></td>
                     <td class="field isbn13"><%= book.isbn %></td>
                     <td class="field numOfPages text-center"><%= book.pageCount %></td>
                     <td class="field datePub"></td>

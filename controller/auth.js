@@ -117,8 +117,14 @@ module.exports = {
                 return res.redirect('../signup');
             }
             await user.save();
-            await req.logIn(user);
-            res.redirect('/dashboard')
+            req.logIn(user, (err) => {
+                if (err) {
+                    console.error('Signup login error:', err)
+                    req.flash('errors', { msg: 'There was a problem signing you in automatically. Please log in manually.' })
+                    return res.redirect('/login')
+                }
+                res.redirect('/dashboard')
+            })
         } catch (err) {
             console.error(err)
         }

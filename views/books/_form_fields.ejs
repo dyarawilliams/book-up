@@ -38,6 +38,16 @@
     <input class="form-control" type="number" id="pageCount" name="pageCount" min="1" value="<%= book.pageCount %>" required />
 </div>
 
+<% const selectedGenre = book.genre || 'Other'; %>
+<div class="mb-4">
+    <label class="form-label" for="genre">Genre</label>
+    <select class="form-control" id="genre" name="genre" required>
+        <% genres.forEach(function(genre){ %>
+            <option value="<%= genre %>" <%= selectedGenre === genre ? 'selected' : '' %>><%= genre %></option>
+        <% }) %>
+    </select>
+</div>
+
 <div class="row mb-4">
     <div class="col">
         <div class="form-outline">
