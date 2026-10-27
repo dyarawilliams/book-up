@@ -34,7 +34,11 @@ require('./config/passport')(passport)
 connectDB();
 
 // Path only: never log query strings (OAuth callback codes included).
-morgan.token('pathname', (req) => req.path || '-')
+morgan.token('pathname', (req) => {
+    const url = req.originalUrl || req.url || '-'
+    const queryIndex = url.indexOf('?')
+    return queryIndex === -1 ? url : url.slice(0, queryIndex)
+})
 app.use(morgan(':method :pathname :status :response-time ms - :res[content-length]'))
 
 // Static Folder
@@ -86,13 +90,11 @@ app.use('/dashboard', dashboardRouter)
 
 app.use('/auth', authRouter)
 
-app.use((req, res, next) => {
+app.use((req, res) => {
     const isAuth = typeof req.isAuthenticated === 'function' ? req.isAuthenticated() : false
     res.status(404).render('error/404', {
         title: '404',
         isAuth,
-    }, (err) => {
-        if (err) next(err)
     })
 })
 
@@ -108,13 +110,15 @@ app.use((err, req, res, next) => {
         title: 'Server Error',
         status,
         isAuth,
-    }, (renderErr) => {
-        if (renderErr) {
+    }, (renderErr, html) => {
+        if (renderErr || typeof html !== 'string') {
             console.error(renderErr && renderErr.stack ? renderErr.stack : renderErr)
             if (!res.headersSent) {
                 res.status(500).type('text').send('Internal Server Error')
             }
+            return
         }
+        res.send(html)
     })
 })
 
