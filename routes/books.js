@@ -1,89 +1,45 @@
 const express = require('express')
 const router = express.Router()
 const Book = require('../models/book')
-const Author = require('../models/author')
-const User = require('../models/user')
-const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
-const genres = require('../config/genres')
-const { ensureAuth, ensureGuest } = require('../middleware/auth')
+const { ensureAuth } = require('../middleware/auth')
+const asyncHandler = require('../middleware/asyncHandler')
 
 const booksController = require('../controller/books')
 
 // @desc All Books
 // @route GET /books/
-router.get('/', booksController.getBooks)
+router.get('/', asyncHandler(booksController.getBooks))
 
-// @desc New Book 
+// @desc New Book
 // @route GET /books/new
-router.get('/new', ensureAuth, async (req, res) => {
-    try {
-        renderNewPage(req, res, new Book())
-    } catch (err) {
-        console.error(err)
-        res.redirect('/')
-    }
-})
+router.get('/new', ensureAuth, asyncHandler(async (req, res) => {
+    await booksController.renderNewPage(req, res, new Book())
+}))
 
 // @desc Create Book
 // @route POST /books/
-router.post('/', ensureAuth, booksController.createBook)
+router.post('/', ensureAuth, asyncHandler(booksController.createBook))
 
-// // @desc Show Book 
-// // @route GET /books/:id
-router.get('/:id', booksController.showBook)
-
-// @desc Edit Book 
-// @route GET /books/:id/edit
-router.get('/:id/edit', async (req, res) => {
-    try {
-        const book = await Book.findById(req.params.id)
-        renderEditPage(req, res, book)
-    } catch (err) {
-        console.error(err)
-        res.redirect('/')
-    }
-})
-
-// @desc Update Book 
-// @route PUT /books/:id 
-router.put('/:id', ensureAuth, booksController.updateBook)
-
-// @desc Delete Book 
+// @desc Show Book
 // @route GET /books/:id
-router.delete('/:id', ensureAuth, booksController.deleteBook)
+router.get('/:id', asyncHandler(booksController.showBook))
 
-
-// This function is responsible for rendering a page to create a new book.
-async function renderNewPage(req, res, book, hasError = false){
-    await renderFormPage(req, res, book, 'new', hasError)
-}
-
-// This function is responsible for rendering a page to edit an existing book.
-async function renderEditPage(req, res, book, hasError = false){
-    await renderFormPage(req, res, book, 'edit', hasError)
-}
-
-// This function is a general-purpose function to render form pages for creating or editing books.
-async function renderFormPage(req, res, book, form, hasError = false){
-    try {
-        const authors = await Author.find({})
-        const params = {
-            layout: 'layouts/dashboard',
-            authors: authors,
-            book: book,
-            genres,
-            title: 'Form Page',
-            user: req.user,
-            isAuth: req.isAuthenticated()
-        }
-        if(hasError) {
-            params.errorMessage = form === 'edit' ? 'Error Updating Book' : 'Error Creating Book';
-        }
-        res.render(`books/${form}`, params)
-    } catch(err) {
-        console.error(err)
-        res.redirect('/books')
+// @desc Edit Book
+// @route GET /books/:id/edit
+router.get('/:id/edit', asyncHandler(async (req, res) => {
+    const book = await Book.findById(req.params.id)
+    if (!book) {
+        return res.redirect('/books')
     }
-}
+    await booksController.renderEditPage(req, res, book)
+}))
+
+// @desc Update Book
+// @route PUT /books/:id
+router.put('/:id', ensureAuth, asyncHandler(booksController.updateBook))
+
+// @desc Delete Book
+// @route DELETE /books/:id
+router.delete('/:id', ensureAuth, asyncHandler(booksController.deleteBook))
 
 module.exports = router

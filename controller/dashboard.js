@@ -4,7 +4,7 @@ const User = require('../models/user')
 const genres = require('../config/genres')
 
 module.exports = {
-    getIndex: async (req, res) => {
+    getIndex: async (req, res, next) => {
         try {
             const { genre: selectedGenre, genreSort } = req.query
 
@@ -36,7 +36,6 @@ module.exports = {
             // Fetch the user that is authenticated in the passport session
             // This assumes that the user is stored in the session by Passport.js
             const user = req.user
-            console.log(user)
 
             const activities = [
                 'Added "New Book 1"',
@@ -49,7 +48,7 @@ module.exports = {
                 ...distinctGenres.filter(Boolean)
             ])).sort((a, b) => a.localeCompare(b))
 
-            res.render('dashboard', { 
+            return res.render('dashboard/index', { 
                 title: 'Dashboard', 
                 layout: 'layouts/dashboard', 
                 isAuth: req.isAuthenticated(),
@@ -64,6 +63,7 @@ module.exports = {
             })
         } catch (err) {
             console.error(err)
+            return next(err)
         }
     }
 }

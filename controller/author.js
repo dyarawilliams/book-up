@@ -10,7 +10,7 @@ module.exports = {
         }
         try {
             const authors = await Author.find(searchOptions)
-            res.render('authors/index', {
+            return res.render('authors/index', {
                 title: 'All Authors',
                 isAuth: req.isAuthenticated(),
                 authors: authors,
@@ -18,11 +18,11 @@ module.exports = {
             })
         } catch (err) {
             console.error(err)
-            res.redirect('/')
+            return res.redirect('/')
         }
     },
     newAuthor: (req, res) => {
-        res.render('authors/new', { 
+        return res.render('authors/new', { 
             title: 'Add New Author',
             layout: 'layouts/dashboard',
             user: req.user,
@@ -36,22 +36,22 @@ module.exports = {
         })
         try {
             const newAuthor = await author.save()
-            res.redirect(`authors/${newAuthor.id}`)
+            return res.redirect(`/authors/${newAuthor.id}`)
         } catch (err) {
-            res.render('authors/new', {
+            console.error(err)
+            return res.render('authors/new', {
                 title: 'Add New Author',
                 layout: 'layouts/dashboard',
                 author: author,
                 errorMessage: 'Error creating Author'
             })
-            console.error(err)
         }
     },
     showAuthor: async (req, res) => {
         try {
             const author = await Author.findById(req.params.id)
             const books = await Book.find({ author: author.id }).limit(6).exec()
-            res.render('authors/show', {
+            return res.render('authors/show', {
                 title: `${author.name}`,
                 layout: 'layouts/layout',
                 isAuth: req.isAuthenticated(),
@@ -59,15 +59,15 @@ module.exports = {
                 booksByAuthor: books,
             })
         } catch (err) {
-            console.log(err)
-            res.redirect('/')
+            console.error(err)
+            return res.redirect('/')
         }
     },
     editAuthor: async (req, res) => {
         try {
             // finds author by Id if it exists 
             const author = await Author.findById(req.params.id)
-            res.render('authors/edit', { 
+            return res.render('authors/edit', { 
                 title: 'Edit Author',
                 layout: 'layouts/dashboard',
                 author: author,
@@ -75,7 +75,7 @@ module.exports = {
             })
         } catch (err) {
             // Redirects user back to authors index page 
-            res.redirect('/authors')
+            return res.redirect('/authors')
         }
     },
     updateAuthor: async (req, res) => {
@@ -84,17 +84,16 @@ module.exports = {
             author = await Author.findById(req.params.id)
             author.name = req.body.name
             await author.save()
-            res.redirect(`/authors/${author.id}`)
+            return res.redirect(`/authors/${author.id}`)
         } catch (err) {
-            if(author == null) {
-                res.redirect('/')
-            } else {
-                res.render('authors/edit', {
-                    layout: 'layouts/dashboard',
-                    author: author,
-                    errorMessage: 'Error updating Author'
-                })
+            if (author == null) {
+                return res.redirect('/')
             }
+            return res.render('authors/edit', {
+                layout: 'layouts/dashboard',
+                author: author,
+                errorMessage: 'Error updating Author'
+            })
         }
     },
     deleteAuthor: async (req, res) => {
@@ -119,10 +118,10 @@ module.exports = {
             }
             // If no books, delete the author directly
             await Author.deleteOne({ _id: author._id })
-            res.redirect('/authors')
+            return res.redirect('/authors')
         } catch (err) {
             console.error(err)
-            res.redirect('/')
+            return res.redirect('/')
         }
     }
 

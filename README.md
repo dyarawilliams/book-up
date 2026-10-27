@@ -69,7 +69,12 @@ git clone https://github.com/dyarawilliams/book-up.git
 DB_STRING=
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
+SESSION_SECRET=
 ```
+
+`SESSION_SECRET` is required. The server exits on startup if it is missing. Use a long random string (for example `openssl rand -hex 32`). It signs the session cookie. Do not commit it.
+
+In production (`NODE_ENV=production`) the session cookie is `Secure`, `HttpOnly`, and `SameSite=Lax`, and Express trusts one proxy hop so a host like Render can mark the cookie secure. Locally the cookie stays usable over http.
 
 ### Executing program
 
