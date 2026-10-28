@@ -1,6 +1,6 @@
 const Author = require('../models/author')
 const Book = require('../models/book')
-const User = require('../models/user')
+const genres = require('../config/genres')
 
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 
@@ -29,7 +29,7 @@ module.exports = {
                     return book
                 }
             })
-            res.render('books/index', {
+            return res.render('books/index', {
                 layout: 'layouts/layout',
                 title: 'All Books',
                 user: req.user,
@@ -37,26 +37,26 @@ module.exports = {
                 searchOptions: req.query,
                 isAuth: req.isAuthenticated()
             })
-        } catch (err){
+        } catch (err) {
             console.error(err)
-            res.redirect('/')
+            return res.redirect('/')
         }
-        // res.send('All Book')
     },
     showBook: async (req, res) => {
         try {
-            const book = await Book.findById(req.params.id).populate('author')
-            .exec()
-            
-            res.render('books/show', { 
-                title: 'Show Book',  
-                user: req.user, 
+            const book = await Book.findById(req.params.id).populate('author').exec()
+            if (!book) {
+                return res.redirect('/books')
+            }
+            return res.render('books/show', {
+                title: 'Show Book',
+                user: req.user,
                 book: book,
-                isAuth: req.isAuthenticated(), 
+                isAuth: req.isAuthenticated(),
             })
         } catch (err) {
             console.error(err)
-            res.redirect('/')
+            return res.redirect('/')
         }
     },
     createBook: async (req, res) => {
@@ -69,22 +69,23 @@ module.exports = {
             pageCount: req.body.pageCount,
             author: req.body.author
         })
-        saveCover(book, req.body.cover)
-    
+
         try {
+            saveCover(book, req.body.cover)
             const newBook = await book.save()
-            res.redirect(`books/${newBook.id}`)
-            // res.redirect('books')
+            return res.redirect(`/books/${newBook.id}`)
         } catch (err) {
             console.error(err)
-            await renderNewPage(req, res, book, true)
+            return renderNewPage(req, res, book, true)
         }
-        // res.send('Create Book')
     },
     updateBook: async (req, res) => {
-        let book 
+        let book
         try {
             book = await Book.findById(req.params.id)
+            if (!book) {
+                return res.redirect('/books')
+            }
             book.title = req.body.title
             book.author = req.body.author
             book.isbn = req.body.isbn
@@ -93,44 +94,80 @@ module.exports = {
             book.description = req.body.description
             book.genre = req.body.genre || 'Other'
             // Checks to see if cover exist and not an empty string
-            if(req.body.cover != null && req.body.cover !== ''){
+            if (req.body.cover != null && req.body.cover !== '') {
                 saveCover(book, req.body.cover)
             }
             await book.save()
-            res.redirect(`/dashboard/books/${book.id}`)
+            return res.redirect(`/books/${book.id}`)
         } catch (err) {
-            if(book != null){
-                renderEditPage(req, res, book, true)
-            } else {
-                redirect('/')
+            console.error(err)
+            if (book != null) {
+                return renderEditPage(req, res, book, true)
             }
+            return res.redirect('/books')
         }
     },
     deleteBook: async (req, res) => {
-        let book 
+        let book
         try {
-            book = await Book.findById(req.params.id)
-            await book.deleteOne()
-            res.redirect('/books')
-        } catch (err) {
-            if(book != null){
-                res.render('books/show', {
-                    book: book,
-                    errorMessage: 'Could not remove book',
-                    title: 'Error Page'
-                })
-            } else {
-                res.render('/')
+            book = await Book.findById(req.params.id).populate('author')
+            if (!book) {
+                return res.redirect('/books')
             }
+            await book.deleteOne()
+            return res.redirect('/books')
+        } catch (err) {
             console.error(err)
+            if (book == null) {
+                return res.redirect('/books')
+            }
+            return res.render('books/show', {
+                book: book,
+                errorMessage: 'Could not remove book',
+                title: 'Error Page',
+                user: req.user,
+                isAuth: req.isAuthenticated(),
+            })
         }
+    },
+    renderNewPage,
+    renderEditPage,
+}
+
+async function renderNewPage(req, res, book, hasError = false) {
+    await renderFormPage(req, res, book, 'new', hasError)
+}
+
+async function renderEditPage(req, res, book, hasError = false) {
+    await renderFormPage(req, res, book, 'edit', hasError)
+}
+
+async function renderFormPage(req, res, book, form, hasError = false) {
+    try {
+        const authors = await Author.find({})
+        const params = {
+            layout: 'layouts/dashboard',
+            authors: authors,
+            book: book,
+            genres,
+            title: 'Form Page',
+            user: req.user,
+            isAuth: req.isAuthenticated()
+        }
+        if (hasError) {
+            params.errorMessage = form === 'edit' ? 'Error Updating Book' : 'Error Creating Book'
+        }
+        return res.render(`books/${form}`, params)
+    } catch (err) {
+        console.error(err)
+        return res.redirect('/books')
     }
 }
 
-function saveCover(book, coverEncoded){
-    if (coverEncoded == null || coverEncoded.length < 1) return 
+function saveCover(book, coverEncoded) {
+    if (coverEncoded == null || coverEncoded.length < 1) return
     const cover = JSON.parse(coverEncoded)
-    if (cover != null && imageMimeTypes.includes(cover.type)){
+    if (cover != null && imageMimeTypes.includes(cover.type)) {
         book.coverImage = new Buffer.from(cover.data, 'base64')
         book.coverImageType = cover.type
     }

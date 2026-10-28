@@ -22,14 +22,24 @@ const dashboardRouter = require('./routes/dashboard')
 // Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
 
+if (!process.env.SESSION_SECRET) {
+    console.error('SESSION_SECRET is missing. Add a long random SESSION_SECRET to config/.env and restart.')
+    process.exit(1)
+}
+
 // Passport config
 require('./config/passport')(passport)
 
 // Connect to Database
 connectDB();
 
-// Route Logging
-app.use(morgan('dev'))
+// Path only: never log query strings (OAuth callback codes included).
+morgan.token('pathname', (req) => {
+    const url = req.originalUrl || req.url || '-'
+    const queryIndex = url.indexOf('?')
+    return queryIndex === -1 ? url : url.slice(0, queryIndex)
+})
+app.use(morgan(':method :pathname :status :response-time ms - :res[content-length]'))
 
 // Static Folder
 app.use(express.static('public'));
@@ -47,14 +57,22 @@ app.use(methodOverride('_method'))
 // To compress the response bodies
 app.use(compression())
 
+if (process.env.NODE_ENV === 'production') {
+    // One hop so Secure cookies see HTTPS behind a reverse proxy.
+    app.set('trust proxy', 1)
+}
+
 // Sessions
 app.use(session({
-        secret: 'keyboard cat',
+        secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
         store: MongoStore.create({ mongoUrl: process.env.DB_STRING }),
-        cookie: { 
+        cookie: {
             maxAge: 3600000, // 1 hour
+            httpOnly: true,
+            sameSite: 'lax',
+            secure: process.env.NODE_ENV === 'production',
         }
     })
 )
@@ -72,10 +90,35 @@ app.use('/dashboard', dashboardRouter)
 
 app.use('/auth', authRouter)
 
-app.use(async (req, res) => {
+app.use((req, res) => {
+    const isAuth = typeof req.isAuthenticated === 'function' ? req.isAuthenticated() : false
     res.status(404).render('error/404', {
         title: '404',
-        isAuth: req.isAuthenticated()
+        isAuth,
+    })
+})
+
+app.use((err, req, res, next) => {
+    console.error(err && err.stack ? err.stack : err)
+    if (res.headersSent) {
+        return next(err)
+    }
+    const statusCode = Number(err.status || err.statusCode)
+    const status = Number.isInteger(statusCode) && statusCode >= 400 && statusCode < 600 ? statusCode : 500
+    const isAuth = typeof req.isAuthenticated === 'function' ? req.isAuthenticated() : false
+    res.status(status).render('error/500', {
+        title: 'Server Error',
+        status,
+        isAuth,
+    }, (renderErr, html) => {
+        if (renderErr || typeof html !== 'string') {
+            console.error(renderErr && renderErr.stack ? renderErr.stack : renderErr)
+            if (!res.headersSent) {
+                res.status(500).type('text').send('Internal Server Error')
+            }
+            return
+        }
+        res.send(html)
     })
 })
 
