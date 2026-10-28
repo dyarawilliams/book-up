@@ -71,8 +71,11 @@ git clone https://github.com/dyarawilliams/book-up.git
 DB_STRING=
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
+GOOGLE_CALLBACK_URL=
 SESSION_SECRET=
 ```
+
+`GOOGLE_CALLBACK_URL` is optional. When it is omitted, Google sign-in uses `/auth/google/callback`. Set it to the callback URL registered with Google when that path needs to be absolute.
 
 `SESSION_SECRET` is required. The server exits on startup if it is missing. Use a long random string (for example `openssl rand -hex 32`). It signs the session cookie. Do not commit it.
 

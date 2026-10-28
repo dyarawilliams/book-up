@@ -113,7 +113,7 @@ module.exports = {
                     isAuth: req.isAuthenticated(),
                     author: author,
                     booksByAuthor: await Book.find({ author: author._id }).limit(6),
-                    errorMessage: 'This author has books still'
+                    errorMessage: 'This author still has books and cannot be deleted.'
                 })
             }
             // If no books, delete the author directly

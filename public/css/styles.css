@@ -494,6 +494,14 @@ html, body {
 .dashboard .title {
   width: 20%;
 }
+.dashboard .actions {
+  width: 8rem;
+  white-space: normal;
+}
+.dashboard .dashboard-authors th, .dashboard .dashboard-authors td {
+  width: auto;
+  text-align: left;
+}
 .dashboard td.isbn13 {
   width: 15%;
   font-size: 0.8rem;

@@ -1,23 +1,33 @@
 const express = require('express')
 const passport = require('passport')
 const router = express.Router()
+const { googleAuthConfigured } = require('../config/google')
+
+function googleUnavailable(req, res) {
+    req.flash('errors', { msg: 'Google sign-in is not configured.' })
+    return res.redirect('/login')
+}
 
 // @desc Auth with Google
 // @route GET /auth/google
-router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
+router.get('/google', (req, res, next) => {
+    if (!googleAuthConfigured()) {
+        return googleUnavailable(req, res)
+    }
+    return passport.authenticate('google', { scope: ['profile', 'email'] })(req, res, next)
+})
 
 // @desc Google Auth Callback
 // @route GET /auth/google/callback
-router.get('/google/callback', 
-    passport.authenticate('google', {
-        successRedirect: '/dashboard',
-        failureRedirect: '/login/failed' 
-    }),
-    (req, res) => {
-        // Successful authentication, redirects to dashboard.
-        res.redirect('/dashboard')
+router.get('/google/callback', (req, res, next) => {
+    if (!googleAuthConfigured()) {
+        return googleUnavailable(req, res)
     }
-)
+    return passport.authenticate('google', {
+        successRedirect: '/dashboard',
+        failureRedirect: '/login/failed'
+    })(req, res, next)
+})
 
 router.get('/login/failed', (req, res) => {
     res.status(401).json({
@@ -25,14 +35,5 @@ router.get('/login/failed', (req, res) => {
         message: "Login Failure!"
     })
 })
-
-// @desc Logout user
-// @route /auth/logout
-// router.post('/logout', (req, res, next) => {
-//     req.logout(function(err) {
-//         if (err) { return next(err) } 
-//         res.redirect('/');
-//     });
-// })
 
 module.exports = router

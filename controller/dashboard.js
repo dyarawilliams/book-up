@@ -22,11 +22,12 @@ module.exports = {
 
             const bookQuery = Book.find(bookFilter).sort(sortOrder).populate('author')
 
-            const [books, booksCount, authorsCount, distinctGenres] = await Promise.all([
+            const [books, booksCount, authorsCount, distinctGenres, authors] = await Promise.all([
                 bookQuery.exec(),
                 Book.countDocuments({}).exec(),
                 Author.countDocuments({}).exec(),
-                Book.distinct('genre')
+                Book.distinct('genre'),
+                Author.find({}).sort({ name: 1 }).exec(),
             ])
 
             if (!req.isAuthenticated()) {
@@ -56,6 +57,7 @@ module.exports = {
                 books: books,
                 booksCount: booksCount,
                 authorsCount: authorsCount,
+                authors: authors,
                 activities,
                 genres: genreOptions,
                 selectedGenre,

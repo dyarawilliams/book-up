@@ -44,6 +44,18 @@
         width: 20%;
     }
 
+    .actions {
+        width: 8rem;
+        white-space: normal;
+    }
+
+    .dashboard-authors {
+        th, td {
+            width: auto;
+            text-align: left;
+        }
+    }
+
     td.isbn13 {
         width: 15%;
         font-size: 0.8rem;

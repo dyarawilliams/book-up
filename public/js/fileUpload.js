@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Create FilePond object
     const inputElement = document.querySelector('input[type="file"]');
-    const pond = FilePond.create(inputElement);
-    
+    if (!inputElement || typeof FilePond === 'undefined') return
+    FilePond.create(inputElement);
     FilePond.parse(document.body);
 });
