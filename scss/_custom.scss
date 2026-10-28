@@ -36,5 +36,5 @@ $secondary: $light-blue;
 }
 
 html, body {
-    font-family: "Nunito", sans-serif !important;
+    font-family: "Nunito", "Nunito Fallback", sans-serif !important;
 }

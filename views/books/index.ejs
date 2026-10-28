@@ -46,13 +46,13 @@
 
     <section class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3">
         <!-- START OF BOOK ITEMS  -->
-        <% books.forEach(book => { %>
+        <% books.forEach((book, index) => { %>
             <div class="col">
                 <div class="book-card card">
                     <div class="row">
                         <div class="book-img col-6">
                             <a href="/books/<%= book.id %>" class="d-flex justify-content-center">
-                                <img src="<%= book.coverImagePath %>" alt="Book Cover" width="150" height="200" loading="lazy" style="object-fit: contain;" />
+                                <img src="<%= book.coverImagePath %>" alt="Book Cover" width="150" height="200" loading="<%= index === 0 ? 'eager' : 'lazy' %>" style="object-fit: contain;" />
                             </a>
                         </div>
                         <div class="col-6">

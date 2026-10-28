@@ -3,7 +3,22 @@
 #authors {
     .author-card {
         background-color: $black !important;
+        // Holds the card height steady when Nunito replaces the fallback face.
+        min-height: 8.5rem;
     }
+
+    .author-card .card-title {
+        line-height: 1.5;
+        min-height: 1.5em;
+    }
+}
+
+#author-view img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: contain;
 }
 
 #author-view {
