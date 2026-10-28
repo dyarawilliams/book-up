@@ -19,7 +19,7 @@ router.get('/google/callback',
     }
 )
 
-router.get('login/failed', (req, res) => {
+router.get('/login/failed', (req, res) => {
     res.status(401).json({
         error: true,
         message: "Login Failure!"
