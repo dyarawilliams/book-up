@@ -59,6 +59,8 @@ A few necessary are express, ejs, express-ejs-layouts, mongoose, body-parser
 
 ### Installing
 
+Node.js 22 or newer is required (`engines` in package.json and `.nvmrc`). On Render, set the Node version to 22 before deploying this upgrade. There are no new environment variables.
+
 * How/where to download your program - [ZIP](https://github.com/dyarawilliams/book-up/archive/refs/heads/main.zip) - OR
 ```bash
 git clone https://github.com/dyarawilliams/book-up.git
@@ -83,6 +85,8 @@ In production (`NODE_ENV=production`) the session cookie is `Secure`, `HttpOnly`
 npm i
 npm run dev
 ```
+
+`npm run build` compiles Sass, then runs PostCSS in production mode (including unused-CSS removal) and writes `public/css/styles.min.css`.
 
 * In another terminal run Sass Compiler to update the CSS file ```styles.css```
 ```

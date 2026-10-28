@@ -3,12 +3,10 @@ const express = require('express')
 const expressLayouts = require('express-ejs-layouts')
 const app = express()
 const morgan = require('morgan')
-const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const passport = require('passport')
 const session = require('express-session')
-const MongoStore = require('connect-mongo')//(session)
+const { MongoStore } = require('connect-mongo')
 const flash = require('express-flash')
 const compression = require('compression')
 
@@ -20,7 +18,7 @@ const authRouter = require('./routes/auth')
 const dashboardRouter = require('./routes/dashboard')
 
 // Use .env file in config folder
-require("dotenv").config({ path: "./config/.env" });
+require("dotenv").config({ path: "./config/.env", quiet: true });
 
 if (!process.env.SESSION_SECRET) {
     console.error('SESSION_SECRET is missing. Add a long random SESSION_SECRET to config/.env and restart.')
@@ -49,9 +47,15 @@ app.use(expressLayouts);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.set('layout', './layouts/layout');
+// Keep Express 4 query behavior. Express 5 defaults to the "simple" parser.
+app.set('query parser', 'extended')
 
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
-app.use(bodyParser.json())
+app.use(express.urlencoded({ limit: '10mb', extended: false }))
+app.use(express.json())
+app.use((req, res, next) => {
+    if (req.body == null) req.body = {}
+    next()
+})
 app.use(methodOverride('_method'))
 
 // To compress the response bodies
