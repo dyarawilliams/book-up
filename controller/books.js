@@ -150,6 +150,7 @@ async function renderFormPage(req, res, book, form, hasError = false) {
             authors: authors,
             book: book,
             genres,
+            requireCover: form === 'new',
             title: 'Form Page',
             user: req.user,
             isAuth: req.isAuthenticated()
@@ -165,10 +166,14 @@ async function renderFormPage(req, res, book, form, hasError = false) {
 }
 
 function saveCover(book, coverEncoded) {
-    if (coverEncoded == null || coverEncoded.length < 1) return
-    const cover = JSON.parse(coverEncoded)
-    if (cover != null && imageMimeTypes.includes(cover.type)) {
-        book.coverImage = new Buffer.from(cover.data, 'base64')
-        book.coverImageType = cover.type
+    if (typeof coverEncoded !== 'string' || coverEncoded.trim().charAt(0) !== '{') return
+    try {
+        const cover = JSON.parse(coverEncoded)
+        if (cover != null && imageMimeTypes.includes(cover.type) && cover.data) {
+            book.coverImage = Buffer.from(cover.data, 'base64')
+            book.coverImageType = cover.type
+        }
+    } catch (err) {
+        console.error(err)
     }
 }

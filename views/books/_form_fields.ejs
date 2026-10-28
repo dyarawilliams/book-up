@@ -9,13 +9,10 @@
     <div class="col">
         <div class="form-outline">
             <label class="form-label" for="author">Author</label>
+            <% const currentAuthorId = book.author ? String(book.author._id || book.author) : '' %>
             <select name="author" class="form-control">
-                <% authors.forEach(author=> { %>
-                    <% if (author.id === book.author) { %>
-                        <option selected label="<%= author.name %>" value="<%= author.id %>">
-                    <% } else { %>
-                        <option label="<%= author.name %>" value="<%= author.id %>"></option>
-                    <% } %>
+                <% authors.forEach(author => { %>
+                    <option value="<%= author.id %>" <%= String(author.id) === currentAuthorId ? 'selected' : '' %>><%= author.name %></option>
                 <% }) %>
             </select>
         </div>
@@ -52,7 +49,7 @@
     <div class="col">
         <div class="form-outline">
             <label class="form-label" for="cover">Cover</label>
-            <input type="file" id="cover" name="cover" class="filepond" accept=".jpeg, .jpg, .png" required />
+            <input type="file" id="cover" name="cover" class="filepond" accept=".jpeg, .jpg, .png" <%= requireCover ? 'required' : '' %> />
         </div>
     </div>
     

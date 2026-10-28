@@ -26,7 +26,7 @@ router.get('/:id', asyncHandler(booksController.showBook))
 
 // @desc Edit Book
 // @route GET /books/:id/edit
-router.get('/:id/edit', asyncHandler(async (req, res) => {
+router.get('/:id/edit', ensureAuth, asyncHandler(async (req, res) => {
     const book = await Book.findById(req.params.id)
     if (!book) {
         return res.redirect('/books')

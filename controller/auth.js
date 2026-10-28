@@ -2,6 +2,7 @@ const passport = require('passport')
 const validator = require('validator')
 
 const User = require('../models/user')
+const { googleAuthConfigured } = require('../config/google')
 
 function safeReturnPath(value, fallback) {
     if (typeof value === 'string' && value.startsWith('/') && !value.startsWith('//')) {
@@ -16,7 +17,11 @@ module.exports = {
             if (req.user) {
                 return res.redirect('/dashboard')
             }
-            return res.render('login', { title: 'Login', isAuth: req.isAuthenticated() })
+            return res.render('login', {
+                title: 'Login',
+                isAuth: req.isAuthenticated(),
+                googleEnabled: googleAuthConfigured(),
+            })
         } catch (err) {
             console.error(err)
             return next(err)
@@ -94,7 +99,11 @@ module.exports = {
             if (req.user) {
                 return res.redirect('/dashboard')
             }
-            return res.render('signup', { title: 'Create an Account', isAuth: req.isAuthenticated() })
+            return res.render('signup', {
+                title: 'Create an Account',
+                isAuth: req.isAuthenticated(),
+                googleEnabled: googleAuthConfigured(),
+            })
         } catch (err) {
             console.error(err)
             return next(err)

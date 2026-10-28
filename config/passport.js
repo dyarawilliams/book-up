@@ -1,7 +1,7 @@
 const LocalStrategy = require('passport-local').Strategy
 const GoogleStrategy = require('passport-google-oauth20').Strategy
-const mongoose = require('mongoose')
 const User = require('../models/user')
+const { googleAuthConfigured, googleCallbackURL, uniqueUserName } = require('./google')
 
 module.exports = function (passport) {
 
@@ -27,36 +27,36 @@ module.exports = function (passport) {
         }
     }))
 
-    if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
+    if (googleAuthConfigured()) {
     passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: '/auth/google/callback',
+        callbackURL: googleCallbackURL(),
         scope: ['profile', 'email'],
     },
     async (accessToken, refreshToken, profile, done) => {
-        // Get the user data
-        const newUser = {
-            googleId: profile.id,
-            displayName: profile.displayName,
-            firstName: profile.name.givenName,
-            lastName: profile.name.familyName,
-            email: profile.emails[0].value,
-            image: profile.photos[0].value
-        }
-
         try {
             let user = await User.findOne({ googleId: profile.id })
             if (user) {
-                // If user present in Database
-                done(null, user);
-            } else {
-                // If user is not present in database save user to database
-                user = await User.create(newUser);
-                done(null, user);
+                return done(null, user)
             }
+            const email = profile.emails && profile.emails[0] && profile.emails[0].value
+            const image = profile.photos && profile.photos[0] && profile.photos[0].value
+            const givenName = profile.name && profile.name.givenName
+            const familyName = profile.name && profile.name.familyName
+            const seed = profile.displayName || (email ? email.split('@')[0] : '') || 'reader'
+            user = await User.create({
+                googleId: profile.id,
+                firstName: givenName,
+                lastName: familyName,
+                email: email,
+                image: image,
+                userName: await uniqueUserName(User, seed),
+            })
+            return done(null, user)
         } catch (err) {
             console.error(err)
+            return done(err)
         }
     }))
     }

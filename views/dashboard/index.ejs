@@ -111,6 +111,7 @@
                     <th alt="date_read" class="header field date_read">
                         <a href="">date read</a>
                     </th>
+                    <th class="header field actions">actions</th>
                 </tr>
             </thead>
             <tbody id="booksBody">
@@ -122,7 +123,7 @@
                         <img src="<%= book.coverImagePath %>" alt="Book Cover" class="img-fluid" width="50" height="75" loading="lazy">
                     </td>
                     <td class="field title"><%= book.title %></td>
-                    <td class="field author"><%= book.author.name %></td>
+                    <td class="field author"><%= book.author ? book.author.name : 'Unknown Author' %></td>
                     <td class="field genre"><%= book.genre || 'Other' %></td>
                     <td class="field isbn13"><%= book.isbn %></td>
                     <td class="field numOfPages text-center"><%= book.pageCount %></td>
@@ -131,6 +132,10 @@
                     <td class="field readCount"></td>
                     <td class="field dateStarted"></td>
                     <td class="field dateRead"></td>
+                    <td class="field actions">
+                        <a href="/books/<%= book.id %>/edit" class="btn btn-sm btn-success mb-1">Edit</a>
+                        <%- include('../partials/deleteForm', { url: `/books/${book.id}` }) %>
+                    </td>
                 </tr>
                 <% }) %>
             </tbody>
@@ -149,4 +154,31 @@
             </ul>
         </section>
     </section> -->
+</section>
+
+<section class="dashboard-authors mt-5">
+    <h2>Authors</h2>
+    <% if (!authors || authors.length === 0) { %>
+        <p>No authors yet.</p>
+    <% } else { %>
+        <table class="w-100">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% authors.forEach(function(author) { %>
+                    <tr>
+                        <td><%= author.name %></td>
+                        <td class="d-flex gap-2 align-items-center">
+                            <a href="/authors/<%= author.id %>/edit" class="btn btn-sm btn-success">Edit</a>
+                            <%- include('../partials/deleteForm', { url: `/authors/${author.id}` }) %>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
 </section>

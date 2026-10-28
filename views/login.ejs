@@ -24,10 +24,12 @@
                     placeholder="Enter your password" required>
 
                 <button type="submit" class="btn btn-primary w-100">Log In</button>
+                <% if (googleEnabled) { %>
                 <a href="/auth/google" class="btn w-100 btn-google">
                     <img src="/images/google.png" alt="google icon" loading="lazy">
                     <span>Continue with Google</span>
                 </a>
+                <% } %>
                 <footer class="text-center mt-3">
                     <p>Don't have an account? <a href="/signup">Sign Up</a></p>
                 </footer>

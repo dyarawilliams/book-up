@@ -27,10 +27,12 @@
                 </div>
                 <div class="d-flex justify-content-center flex-column justify-content-center">
                         <input type="submit" value="Register" class="btn btn-success btn-lg">
+                        <% if (googleEnabled) { %>
                         <a href="/auth/google" class="btn btn-google mt-3">
                             <img src="/images/google.png" alt="google icon" loading="lazy" />
                             <span>Continue with Google</span>
                         </a>
+                        <% } %>
                 </div>
                 <p class="text-center mt-3 mb-0">Already have an account? <a href="/login" class="fw-bold text-success">Login</a></p>
             </form>
