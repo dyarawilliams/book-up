@@ -1,0 +1,101 @@
+name: Bug report
+description: Report something that is broken on Bookup.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. The details below are what we need to reproduce it on the [live demo](https://bookup.onrender.com) or locally.
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: What did you do before the bug showed up?
+      placeholder: |
+        1. Go to '...'
+        2. Click '...'
+        3. See the error
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What happened instead?
+    validations:
+      required: true
+  - type: dropdown
+    id: page
+    attributes:
+      label: Page or route
+      description: Where did this happen?
+      options:
+        - "/"
+        - "/books"
+        - "/authors"
+        - "/dashboard"
+        - "/login"
+        - other
+    validations:
+      required: true
+  - type: input
+    id: page-other
+    attributes:
+      label: Other page or route
+      description: Fill this in when the page is "other".
+      placeholder: /books/123
+    validations:
+      required: false
+  - type: dropdown
+    id: signed-in
+    attributes:
+      label: Signed in?
+      description: none if you were not signed in, local for an account created on Bookup, or Google OAuth.
+      options:
+        - "none"
+        - local
+        - Google OAuth
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where
+      description: Did this happen on the live demo or on a local run?
+      options:
+        - "Live demo (https://bookup.onrender.com)"
+        - Local
+    validations:
+      required: true
+  - type: input
+    id: node-version
+    attributes:
+      label: Node version
+      description: Required for a local run. `.nvmrc` pins 22.23.4. Run `node -v`.
+      placeholder: v22.23.4
+    validations:
+      required: false
+  - type: input
+    id: device-browser
+    attributes:
+      label: Device and browser
+      description: Device, operating system, browser, and version.
+      placeholder: macOS 15, Chrome 131
+    validations:
+      required: true
+  - type: upload
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Images that show the bug. Drag files in or browse.
+    validations:
+      required: false
+      accept: ".png,.jpg,.jpeg,.gif,.webp"
