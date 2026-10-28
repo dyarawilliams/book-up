@@ -151,6 +151,7 @@ async function renderFormPage(req, res, book, form, hasError = false) {
             book: book,
             genres,
             requireCover: form === 'new',
+            loadUploader: true,
             title: 'Form Page',
             user: req.user,
             isAuth: req.isAuthenticated()

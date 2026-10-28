@@ -13,7 +13,7 @@
     <tbody>
         <% books.forEach(book => { %>
             <tr>
-                <td scope="row"><img src="<%= book.coverImagePath %>" class="img-fluid" width="70"></td>
+                <td scope="row"><img src="<%= book.coverImagePath %>" class="img-fluid" width="70" height="93" alt="Book Cover" loading="lazy"></td>
                 <td class="w-50">
                     <%= book.title %><br>
                     By: <%= book.author.name %>

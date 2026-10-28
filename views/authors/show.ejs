@@ -14,10 +14,10 @@
         <h2 class="py-3">Books By Author</h2>
         <div class="row">
             <!-- START OF BOOK ITEMS  -->
-            <% booksByAuthor.forEach(book => { %>
+            <% booksByAuthor.forEach((book, index) => { %>
                 <div class="col-6 col-sm-4">
                     <a href="/books/<%= book.id %>">
-                        <img src="<%= book.coverImagePath %>" alt="Book Cover" class="img-fluid" width="200" loading="lazy" />
+                        <img src="<%= book.coverImagePath %>" alt="Book Cover" class="img-fluid" width="200" height="267" loading="<%= index === 0 ? 'eager' : 'lazy' %>" />
                     </a>
                 </div>
             <% }) %>

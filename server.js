@@ -39,8 +39,15 @@ morgan.token('pathname', (req) => {
 })
 app.use(morgan(':method :pathname :status :response-time ms - :res[content-length]'))
 
-// Static Folder
-app.use(express.static('public'));
+// Compress before static files so CSS, JS, and fonts are gzipped with HTML.
+app.use(compression())
+
+// Static Folder. Production responses stay cacheable for repeat visits.
+const staticMaxAge = process.env.NODE_ENV === 'production' ? '30d' : 0
+app.use(express.static(path.join(__dirname, 'public'), {
+    maxAge: staticMaxAge,
+    etag: true,
+}))
 
 // View Engine (EJS Template)
 app.use(expressLayouts);
@@ -57,9 +64,6 @@ app.use((req, res, next) => {
     next()
 })
 app.use(methodOverride('_method'))
-
-// To compress the response bodies
-app.use(compression())
 
 if (process.env.NODE_ENV === 'production') {
     // One hop so Secure cookies see HTTPS behind a reverse proxy.
