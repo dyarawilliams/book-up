@@ -11,8 +11,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     FilePond.setOptions({
         stylePanelAspectRatio: 150 / 100,
-        imageResizeTargetWidth: 100,
-        imageResizeTargetHeight: 150
+        // The server also caps uploads at 600px. Keep the client resize in that box
+        // so the encoded form field is not a full-resolution photo.
+        imageResizeTargetWidth: 600,
+        imageResizeTargetHeight: 800,
+        imageResizeMode: 'contain',
+        imageResizeUpscale: false,
     })
     
     // Create FilePond object

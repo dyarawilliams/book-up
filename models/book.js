@@ -49,12 +49,16 @@ const bookSchema = new mongoose.Schema({
     timestamps: true,
 })
 
-// derives value from variable
+// URL of GET /books/:id/cover. List queries omit the buffer, so this must not read coverImage.
 bookSchema.virtual('coverImagePath').get(function() {
-    if(this.coverImage != null && this.coverImageType != null){
-        // source of image object
-        return `data:${this.coverImageType};charset=utf-8;base64,${this.coverImage.toString('base64')}`
-    }
+    if (this._id == null || this.coverImageType == null) return undefined
+    const updated = this.updatedAt instanceof Date ? this.updatedAt.getTime() : ''
+    const version = updated ? `?v=${updated}` : ''
+    return `/books/${this._id}/cover${version}`
 })
+
+bookSchema.query.withoutCoverImage = function withoutCoverImage() {
+    return this.select('-coverImage')
+}
 
 module.exports = mongoose.model('Book', bookSchema)

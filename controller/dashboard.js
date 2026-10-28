@@ -20,7 +20,7 @@ module.exports = {
                 sortOrder = { genre: -1, title: 1 }
             }
 
-            const bookQuery = Book.find(bookFilter).sort(sortOrder).populate('author')
+            const bookQuery = Book.find(bookFilter).withoutCoverImage().sort(sortOrder).populate('author')
 
             const [books, booksCount, authorsCount, distinctGenres, authors] = await Promise.all([
                 bookQuery.exec(),
