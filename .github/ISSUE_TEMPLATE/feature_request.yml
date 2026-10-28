@@ -1,0 +1,47 @@
+name: Feature request
+description: Suggest a change that would make Bookup more useful.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Start with the problem, then the change you want. Tie it to a goal from the README when you can.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or motivation
+      description: What is hard or missing today?
+      placeholder: I'm always frustrated when...
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: What should Bookup do instead?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives
+      description: Other approaches you considered. Write "None" if you did not consider any.
+    validations:
+      required: true
+  - type: dropdown
+    id: objective
+    attributes:
+      label: Related README objective
+      description: Which feature area does this support?
+      options:
+        - Search & browse
+        - Personalized recommendations
+        - User profiles
+        - Community interaction
+        - Bookshelf organization
+        - Notifications
+        - Accessibility
+        - other
+    validations:
+      required: true

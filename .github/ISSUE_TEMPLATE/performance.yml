@@ -1,0 +1,98 @@
+name: Performance
+description: Report a Lighthouse or Web Vitals regression.
+title: "[Performance]: "
+labels: ["performance"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for a slow page or a Lighthouse regression, in the same shape as [#10](https://github.com/dyarawilliams/book-up/issues/10).
+
+        Include the page, mobile or desktop, the scores, the metric that slipped, and a link to the report. The lab metrics are FCP (First Contentful Paint), LCP (Largest Contentful Paint), CLS (Cumulative Layout Shift), and TBT (Total Blocking Time). A solid result is about LCP within 2.5s and CLS of 0.1 or less.
+  - type: dropdown
+    id: page
+    attributes:
+      label: Page
+      description: Which route did you measure?
+      options:
+        - "/"
+        - "/books"
+        - "/authors"
+        - "/dashboard"
+        - "/login"
+        - other
+    validations:
+      required: true
+  - type: input
+    id: page-other
+    attributes:
+      label: Other page
+      description: Fill this in when the page is "other".
+      placeholder: /books/123
+    validations:
+      required: false
+  - type: dropdown
+    id: form-factor
+    attributes:
+      label: Mobile or desktop
+      description: Lighthouse mobile uses simulated throttling. Select both if you measured both.
+      multiple: true
+      options:
+        - Mobile
+        - Desktop
+    validations:
+      required: true
+  - type: textarea
+    id: scores
+    attributes:
+      label: Lighthouse scores
+      description: Performance, Accessibility, Best Practices, and SEO, plus the metric values. Include the Lighthouse version if you have it.
+      placeholder: |
+        Performance:
+        Accessibility:
+        Best Practices:
+        SEO:
+        FCP:
+        LCP:
+        CLS:
+        TBT:
+        Lighthouse version:
+    validations:
+      required: true
+  - type: dropdown
+    id: metric
+    attributes:
+      label: Affected metric
+      description: Which metric is off? Select every one that applies.
+      multiple: true
+      options:
+        - FCP
+        - LCP
+        - CLS
+        - TBT
+        - other
+    validations:
+      required: true
+  - type: input
+    id: report
+    attributes:
+      label: Report link
+      description: PageSpeed Insights, WebPageTest, or a Lighthouse HTML or JSON report.
+      placeholder: https://pagespeed.web.dev/analysis/...
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Where you ran it (live demo https://bookup.onrender.com or local, with the Node version if local) and anything else that explains the score.
+    validations:
+      required: false
+  - type: upload
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Lighthouse summary screenshots, if you have them.
+    validations:
+      required: false
+      accept: ".png,.jpg,.jpeg,.gif,.webp"
