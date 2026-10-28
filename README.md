@@ -59,7 +59,7 @@ A few necessary are express, ejs, express-ejs-layouts, mongoose, body-parser
 
 ### Installing
 
-Node.js 22 or newer is required (`engines` in package.json and `.nvmrc`). On Render, set the Node version to 22 before deploying this upgrade. There are no new environment variables.
+Node.js `>=22.12.0` is required (`engines` in package.json). `.nvmrc` pins the current 22 LTS release, `22.23.4`. On Render, set `NODE_VERSION` to `22.23.4`. There are no new environment variables.
 
 * How/where to download your program - [ZIP](https://github.com/dyarawilliams/book-up/archive/refs/heads/main.zip) - OR
 ```bash
