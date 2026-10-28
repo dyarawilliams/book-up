@@ -86,7 +86,7 @@ npm i
 npm run dev
 ```
 
-`npm run build` compiles Sass, then runs PostCSS in production mode (including unused-CSS removal) and writes `public/css/styles.min.css`.
+`npm run build` compiles the app theme from Sass, then minifies it with PostCSS into `public/css/styles.min.css`. Bootstrap and icon styles stay on the CDN.
 
 * In another terminal run Sass Compiler to update the CSS file ```styles.css```
 ```

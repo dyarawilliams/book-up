@@ -21,18 +21,14 @@ $primary: $dark-blue;
 $secondary: $light-blue;
 
 
-$fa-font-path: "../fontawesome/webfonts";
-// Imports for Bootstrap
-@import "../node_modules/bootstrap/scss/bootstrap";
-
-// Imports for Font Awesome 
-@import "../node_modules/@fortawesome/fontawesome-free/scss/functions";
-@import "../node_modules/@fortawesome/fontawesome-free/scss/variables";
-
-
-@import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import "../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
-@import "../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+// Bootstrap is loaded from the CDN. These imports exist so theme
+// partials can use Bootstrap variables and mixins without emitting
+// Bootstrap's CSS into the app stylesheet.
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
 
 *, *::before, *::after {
     margin: 0;
