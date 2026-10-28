@@ -50,7 +50,7 @@ module.exports = {
     showAuthor: async (req, res) => {
         try {
             const author = await Author.findById(req.params.id)
-            const books = await Book.find({ author: author.id }).limit(6).exec()
+            const books = await Book.find({ author: author.id }).withoutCoverImage().limit(6).exec()
             return res.render('authors/show', {
                 title: `${author.name}`,
                 layout: 'layouts/layout',
@@ -103,7 +103,7 @@ module.exports = {
                 return res.redirect('/authors')
             }
             // Checks for books before deleting author
-            const books = await Book.find({ author: author._id }).limit(1)
+            const books = await Book.find({ author: author._id }).select('_id').limit(1)
             // If books exist, render the author's show page with a error message
             if (books.length > 0) {
                 // Author has books, show error message
@@ -112,7 +112,7 @@ module.exports = {
                     layout: 'layouts/layout',
                     isAuth: req.isAuthenticated(),
                     author: author,
-                    booksByAuthor: await Book.find({ author: author._id }).limit(6),
+                    booksByAuthor: await Book.find({ author: author._id }).withoutCoverImage().limit(6),
                     errorMessage: 'This author still has books and cannot be deleted.'
                 })
             }

@@ -4,7 +4,7 @@ const User = require('../models/user')
 module.exports = {
     getIndex: async (req, res, next) => {
         try {
-            const books = await Book.find({ }).sort({ createdAt: 'desc' }).limit(10).exec()
+            const books = await Book.find({ }).withoutCoverImage().sort({ createdAt: 'desc' }).limit(10).exec()
             return res.render('index', { title: 'Home', books: books, isAuth: req.isAuthenticated() })
         } catch (err) {
             console.error(err)

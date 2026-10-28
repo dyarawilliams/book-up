@@ -11,9 +11,9 @@
         </tr>
     </thead>
     <tbody>
-        <% books.forEach(book => { %>
+        <% books.forEach((book, index) => { %>
             <tr>
-                <td scope="row"><img src="<%= book.coverImagePath %>" class="img-fluid" width="70" height="93" alt="Book Cover" loading="lazy"></td>
+                <td scope="row"><img src="<%= book.coverImagePath %>" class="img-fluid" width="70" height="93" alt="Book Cover" loading="<%= index === 0 ? 'eager' : 'lazy' %>"<% if (index === 0) { %> fetchpriority="high"<% } else { %> decoding="async"<% } %>></td>
                 <td class="w-50">
                     <%= book.title %><br>
                     By: <%= book.author.name %>

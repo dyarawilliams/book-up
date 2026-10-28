@@ -1,12 +1,20 @@
+const mongoose = require('mongoose')
 const Author = require('../models/author')
 const Book = require('../models/book')
 const genres = require('../config/genres')
-
-const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
+const {
+    COVER_CACHE_CONTROL,
+    imageMimeTypes,
+    normalizeMime,
+    isSafeImageMime,
+    asBuffer,
+    strongEtag,
+    encodeCover,
+} = require('../lib/coverImage')
 
 module.exports = {
     getBooks: async (req, res) => {
-        let query = Book.find().populate('author')
+        let query = Book.find().withoutCoverImage().populate('author')
         if (req.query.title != null && req.query.title != '') {
             query = query.regex('title', new RegExp(req.query.title, 'i'))
         }
@@ -44,7 +52,7 @@ module.exports = {
     },
     showBook: async (req, res) => {
         try {
-            const book = await Book.findById(req.params.id).populate('author').exec()
+            const book = await Book.findById(req.params.id).withoutCoverImage().populate('author').exec()
             if (!book) {
                 return res.redirect('/books')
             }
@@ -71,7 +79,7 @@ module.exports = {
         })
 
         try {
-            saveCover(book, req.body.cover)
+            await saveCover(book, req.body.cover)
             const newBook = await book.save()
             return res.redirect(`/books/${newBook.id}`)
         } catch (err) {
@@ -82,7 +90,7 @@ module.exports = {
     updateBook: async (req, res) => {
         let book
         try {
-            book = await Book.findById(req.params.id)
+            book = await Book.findById(req.params.id).withoutCoverImage()
             if (!book) {
                 return res.redirect('/books')
             }
@@ -95,9 +103,9 @@ module.exports = {
             book.genre = req.body.genre || 'Other'
             // Checks to see if cover exist and not an empty string
             if (req.body.cover != null && req.body.cover !== '') {
-                saveCover(book, req.body.cover)
+                await saveCover(book, req.body.cover)
             }
-            await book.save()
+            await book.save({ validateModifiedOnly: true })
             return res.redirect(`/books/${book.id}`)
         } catch (err) {
             console.error(err)
@@ -110,7 +118,7 @@ module.exports = {
     deleteBook: async (req, res) => {
         let book
         try {
-            book = await Book.findById(req.params.id).populate('author')
+            book = await Book.findById(req.params.id).withoutCoverImage().populate('author')
             if (!book) {
                 return res.redirect('/books')
             }
@@ -132,6 +140,34 @@ module.exports = {
     },
     renderNewPage,
     renderEditPage,
+    getCover,
+}
+
+async function getCover(req, res) {
+    const id = req.params.id
+    if (!mongoose.Types.ObjectId.isValid(id) || String(id).length !== 24) {
+        return res.status(404).end()
+    }
+
+    const book = await Book.findById(id).select('coverImage coverImageType updatedAt')
+    const buffer = book ? asBuffer(book.coverImage) : null
+    const mime = book ? normalizeMime(book.coverImageType) : ''
+    if (!book || !buffer || buffer.length === 0 || !isSafeImageMime(mime)) {
+        return res.status(404).end()
+    }
+
+    res.set('Content-Type', mime)
+    res.set('Cache-Control', COVER_CACHE_CONTROL)
+    res.set('ETag', strongEtag(buffer))
+    res.set('X-Content-Type-Options', 'nosniff')
+    if (book.updatedAt instanceof Date && !Number.isNaN(book.updatedAt.getTime())) {
+        res.set('Last-Modified', book.updatedAt.toUTCString())
+    }
+
+    if (req.fresh) {
+        return res.status(304).end()
+    }
+    return res.send(buffer)
 }
 
 async function renderNewPage(req, res, book, hasError = false) {
@@ -166,15 +202,18 @@ async function renderFormPage(req, res, book, form, hasError = false) {
     }
 }
 
-function saveCover(book, coverEncoded) {
+async function saveCover(book, coverEncoded) {
     if (typeof coverEncoded !== 'string' || coverEncoded.trim().charAt(0) !== '{') return
+    let cover
     try {
-        const cover = JSON.parse(coverEncoded)
-        if (cover != null && imageMimeTypes.includes(cover.type) && cover.data) {
-            book.coverImage = Buffer.from(cover.data, 'base64')
-            book.coverImageType = cover.type
-        }
+        cover = JSON.parse(coverEncoded)
     } catch (err) {
         console.error(err)
+        return
     }
+    const mime = normalizeMime(cover && cover.type)
+    if (cover == null || !imageMimeTypes.includes(mime) || !cover.data) return
+    const encoded = await encodeCover(Buffer.from(cover.data, 'base64'), mime)
+    book.coverImage = encoded.buffer
+    book.coverImageType = encoded.mime
 }

@@ -20,6 +20,10 @@ router.get('/new', ensureAuth, asyncHandler(async (req, res) => {
 // @route POST /books/
 router.post('/', ensureAuth, asyncHandler(booksController.createBook))
 
+// @desc Book cover bytes
+// @route GET /books/:id/cover
+router.get('/:id/cover', asyncHandler(booksController.getCover))
+
 // @desc Show Book
 // @route GET /books/:id
 router.get('/:id', asyncHandler(booksController.showBook))
@@ -27,7 +31,7 @@ router.get('/:id', asyncHandler(booksController.showBook))
 // @desc Edit Book
 // @route GET /books/:id/edit
 router.get('/:id/edit', ensureAuth, asyncHandler(async (req, res) => {
-    const book = await Book.findById(req.params.id)
+    const book = await Book.findById(req.params.id).withoutCoverImage()
     if (!book) {
         return res.redirect('/books')
     }
