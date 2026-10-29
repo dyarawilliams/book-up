@@ -96,6 +96,28 @@ npm run dev
 npm run compile:sass
 ```
 
+### Resize covers already in the database
+
+New uploads are stored as WebP fitted inside 600×800. Covers saved before that are still the original file, often a large JPEG shown in a 150×200 box. `npm run covers:resize` rewrites those stored covers with the same encoder.
+
+The script reads `DB_STRING` from `config/.env`. When that file is absent (a Render shell), it uses `DB_STRING` from the environment. The default is a dry run: it prints each cover's size before and after and writes nothing.
+
+From your machine, put the database connection string in `config/.env`, then preview:
+
+```bash
+npm run covers:resize
+```
+
+Look at a few books first with `npm run covers:resize -- --limit 5`.
+
+Write the smaller files with `npm run covers:resize -- --apply`. Each original buffer and type is copied into the `coverbackups` collection before it is replaced. `updatedAt` changes so the cover URL, ETag, and `Last-Modified` update.
+
+On Render, open the web service and choose Shell. From the app directory, run the dry run, then the same command with `--apply`. `sharp` is already installed there because the app uses it.
+
+Put the originals back with `npm run covers:resize -- --restore`, then `npm run covers:resize -- --restore --apply`.
+
+Safe to run again. A cover that is already WebP inside 600×800 is left alone, and so is one whose new file would not be smaller. A corrupt image is logged and skipped. A second `--apply` does not replace the first backup. `npm run test:covers` checks this against an in-memory database and does not use `DB_STRING`.
+
 ## Help
 
 Something broken, a new idea, or a slow page? Open an issue with a template so the report has the details we need:
